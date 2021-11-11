@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: "Szabot\xE1l\xF3"
   m_EditorClassIdentifier: 
   background: {fileID: 21300000, guid: 8f3734bb8f25ba14998f11e5a7d0b535, type: 3}
+  count: 2
   name: "Szabot\xE1l\xF3"
+  titleSize: 20
   description: "Minden olyan j\xE1t\xE9kost\xE1rsa, akinek ugyanannyi, vagy t\xF6bb
     pontja van, mint \xF6nnek, \r\nelvesz\xEDti kez\xE9ben tartott k\xE1rty\xE1inak
     fel\xE9t (nyersanyagot/kereskedelmi \xE1rut)."

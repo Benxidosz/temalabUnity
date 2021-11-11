@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: "Cselsz\xF6v\xE9s"
   m_EditorClassIdentifier: 
   background: {fileID: 21300000, guid: f313f59ca11a54e4fbd0fc806c83c3b7, type: 3}
+  count: 2
   name: "Cselsz\xF6v\xE9s"
+  titleSize: 20
   description: "El\u0171zheti egyik j\xE1t\xE9kost\xE1rsa valamelyik lovagj\xE1t
     egy olyan keresztez\u0151d\xE9sb\u0151l, ahov\xE1 \xF6n \r\nsaj\xE1t haj\xF3val/\xFAttal
     becsatlakozott."

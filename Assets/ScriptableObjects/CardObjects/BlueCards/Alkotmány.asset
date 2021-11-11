@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: "Alkotm\xE1ny"
   m_EditorClassIdentifier: 
   background: {fileID: 21300000, guid: 71a2b3cc7fb3f59468e6109571830405, type: 3}
+  count: 1
   name: "Alkotm\xE1ny"
+  titleSize: 20
   description: 1 pont
   Action:
     m_PersistentCalls:

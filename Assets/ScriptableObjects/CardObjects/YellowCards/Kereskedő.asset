@@ -10,14 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 256f20537615a4d44a29c398647b529c, type: 3}
-  m_Name: "Hadvez\xE9r"
+  m_Name: "Keresked\u0151"
   m_EditorClassIdentifier: 
-  background: {fileID: 21300000, guid: 75f4c61bd077bf644b88f341a1351c21, type: 3}
-  count: 2
-  name: "Hadvez\xE9r "
+  background: {fileID: 21300000, guid: 350e01b198fc02c48b1574e38925fdbf, type: 3}
+  count: 6
+  name: "Keresked\u0151"
   titleSize: 20
-  description: "Ha ezt a k\xE1rty\xE1t kij\xE1tssza, azonnal, ingyen aktiv\xE1lhatja
-    \xF6sszes lovagj\xE1t."
+  description: "\xC1ll\xEDtsa  a  keresked\u0151t  egy  olyan  t\xE1jkartonra,  amelyik 
+    mellett  telep\xFCl\xE9se,  vagy  v\xE1rosa \xE1ll.  Ennek  a  t\xE1jkartonnak 
+    a  nyersanyag\xE1t  2:1  ar\xE1nyban  cser\xE9lheti  eg\xE9szen  addig, m\xEDg
+    a keresked\u0151 ott \xE1ll."
   Action:
     m_PersistentCalls:
       m_Calls: []

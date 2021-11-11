@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: "K\xE9m"
   m_EditorClassIdentifier: 
   background: {fileID: 21300000, guid: 102b41b4bd7ae5c49a46435e6f9a6ee3, type: 3}
+  count: 3
   name: "K\xE9m"
+  titleSize: 20
   description: "N\xE9zze  meg  egyik  j\xE1t\xE9kost\xE1rsa  fejleszt\xE9sk\xE1rty\xE1it 
     \xE9s  v\xE1lasszon  ki  k\xF6z\xFCl\xFCk  egyet  \r\n\r\nmag\xE1nak."
   Action:

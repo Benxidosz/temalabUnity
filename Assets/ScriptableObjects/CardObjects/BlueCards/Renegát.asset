@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: "Reneg\xE1t"
   m_EditorClassIdentifier: 
   background: {fileID: 21300000, guid: c46c891bc7f42ff4fbd364d0a10d9e44, type: 3}
+  count: 2
   name: "Reneg\xE1t"
+  titleSize: 20
   description: "V\xE1lasszon egyet j\xE1t\xE9kost\xE1rsai k\xF6z\xFCl, akinek le
     kell vennie a j\xE1t\xE9kfel\xFCletr\u0151l az egyik \r\nlovagj\xE1t. \xD6n \xE1ll\xEDthat
     egy ugyanolyan szint\u0171 lovagot."

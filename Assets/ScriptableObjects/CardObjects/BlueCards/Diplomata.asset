@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: Diplomata
   m_EditorClassIdentifier: 
   background: {fileID: 21300000, guid: 50ee15c4c3dcda54f83f57f93e308d4c, type: 3}
+  count: 2
   name: Diplomata
+  titleSize: 20
   description: "Elt\xE1vol\xEDthatja egy nyitott \xFAt v\xE9gs\u0151 utc\xE1j\xE1t
     (nem csatlakozik ugyanolyan sz\xEDn\u0171 \xFAthoz, \r\nvagy figur\xE1hoz). Ha
     saj\xE1t utc\xE1j\xE1t veszi el, azt azonnal, ism\xE9t fel\xE9p\xEDtheti."

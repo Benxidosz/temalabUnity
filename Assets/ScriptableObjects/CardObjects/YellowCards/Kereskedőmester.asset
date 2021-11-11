@@ -10,14 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 256f20537615a4d44a29c398647b529c, type: 3}
-  m_Name: "Hadvez\xE9r"
+  m_Name: "Keresked\u0151mester"
   m_EditorClassIdentifier: 
-  background: {fileID: 21300000, guid: 75f4c61bd077bf644b88f341a1351c21, type: 3}
+  background: {fileID: 21300000, guid: e523d9b78aebd79448b1aa348eb9e648, type: 3}
   count: 2
-  name: "Hadvez\xE9r "
+  name: "Keresked\u0151mester"
   titleSize: 20
-  description: "Ha ezt a k\xE1rty\xE1t kij\xE1tssza, azonnal, ingyen aktiv\xE1lhatja
-    \xF6sszes lovagj\xE1t."
+  description: "V\xE1lassza ki egyik olyan j\xE1t\xE9kost\xE1rs\xE1t, akinek t\xF6bb
+    pontja van, mint \xF6nnek \xE9s h\xFAzzon \rki a kez\xE9ben tartott lapok k\xF6z\xFCl
+    2 k\xE1rty\xE1t (nyersanyagot, vagy kereskedelmi \xE1rut). \r\nEzeket \xF6n megtarthatja."
   Action:
     m_PersistentCalls:
       m_Calls: []

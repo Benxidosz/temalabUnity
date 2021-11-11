@@ -10,14 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 256f20537615a4d44a29c398647b529c, type: 3}
-  m_Name: "Hadvez\xE9r"
+  m_Name: "\xD6nt\xF6z\xE9s"
   m_EditorClassIdentifier: 
-  background: {fileID: 21300000, guid: 75f4c61bd077bf644b88f341a1351c21, type: 3}
+  background: {fileID: 21300000, guid: fcf4d5da74837334c90082c313e0aeee, type: 3}
   count: 2
-  name: "Hadvez\xE9r "
+  name: "\xD6nt\xF6z\xE9s"
   titleSize: 20
-  description: "Ha ezt a k\xE1rty\xE1t kij\xE1tssza, azonnal, ingyen aktiv\xE1lhatja
-    \xF6sszes lovagj\xE1t."
+  description: "Vegyen el 2 gabona nyersanyagk\xE1rty\xE1t minden olyan sz\xE1nt\xF3f\xF6ld
+    (gabona) t\xE1jkar-\r\nton ut\xE1n, amivel legal\xE1bb egy v\xE1rosa vagy telep\xFCl\xE9se
+    hat\xE1ros."
   Action:
     m_PersistentCalls:
       m_Calls: []

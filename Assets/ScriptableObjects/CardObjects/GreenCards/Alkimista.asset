@@ -10,14 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 256f20537615a4d44a29c398647b529c, type: 3}
-  m_Name: "Hadvez\xE9r"
+  m_Name: Alkimista
   m_EditorClassIdentifier: 
-  background: {fileID: 21300000, guid: 75f4c61bd077bf644b88f341a1351c21, type: 3}
+  background: {fileID: 21300000, guid: 70d66bebe4ecbea488e4044f53c099d6, type: 3}
   count: 2
-  name: "Hadvez\xE9r "
+  name: Alkimista
   titleSize: 20
-  description: "Ha ezt a k\xE1rty\xE1t kij\xE1tssza, azonnal, ingyen aktiv\xE1lhatja
-    \xF6sszes lovagj\xE1t."
+  description: "J\xE1tssza ki ezt a k\xE1rty\xE1t dob\xE1sa el\u0151tt \xE9s hat\xE1rozza
+    meg a k\xE9t sz\xE1mkocka eredm\xE9ny\xE9t. \r\nAzut\xE1n dobjon az esem\xE9nykock\xE1val
+    \xE9s vigye v\xE9ghez el\u0151sz\xF6r az esem\xE9nyt."
   Action:
     m_PersistentCalls:
       m_Calls: []

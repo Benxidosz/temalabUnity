@@ -11,8 +11,8 @@ public class CardScript : MonoBehaviour {
     private void Start() {
         title = GetComponentsInChildren<Text>();
         title[0].text = backend.name;
+        title[0].fontSize = backend.titleSize;
         title[1].text = backend.description;
-        Debug.Log(GetComponentInChildren<Image>().sprite = backend.background);
     }
 
     public void onClick() {

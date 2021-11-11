@@ -10,14 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 256f20537615a4d44a29c398647b529c, type: 3}
-  m_Name: "Hadvez\xE9r"
+  m_Name: "B\xE1ny\xE1szat"
   m_EditorClassIdentifier: 
-  background: {fileID: 21300000, guid: 75f4c61bd077bf644b88f341a1351c21, type: 3}
+  background: {fileID: 21300000, guid: d8706b198cb8e1c48860c991916e4017, type: 3}
   count: 2
-  name: "Hadvez\xE9r "
+  name: "B\xE1ny\xE1szat"
   titleSize: 20
-  description: "Ha ezt a k\xE1rty\xE1t kij\xE1tssza, azonnal, ingyen aktiv\xE1lhatja
-    \xF6sszes lovagj\xE1t."
+  description: "Vegyen el 2 \xE9rc nyersanyagk\xE1rty\xE1t minden olyan hegys\xE9g
+    (\xE9rc) t\xE1jkarton ut\xE1n, amivel legal\xE1bb egy v\xE1rosa vagy telep\xFCl\xE9se
+    hat\xE1ros."
   Action:
     m_PersistentCalls:
       m_Calls: []
