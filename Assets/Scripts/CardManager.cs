@@ -22,6 +22,9 @@ public class CardManager : MonoBehaviour {
     }
 
     public void testSokAction(string player) {
-        Debug.Log(player.Reverse());
+        Debug.Log(player.ToUpper());
+    }
+    public void uj(string player) {
+        Debug.Log(player.ToUpper());
     }
 }
