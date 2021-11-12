@@ -23,8 +23,8 @@ public class DiceRoller : MonoBehaviour{
         StartCoroutine(Roller());
     }
 
-    IEnumerator Roller(){
-        for (int i = 0; i < 10; i++){
+    private IEnumerator Roller(){
+        for (var i = 0; i < 10; i++){
             whiteDiceImage.sprite = whiteSprites[Random.Range(0, 6)];
             redDiceImage.sprite = redSprites[Random.Range(0, 6)];
             yield return new WaitForSeconds(0.1f);
