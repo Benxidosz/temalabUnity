@@ -17,7 +17,7 @@ MonoBehaviour:
   name: "Cselsz\xF6v\xE9s"
   titleSize: 20
   description: "El\u0171zheti egyik j\xE1t\xE9kost\xE1rsa valamelyik lovagj\xE1t
-    egy olyan keresztez\u0151d\xE9sb\u0151l, ahov\xE1 \xF6n \r\nsaj\xE1t haj\xF3val/\xFAttal
+    egy olyan keresztez\u0151d\xE9sb\u0151l, ahov\xE1 \xF6n \rsaj\xE1t haj\xF3val/\xFAttal
     becsatlakozott."
   Action:
     m_PersistentCalls:

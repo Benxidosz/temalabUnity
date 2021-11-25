@@ -24,11 +24,9 @@ public class CardDealer : MonoBehaviour {
             CardSO tmp = blueDeck[0];
             blueDeck.RemoveAt(0);
             if (blueDeck.Count == 0) {
-                while (blueDiscardDeck.Count > 0) {
-                    int pos = rng.Next(0, blueDiscardDeck.Count);
-                    blueDeck.Add(blueDiscardDeck[pos]);
-                    blueDiscardDeck.RemoveAt(pos);
-                }
+                blueDeck.AddRange(blueDiscardDeck);
+                blueDiscardDeck.Clear();
+                blueDeck.Sort((c1, c2) => rng.Next(-1 , 1));    
             }
             return tmp;
         }
@@ -39,11 +37,9 @@ public class CardDealer : MonoBehaviour {
             greenDeck.RemoveAt(0);
             
             if (greenDeck.Count == 0) {
-                while (greenDiscardDeck.Count > 0) {
-                    int pos = rng.Next(0, greenDiscardDeck.Count);
-                    greenDeck.Add(greenDiscardDeck[pos]);
-                    greenDiscardDeck.RemoveAt(pos);
-                }
+                greenDeck.AddRange(greenDiscardDeck);
+                greenDiscardDeck.Clear();
+                greenDeck.Sort((c1, c2) => rng.Next(-1 , 1));   
             }
             
             return tmp;
@@ -55,11 +51,9 @@ public class CardDealer : MonoBehaviour {
             yellowDeck.RemoveAt(0);
             
             if (yellowDeck.Count == 0) {
-                while (yellowDiscardDeck.Count > 0) {
-                    int pos = rng.Next(0, yellowDiscardDeck.Count);
-                    yellowDeck.Add(yellowDiscardDeck[pos]);
-                    yellowDiscardDeck.RemoveAt(pos);
-                }
+                yellowDeck.AddRange(yellowDiscardDeck);
+                yellowDiscardDeck.Clear();
+                yellowDeck.Sort((c1, c2) => rng.Next(-1 , 1));
             }
             
             return tmp;
@@ -67,12 +61,12 @@ public class CardDealer : MonoBehaviour {
     }
 
     private Random rng;
-    public CardDealer Instance { get; private set; }
+    public static CardDealer Instance { get; private set; }
 
     private void Awake() {
         if (Instance is null) {
             Instance = this;
-
+            
             blueDeck = new List<CardSO>();
             greenDeck = new List<CardSO>();
             yellowDeck = new List<CardSO>();
@@ -87,11 +81,9 @@ public class CardDealer : MonoBehaviour {
             initDeck(greenDeck, greenCardSos);
             initDeck(yellowDeck, yellowCardSos);
 
-            for (int i = 0; i < rng.Next(3, 10); i++) {
-                blueDeck.Sort((c1, c2) => rng.Next(-1 , 1));    
-                greenDeck.Sort((c1, c2) => rng.Next(-1 , 1));    
-                yellowDeck.Sort((c1, c2) => rng.Next(-1 , 1));    
-            }
+            blueDeck.Sort((c1, c2) => rng.Next(-1 , 1));    
+            greenDeck.Sort((c1, c2) => rng.Next(-1 , 1));    
+            yellowDeck.Sort((c1, c2) => rng.Next(-1 , 1));
             
             // blueDeck.ForEach(c => Debug.Log(c.name));
         } else
@@ -105,7 +97,8 @@ public class CardDealer : MonoBehaviour {
         } 
     }
 
-    private void addToDiscard(CardSO card) {
+    public void AddToDiscard(CardSO card) {
+        Debug.Log($"Discard {card.name}");
         if (blueCardSos.Contains(card)) {
             blueDiscardDeck.Add(card);
         } else if (greenCardSos.Contains(card)) {
