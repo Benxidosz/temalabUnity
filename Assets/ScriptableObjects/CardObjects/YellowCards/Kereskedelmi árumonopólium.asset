@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 256f20537615a4d44a29c398647b529c, type: 3}
+  m_Name: "Kereskedelmi \xE1rumonop\xF3lium"
+  m_EditorClassIdentifier: 
+  background: {fileID: 21300000, guid: 680a38891ceb75d4281b41b987d0a9a3, type: 3}
+  count: 2
+  name: "Kereskedelmi \xE1rumonop\xF3lium"
+  titleSize: 16
+  description: "Hat\xE1rozzon  meg  egy  kereskedelmi  \xE1rut.  Minden  j\xE1t\xE9kost\xE1rsa 
+    \xE1t  kell,  hogy adjon  \r\n\r\n\xF6nek 1 k\xE1rty\xE1t abb\xF3l a kereskedelmi
+    \xE1rub\xF3l, ha van ilyen a birtok\xE1ban."
+  Action:
+    m_PersistentCalls:
+      m_Calls: []
