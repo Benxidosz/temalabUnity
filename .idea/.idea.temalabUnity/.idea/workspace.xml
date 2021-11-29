@@ -5,23 +5,135 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8129cd36-f6a2-431a-8b67-678a40b6ccb7" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/CardInventory.prefab" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/CardInventory.prefab.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/CardUI.prefab" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/CardUI.prefab.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/CardObjects/EmptyCard.asset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/CardObjects/EmptyCard.asset.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/ActionCards/CardInventory.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/ActionCards/CardInventory.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Sprites - Scanned/Background.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Sprites - Scanned/Background.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/ActionCardScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/ActionCardScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ScriptableObjects/CardObjects/BlueCards/Alkotmány.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/CardObjects/BlueCards/Alkotmány.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ScriptableObjects/CardObjects/BlueCards/Cselszövés.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/CardObjects/BlueCards/Cselszövés.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ScriptableObjects/CardObjects/BlueCards/Esküvő.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/CardObjects/BlueCards/Esküvő.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ActionCards/CardDealer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ActionCards/CardDealer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ActionCards/CardScript.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ActionCards/CardScript.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/Managers.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/Managers/CardDealer.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/Managers/CardDealer.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/Managers/CardManager.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/Managers/CardManager.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/UI.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/UI/CardUI.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/UI/CardUI.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/UI/CityUpgrade.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/UI/CityUpgrade.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/WillBeOnPlayer.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/WillBeOnPlayer/CardInventory.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/WillBeOnPlayer/CardInventory.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/WillBeOnPlayer/UpgradeManager.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/WillBeOnPlayer/UpgradeManager.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/UpgradeObjects.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/UpgradeObjects/BlueUpgrades.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/UpgradeObjects/BlueUpgrades/FifthBlue.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/UpgradeObjects/BlueUpgrades/FifthBlue.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/UpgradeObjects/BlueUpgrades/FirstBlue.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/UpgradeObjects/BlueUpgrades/FirstBlue.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/UpgradeObjects/BlueUpgrades/FourthBlue.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/UpgradeObjects/BlueUpgrades/FourthBlue.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/UpgradeObjects/BlueUpgrades/SecondBlue.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/UpgradeObjects/BlueUpgrades/SecondBlue.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/UpgradeObjects/BlueUpgrades/ThirdBlue.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/UpgradeObjects/BlueUpgrades/ThirdBlue.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/UpgradeObjects/GreenUpgrades.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/UpgradeObjects/GreenUpgrades/FifthGreen.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/UpgradeObjects/GreenUpgrades/FifthGreen.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/UpgradeObjects/GreenUpgrades/FirstGreen.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/UpgradeObjects/GreenUpgrades/FirstGreen.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/UpgradeObjects/GreenUpgrades/FourthGreen.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/UpgradeObjects/GreenUpgrades/FourthGreen.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/UpgradeObjects/GreenUpgrades/SecondGreen.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/UpgradeObjects/GreenUpgrades/SecondGreen.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/UpgradeObjects/GreenUpgrades/ThirdGreen.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/UpgradeObjects/GreenUpgrades/ThirdGreen.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/UpgradeObjects/UpgradeSO.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/UpgradeObjects/UpgradeSO.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/UpgradeObjects/YellowUpgrades.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/UpgradeObjects/YellowUpgrades/FifthYellow.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/UpgradeObjects/YellowUpgrades/FifthYellow.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/UpgradeObjects/YellowUpgrades/FirstYellow.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/UpgradeObjects/YellowUpgrades/FirstYellow.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/UpgradeObjects/YellowUpgrades/FourthYellow.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/UpgradeObjects/YellowUpgrades/FourthYellow.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/UpgradeObjects/YellowUpgrades/SecondYellow.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/UpgradeObjects/YellowUpgrades/SecondYellow.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/UpgradeObjects/YellowUpgrades/ThirdYellow.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/UpgradeObjects/YellowUpgrades/ThirdYellow.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/CityUpgrade.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Sprites - Scanned/CityUpgrade.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Sprites - Scanned/CityUpgrade/Blue.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Sprites - Scanned/CityUpgrade/Blue/Blue1Back.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Sprites - Scanned/CityUpgrade/Blue/Blue1Back.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Sprites - Scanned/CityUpgrade/Blue/Blue1Front.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Sprites - Scanned/CityUpgrade/Blue/Blue1Front.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Sprites - Scanned/CityUpgrade/Blue/Blue2Back.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Sprites - Scanned/CityUpgrade/Blue/Blue2Back.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Sprites - Scanned/CityUpgrade/Blue/Blue2Front.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Sprites - Scanned/CityUpgrade/Blue/Blue2Front.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Sprites - Scanned/CityUpgrade/Blue/Blue3Back.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Sprites - Scanned/CityUpgrade/Blue/Blue3Back.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Sprites - Scanned/CityUpgrade/Blue/Blue3Front.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Sprites - Scanned/CityUpgrade/Blue/Blue3Front.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Sprites - Scanned/CityUpgrade/Blue/Blue4Back.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Sprites - Scanned/CityUpgrade/Blue/Blue4Back.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Sprites - Scanned/CityUpgrade/Blue/Blue4Front.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Sprites - Scanned/CityUpgrade/Blue/Blue4Front.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Sprites - Scanned/CityUpgrade/Blue/Blue5Back.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Sprites - Scanned/CityUpgrade/Blue/Blue5Back.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Sprites - Scanned/CityUpgrade/Blue/Blue5Front.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Sprites - Scanned/CityUpgrade/Blue/Blue5Front.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Sprites - Scanned/CityUpgrade/Green.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Sprites - Scanned/CityUpgrade/Green/Green1Back.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Sprites - Scanned/CityUpgrade/Green/Green1Back.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Sprites - Scanned/CityUpgrade/Green/Green1Front.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Sprites - Scanned/CityUpgrade/Green/Green1Front.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Sprites - Scanned/CityUpgrade/Green/Green2Back.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Sprites - Scanned/CityUpgrade/Green/Green2Back.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Sprites - Scanned/CityUpgrade/Green/Green2Front.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Sprites - Scanned/CityUpgrade/Green/Green2Front.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Sprites - Scanned/CityUpgrade/Green/Green3Back.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Sprites - Scanned/CityUpgrade/Green/Green3Back.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Sprites - Scanned/CityUpgrade/Green/Green3Front.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Sprites - Scanned/CityUpgrade/Green/Green3Front.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Sprites - Scanned/CityUpgrade/Green/Green4Back.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Sprites - Scanned/CityUpgrade/Green/Green4Back.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Sprites - Scanned/CityUpgrade/Green/Green4Front.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Sprites - Scanned/CityUpgrade/Green/Green4Front.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Sprites - Scanned/CityUpgrade/Green/Green5Back.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Sprites - Scanned/CityUpgrade/Green/Green5Back.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Sprites - Scanned/CityUpgrade/Green/Green5Front.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Sprites - Scanned/CityUpgrade/Green/Green5Front.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Sprites - Scanned/CityUpgrade/Yellow.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Sprites - Scanned/CityUpgrade/Yellow/Yellow1Back.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Sprites - Scanned/CityUpgrade/Yellow/Yellow1Back.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Sprites - Scanned/CityUpgrade/Yellow/Yellow1Front.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Sprites - Scanned/CityUpgrade/Yellow/Yellow1Front.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Sprites - Scanned/CityUpgrade/Yellow/Yellow2Back.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Sprites - Scanned/CityUpgrade/Yellow/Yellow2Back.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Sprites - Scanned/CityUpgrade/Yellow/Yellow2Front.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Sprites - Scanned/CityUpgrade/Yellow/Yellow2Front.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Sprites - Scanned/CityUpgrade/Yellow/Yellow3Back.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Sprites - Scanned/CityUpgrade/Yellow/Yellow3Back.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Sprites - Scanned/CityUpgrade/Yellow/Yellow3Front.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Sprites - Scanned/CityUpgrade/Yellow/Yellow3Front.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Sprites - Scanned/CityUpgrade/Yellow/Yellow4Back.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Sprites - Scanned/CityUpgrade/Yellow/Yellow4Back.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Sprites - Scanned/CityUpgrade/Yellow/Yellow4Front.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Sprites - Scanned/CityUpgrade/Yellow/Yellow4Front.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Sprites - Scanned/CityUpgrade/Yellow/Yellow5Back.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Sprites - Scanned/CityUpgrade/Yellow/Yellow5Back.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Sprites - Scanned/CityUpgrade/Yellow/Yellow5Front.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Sprites - Scanned/CityUpgrade/Yellow/Yellow5Front.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Sprites - Scanned/CityUpgrade/base.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Sprites - Scanned/CityUpgrade/base.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.temalabUnity/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.temalabUnity/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/CardDealer.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/CardDealer.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/CardInventory.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/CardInventory.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/CardManager.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/CardManager.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/CardUI.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/CardUI.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/CityUpgrade.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/CityUpgrade.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,10 +152,8 @@
     </file-type-list>
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/ActionCards/CardManager.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/ActionCards/CardInventory.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/EventSystem/ExecuteEvents.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/ActionCards/CardDealer.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/ScriptableObjects/UpgradeObjects/UpgradeSO.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProjectId" id="20QTGfryDtaQ8S2WSIy2FsAgLEa" />
   <component name="ProjectLevelVcsManager">
@@ -103,6 +213,7 @@
       <workItem from="1636577892495" duration="1579000" />
       <workItem from="1636641581652" duration="5595000" />
       <workItem from="1637157082957" duration="8137000" />
+      <workItem from="1638207831756" duration="3270000" />
     </task>
     <servers />
   </component>
@@ -134,14 +245,7 @@
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/Scripts/ActionCards/CardDealer.cs</url>
           <line>53</line>
-          <properties documentPath="C:\BME\temalabUnity\Assets\Scripts\ActionCards\CardDealer.cs" initialLine="53" containingFunctionPresentation="property 'NextYellowCard'">
-            <startOffsets>
-              <option value="1590" />
-            </startOffsets>
-            <endOffsets>
-              <option value="1629" />
-            </endOffsets>
-          </properties>
+          <properties documentPath="C:\BME\temalabUnity\Assets\Scripts\ActionCards\CardDealer.cs" initialLine="53" containingFunctionPresentation="property 'NextYellowCard'" />
           <option name="timeStamp" value="7" />
         </line-breakpoint>
       </breakpoints>
