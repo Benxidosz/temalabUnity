@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 256f20537615a4d44a29c398647b529c, type: 3}
+  m_Name: "Reneg\xE1t"
+  m_EditorClassIdentifier: 
+  background: {fileID: 21300000, guid: c46c891bc7f42ff4fbd364d0a10d9e44, type: 3}
+  count: 2
+  name: "Reneg\xE1t"
+  titleSize: 20
+  description: "V\xE1lasszon egyet j\xE1t\xE9kost\xE1rsai k\xF6z\xFCl, akinek le
+    kell vennie a j\xE1t\xE9kfel\xFCletr\u0151l az egyik \r\nlovagj\xE1t. \xD6n \xE1ll\xEDthat
+    egy ugyanolyan szint\u0171 lovagot."
+  Action:
+    m_PersistentCalls:
+      m_Calls: []

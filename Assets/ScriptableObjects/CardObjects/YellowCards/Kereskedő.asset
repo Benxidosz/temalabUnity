@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 256f20537615a4d44a29c398647b529c, type: 3}
+  m_Name: "Keresked\u0151"
+  m_EditorClassIdentifier: 
+  background: {fileID: 21300000, guid: 350e01b198fc02c48b1574e38925fdbf, type: 3}
+  count: 6
+  name: "Keresked\u0151"
+  titleSize: 20
+  description: "\xC1ll\xEDtsa  a  keresked\u0151t  egy  olyan  t\xE1jkartonra,  amelyik 
+    mellett  telep\xFCl\xE9se,  vagy  v\xE1rosa \xE1ll.  Ennek  a  t\xE1jkartonnak 
+    a  nyersanyag\xE1t  2:1  ar\xE1nyban  cser\xE9lheti  eg\xE9szen  addig, m\xEDg
+    a keresked\u0151 ott \xE1ll."
+  Action:
+    m_PersistentCalls:
+      m_Calls: []
