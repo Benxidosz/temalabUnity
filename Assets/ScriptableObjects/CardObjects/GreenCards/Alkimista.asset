@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 256f20537615a4d44a29c398647b529c, type: 3}
+  m_Name: Alkimista
+  m_EditorClassIdentifier: 
+  background: {fileID: 21300000, guid: 70d66bebe4ecbea488e4044f53c099d6, type: 3}
+  count: 2
+  name: Alkimista
+  titleSize: 20
+  description: "J\xE1tssza ki ezt a k\xE1rty\xE1t dob\xE1sa el\u0151tt \xE9s hat\xE1rozza
+    meg a k\xE9t sz\xE1mkocka eredm\xE9ny\xE9t. \r\nAzut\xE1n dobjon az esem\xE9nykock\xE1val
+    \xE9s vigye v\xE9ghez el\u0151sz\xF6r az esem\xE9nyt."
+  Action:
+    m_PersistentCalls:
+      m_Calls: []
