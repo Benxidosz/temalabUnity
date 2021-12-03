@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Netcode;
 using UnityEngine;
 
-public class RandomBoardGenerator : MonoBehaviour
+public class RandomBoardGenerator : NetworkBehaviour
 {
     public GameObject hexagonPrefab;
     public Texture2D bricksTile;
@@ -12,28 +13,59 @@ public class RandomBoardGenerator : MonoBehaviour
     public Texture2D woodsTile;
 
     //TODO: sivatag
-    int noBricks = 3;
-    int noOres = 4;//3
-    int noWheets = 4;
-    int noWools = 4;
-    int noWoods = 4;
+    private int _noBricks = 3;
+    private int _noOres = 4; //3
+    private int _noWheets = 4;
+    private int _noWools = 4;
+    private int _noWoods = 4;
+
+    private enum TileType
+    {
+        Bricks,
+        Ore,
+        Wheat,
+        Wool,
+        Wood
+    }
+
+    private readonly Vector3[] _tileOffsets = new[]
+    {
+        new Vector3(0, 0, 0),
+        new Vector3(1, 0, 1),
+        new Vector3(-1, 0, -1),
+        new Vector3(2, 0, 2),
+        new Vector3(-2, 0, -2),
+        new Vector3(-1, 0, 1),
+        new Vector3(1, 0, -1),
+        new Vector3(-2, 0, 0),
+        new Vector3(2, 0, 0),
+        new Vector3(0, 0, 2),
+        new Vector3(0, 0, -2),
+        new Vector3(-3, 0, -1),
+        new Vector3(3, 0, 1),
+        new Vector3(-2, 0, 2),
+        new Vector3(2, 0, -2),
+        new Vector3(4, 0, 0),
+        new Vector3(-4, 0, 0),
+        new Vector3(-3, 0, 1),
+        new Vector3(3, 0, -1)
+    };
+
+    private readonly Dictionary<TileType, Texture2D> _textures = new Dictionary<TileType, Texture2D>();
 
     float tileXOffset = 0.9f;
     float tileZOffset = 1.6f;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        CreateRandomBoard();
+        _textures[TileType.Bricks] = bricksTile;
+        _textures[TileType.Ore] = oresTile;
+        _textures[TileType.Wheat] = wheetsTile;
+        _textures[TileType.Wool] = woolsTile;
+        _textures[TileType.Wood] = woodsTile;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
-    void CreateRandomBoard()
+    public void CreateRandomBoard()
     {
         /*for(int x = 0; x < 5; x++)
         {
@@ -49,145 +81,101 @@ public class RandomBoardGenerator : MonoBehaviour
             GameObject temp = Instantiate(hexagonPrefab);
             //temp.transform.position = new Vector3(j * tileXOffset, 0, j * tileZOffset);
         }*/
-        List<GameObject> hexagonGOs = new List<GameObject>();
-        CreateHexagons(hexagonGOs);
-        SetTileTexture(hexagonGOs);
+        GenerateTilesServerRPC();
+    }
+
+    private GameObject CreateHexagon(Vector3 position, TileType tileType)
+    {
+        var hexagon = Instantiate(hexagonPrefab);
+        hexagon.transform.position = new Vector3(position.x * tileXOffset, 0, position.z * tileZOffset);
+        hexagon.GetComponent<Renderer>().material.mainTexture = _textures[tileType];
+        return hexagon;
+    }
+
+    [ServerRpc]
+    private void GenerateTilesServerRPC()
+    {
+        var tileTypes = new TileType[_tileOffsets.Length];
+        for (var i = 0; i < _tileOffsets.Length; i++)
+        {
+            tileTypes[i] = GetRandomTileType();
+        }
+
+        SpawnTilesClientRpc(tileTypes);
+    }
+
+    [ClientRpc]
+    private void SpawnTilesClientRpc(TileType[] tileTypes)
+    {
+        var hexagonGOs = new List<GameObject>();
+        CreateHexagons(hexagonGOs, tileTypes);
     }
 
     //TODO: algorithm
-    void CreateHexagons(List<GameObject> hexas)
+    private void CreateHexagons(List<GameObject> hexas, TileType[] tileTypes)
     {
-        GameObject temp;
-
-        //1.
-        temp = Instantiate(hexagonPrefab);
-        temp.transform.position = new Vector3(0, 0, 0);
-        hexas.Add(temp);
-        temp = Instantiate(hexagonPrefab);
-        temp.transform.position = new Vector3(1 * tileXOffset, 0, 1 * tileZOffset);
-        hexas.Add(temp);
-        temp = Instantiate(hexagonPrefab);
-        temp.transform.position = new Vector3(-1 * tileXOffset, 0, -1 * tileZOffset);
-        hexas.Add(temp);
-        temp = Instantiate(hexagonPrefab);
-        temp.transform.position = new Vector3(2 * tileXOffset, 0, 2 * tileZOffset);
-        hexas.Add(temp);
-        temp = Instantiate(hexagonPrefab);
-        temp.transform.position = new Vector3(-2 * tileXOffset, 0, -2 * tileZOffset);
-        hexas.Add(temp);
-
-        //2.
-        temp = Instantiate(hexagonPrefab);
-        temp.transform.position = new Vector3(-1 * tileXOffset, 0, 1 * tileZOffset);
-        hexas.Add(temp);
-        temp = Instantiate(hexagonPrefab);
-        temp.transform.position = new Vector3(1 * tileXOffset, 0, -1 * tileZOffset);
-        hexas.Add(temp);
-        temp = Instantiate(hexagonPrefab);
-        temp.transform.position = new Vector3(-2 * tileXOffset, 0, 0 * tileZOffset);
-        hexas.Add(temp);
-        temp = Instantiate(hexagonPrefab);
-        temp.transform.position = new Vector3(2 * tileXOffset, 0, 0 * tileZOffset);
-        hexas.Add(temp);
-        temp = Instantiate(hexagonPrefab);
-        temp.transform.position = new Vector3(0 * tileXOffset, 0, 2 * tileZOffset);
-        hexas.Add(temp);
-        temp = Instantiate(hexagonPrefab);
-        temp.transform.position = new Vector3(0 * tileXOffset, 0, -2 * tileZOffset);
-        hexas.Add(temp);
-        temp = Instantiate(hexagonPrefab);
-        temp.transform.position = new Vector3(-3 * tileXOffset, 0, -1 * tileZOffset);
-        hexas.Add(temp);
-        temp = Instantiate(hexagonPrefab);
-        temp.transform.position = new Vector3(3 * tileXOffset, 0, 1 * tileZOffset);
-        hexas.Add(temp);
-
-        //3.
-        temp = Instantiate(hexagonPrefab);
-        temp.transform.position = new Vector3(-2 * tileXOffset, 0, 2 * tileZOffset);
-        hexas.Add(temp);
-        temp = Instantiate(hexagonPrefab);
-        temp.transform.position = new Vector3(2 * tileXOffset, 0, -2 * tileZOffset);
-        hexas.Add(temp);
-        temp = Instantiate(hexagonPrefab);
-        temp.transform.position = new Vector3(4 * tileXOffset, 0, 0 * tileZOffset);
-        hexas.Add(temp);
-        temp = Instantiate(hexagonPrefab);
-        temp.transform.position = new Vector3(-4 * tileXOffset, 0, 0 * tileZOffset);
-        hexas.Add(temp);
-        temp = Instantiate(hexagonPrefab);
-        temp.transform.position = new Vector3(-3 * tileXOffset, 0, 1 * tileZOffset);
-        hexas.Add(temp);
-        temp = Instantiate(hexagonPrefab);
-        temp.transform.position = new Vector3(3 * tileXOffset, 0, -1 * tileZOffset);
-        hexas.Add(temp);
-    }
-
-    void SetTileTexture(List<GameObject> hexas)
-    {
-        foreach(GameObject g in hexas)
+        for (var i = 0; i < _tileOffsets.Length; i++)
         {
-            g.GetComponent<Renderer>().material.mainTexture = RandomTexture();
+            hexas.Add(CreateHexagon(_tileOffsets[i], tileTypes[i]));
         }
     }
 
-    Texture2D RandomTexture()
+    private TileType GetRandomTileType()
     {
-        int rand = Random.Range(0, 5);
-        Texture2D temp;
-        temp = bricksTile;
-        bool run = true;
-        while(run)
+        var rand = Random.Range(0, 5);
+        var tileType = TileType.Bricks;
+        var run = true;
+        while (run)
         {
             switch (rand)
             {
                 case 0:
-                    if (noBricks == 0)
+                    if (_noBricks == 0)
                         break;
                     else
                     {
-                        temp = bricksTile;
-                        noBricks--;
+                        tileType = TileType.Bricks;
+                        _noBricks--;
                         run = false;
                         break;
                     }
                 case 1:
-                    if (noOres == 0)
+                    if (_noOres == 0)
                         break;
                     else
                     {
-                        temp = oresTile;
-                        noOres--;
+                        tileType = TileType.Ore;
+                        _noOres--;
                         run = false;
                         break;
                     }
                 case 2:
-                    if (noWheets == 0)
+                    if (_noWheets == 0)
                         break;
                     else
                     {
-                        temp = wheetsTile;
-                        noWheets--;
+                        tileType = TileType.Wheat;
+                        _noWheets--;
                         run = false;
                         break;
                     }
                 case 3:
-                    if (noWoods == 0)
+                    if (_noWoods == 0)
                         break;
                     else
                     {
-                        temp = woodsTile;
-                        noWoods--;
+                        tileType = TileType.Wood;
+                        _noWoods--;
                         run = false;
                         break;
                     }
                 case 4:
-                    if (noWools == 0)
+                    if (_noWools == 0)
                         break;
                     else
                     {
-                        temp = woolsTile;
-                        noWools--;
+                        tileType = TileType.Wool;
+                        _noWools--;
                         run = false;
                         break;
                     }
@@ -196,6 +184,6 @@ public class RandomBoardGenerator : MonoBehaviour
             rand = Random.Range(0, 5);
         }
 
-        return temp;
+        return tileType;
     }
 }
