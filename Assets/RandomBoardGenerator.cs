@@ -4,19 +4,52 @@ using UnityEngine;
 
 public class RandomBoardGenerator : MonoBehaviour
 {
-    public GameObject hexagonPrefab;
-    public Texture2D bricksTile;
-    public Texture2D oresTile;
-    public Texture2D wheetsTile;
-    public Texture2D woolsTile;
-    public Texture2D woodsTile;
+    /*public Tile brick;
+    public Tile ore;
+    public Tile wood;
+    public Tile wheat;
+    public Tile wool;
+    public Tile desert;*/
 
-    //TODO: sivatag
-    int noBricks = 3;
-    int noOres = 4;//3
-    int noWheets = 4;
-    int noWools = 4;
-    int noWoods = 4;
+    /*public GameObject hex1;
+    public GameObject hex2;
+    public GameObject hex3;
+    public GameObject hex4;
+    public GameObject hex5;
+    public GameObject hex6;
+    public GameObject hex7;
+    public GameObject hex8;
+    public GameObject hex9;
+    public GameObject hex10;
+    public GameObject hex11;
+    public GameObject hex12;
+    public GameObject hex13;
+    public GameObject hex14;
+    public GameObject hex15;
+    public GameObject hex16;
+    public GameObject hex17;
+    public GameObject hex18;
+    public GameObject hex19;
+
+    private void Start()
+    {
+        RandomizeMap();
+    }
+
+    void RandomizeMap()
+    {
+        
+    }*/
+
+
+    //Old solution
+    public GameObject hexagonPrefab;
+    public Tile brick;
+    public Tile ore;
+    public Tile wood;
+    public Tile wheat;
+    public Tile wool;
+    public Tile desert;
 
     float tileXOffset = 0.9f;
     float tileZOffset = 1.6f;
@@ -35,20 +68,11 @@ public class RandomBoardGenerator : MonoBehaviour
 
     void CreateRandomBoard()
     {
-        /*for(int x = 0; x < 5; x++)
-        {
-            for (int z = 0; z < 3; z++)
-            {
-                GameObject temp = Instantiate(hexagonPrefab);
-                temp.transform.position = new Vector3(x * tileXOffset, 0, z * tileZOffset);
-            }
-        }*/
-
-        /*for (int j = 0; j < 19; j++)
+        for (int j = 0; j < 19; j++)
         {
             GameObject temp = Instantiate(hexagonPrefab);
             //temp.transform.position = new Vector3(j * tileXOffset, 0, j * tileZOffset);
-        }*/
+        }
         List<GameObject> hexagonGOs = new List<GameObject>();
         CreateHexagons(hexagonGOs);
         SetTileTexture(hexagonGOs);
@@ -133,67 +157,76 @@ public class RandomBoardGenerator : MonoBehaviour
 
     Texture2D RandomTexture()
     {
-        int rand = Random.Range(0, 5);
-        Texture2D temp;
-        temp = bricksTile;
+        int rand = Random.Range(0, 6);
+        Texture2D temp = brick.texture;
         bool run = true;
         while(run)
         {
             switch (rand)
             {
                 case 0:
-                    if (noBricks == 0)
+                    if (brick.quantity == 0)
                         break;
                     else
                     {
-                        temp = bricksTile;
-                        noBricks--;
+                        temp = brick.texture;
+                        brick.quantity--;
                         run = false;
                         break;
                     }
                 case 1:
-                    if (noOres == 0)
+                    if (ore.quantity == 0)
                         break;
                     else
                     {
-                        temp = oresTile;
-                        noOres--;
+                        temp = ore.texture;
+                        ore.quantity--;
                         run = false;
                         break;
                     }
                 case 2:
-                    if (noWheets == 0)
+                    if (wheat.quantity == 0)
                         break;
                     else
                     {
-                        temp = wheetsTile;
-                        noWheets--;
+                        temp = wheat.texture;
+                        wheat.quantity--;
                         run = false;
                         break;
                     }
                 case 3:
-                    if (noWoods == 0)
+                    if (wood.quantity == 0)
                         break;
                     else
                     {
-                        temp = woodsTile;
-                        noWoods--;
+                        temp = wood.texture;
+                        wood.quantity--;
                         run = false;
                         break;
                     }
                 case 4:
-                    if (noWools == 0)
+                    if (wool.quantity == 0)
                         break;
                     else
                     {
-                        temp = woolsTile;
-                        noWools--;
+                        temp = wool.texture;
+                        wool.quantity--;
+                        run = false;
+                        break;
+                    }
+                case 5:
+                    if (desert.quantity == 0)
+                        break;
+                    else
+                    {
+                        temp = desert.texture;
+                        desert.quantity--;
                         run = false;
                         break;
                     }
             }
 
-            rand = Random.Range(0, 5);
+            rand = Random.Range(0, 6);
         }
 
         return temp;
