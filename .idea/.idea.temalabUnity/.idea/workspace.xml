@@ -5,7 +5,49 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8129cd36-f6a2-431a-8b67-678a40b6ccb7" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Utilities.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Tile.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Tile.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Tiles/BrickTile.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Tiles/BrickTile.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Tiles/DesertTile.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Tiles/DesertTile.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Tiles/OreTile.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Tiles/OreTile.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Tiles/WheatTile.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Tiles/WheatTile.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Tiles/WoodTile.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Tiles/WoodTile.asset.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Tiles/WoolTIle.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Tiles/WoolTIle.asset.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.temalabUnity/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.temalabUnity/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/RandomBoardGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/RandomBoardGenerator.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/RandomizedMapScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/RandomizedMapScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Tiles/bricks.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/bricks.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Tiles/bricks.asset.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/bricks.asset.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Tiles/bricks.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/bricks.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Tiles/bricks.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/bricks.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Tiles/hexagon(Clone).prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/hexagon(Clone).prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Tiles/hexagon(Clone).prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/hexagon(Clone).prefab.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Tiles/hexagon.blend" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/hexagon.blend" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Tiles/hexagon.blend.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/hexagon.blend.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Tiles/ores.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/ores.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Tiles/ores.asset.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/ores.asset.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Tiles/ores.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/ores.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Tiles/ores.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/ores.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Tiles/wheets.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/wheets.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Tiles/wheets.asset.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/wheets.asset.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Tiles/wheets.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/wheets.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Tiles/wheets.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/wheets.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Tiles/woods.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/woods.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Tiles/woods.asset.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/woods.asset.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Tiles/woods.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/woods.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Tiles/woods.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/woods.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Tiles/wools.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/wools.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Tiles/wools.asset.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/wools.asset.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Tiles/wools.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/wools.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Tiles/wools.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/wools.png.meta" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,12 +65,18 @@
     <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Utilities.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/EventSystem/ExecuteEvents.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.netcode.gameobjects@1.0.0-pre.3/Runtime/Logging/NetworkLog.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.netcode.gameobjects@1.0.0-pre.3/Runtime/Core/NetworkBehaviour.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.netcode.gameobjects@1.0.0-pre.3/Runtime/Messaging/Messages/RpcMessage.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
       <option value="$PROJECT_DIR$/Packages/manifest.json" />
       <option value="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Utilities.cs" />
+      <option value="$PROJECT_DIR$/Assets/RandomBoardGenerator.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="21eGD9ioF1rq0vj3uxlEd1jrQwz" />
@@ -40,6 +88,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="Discover.Launch.Via.Unity" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
@@ -87,6 +136,7 @@
       <option name="presentableId" value="Default" />
       <updated>1638294021325</updated>
       <workItem from="1638294027999" duration="945000" />
+      <workItem from="1638835991423" duration="4277000" />
     </task>
     <servers />
   </component>
@@ -109,6 +159,7 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
   </component>
   <component name="XDebuggerManager">

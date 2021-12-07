@@ -1,4 +1,4 @@
-using System.Collections;
+using System;
 using System.Collections.Generic;
 using Unity.Netcode;
 using UnityEngine;
@@ -6,18 +6,12 @@ using UnityEngine;
 public class RandomBoardGenerator : NetworkBehaviour
 {
     public GameObject hexagonPrefab;
-    public Texture2D bricksTile;
-    public Texture2D oresTile;
-    public Texture2D wheetsTile;
-    public Texture2D woolsTile;
-    public Texture2D woodsTile;
-
-    //TODO: sivatag
-    private int _noBricks = 3;
-    private int _noOres = 4; //3
-    private int _noWheets = 4;
-    private int _noWools = 4;
-    private int _noWoods = 4;
+    public Tile brick;
+    public Tile ore;
+    public Tile wood;
+    public Tile wheat;
+    public Tile wool;
+    public Tile desert;
 
     private enum TileType
     {
@@ -25,7 +19,8 @@ public class RandomBoardGenerator : NetworkBehaviour
         Ore,
         Wheat,
         Wool,
-        Wood
+        Wood,
+        Desert,
     }
 
     private readonly Vector3[] _tileOffsets = new[]
@@ -51,57 +46,48 @@ public class RandomBoardGenerator : NetworkBehaviour
         new Vector3(3, 0, -1)
     };
 
-    private readonly Dictionary<TileType, Texture2D> _textures = new Dictionary<TileType, Texture2D>();
+    private readonly Dictionary<TileType, Tile> _tiles = new Dictionary<TileType, Tile>();
 
-    float tileXOffset = 0.9f;
-    float tileZOffset = 1.6f;
+    [SerializeField] private Vector2 tileOffset = new Vector2(0.9f, 1.6f);
 
     private void Start()
     {
-        _textures[TileType.Bricks] = bricksTile;
-        _textures[TileType.Ore] = oresTile;
-        _textures[TileType.Wheat] = wheetsTile;
-        _textures[TileType.Wool] = woolsTile;
-        _textures[TileType.Wood] = woodsTile;
+        _tiles[TileType.Bricks] = brick;
+        _tiles[TileType.Ore] = ore;
+        _tiles[TileType.Wheat] = wheat;
+        _tiles[TileType.Wool] = wool;
+        _tiles[TileType.Wood] = wood;
+        _tiles[TileType.Desert] = desert;
     }
 
     public void CreateRandomBoard()
     {
-        /*for(int x = 0; x < 5; x++)
-        {
-            for (int z = 0; z < 3; z++)
-            {
-                GameObject temp = Instantiate(hexagonPrefab);
-                temp.transform.position = new Vector3(x * tileXOffset, 0, z * tileZOffset);
-            }
-        }*/
-
-        /*for (int j = 0; j < 19; j++)
-        {
-            GameObject temp = Instantiate(hexagonPrefab);
-            //temp.transform.position = new Vector3(j * tileXOffset, 0, j * tileZOffset);
-        }*/
         GenerateTilesServerRPC();
     }
 
     private GameObject CreateHexagon(Vector3 position, TileType tileType)
     {
         var hexagon = Instantiate(hexagonPrefab);
-        hexagon.transform.position = new Vector3(position.x * tileXOffset, 0, position.z * tileZOffset);
-        hexagon.GetComponent<Renderer>().material.mainTexture = _textures[tileType];
+        hexagon.transform.position = new Vector3(position.x * tileOffset.x, 0, position.z * tileOffset.y);
+        hexagon.GetComponent<Renderer>().material.mainTexture = _tiles[tileType].texture;
         return hexagon;
     }
 
     [ServerRpc]
     private void GenerateTilesServerRPC()
     {
-        var tileTypes = new TileType[_tileOffsets.Length];
-        for (var i = 0; i < _tileOffsets.Length; i++)
+        var types = new List<TileType>();
+        foreach (var type in (TileType[]) Enum.GetValues(typeof(TileType)))
         {
-            tileTypes[i] = GetRandomTileType();
+            for (var i = 0; i < _tiles[type].quantity; i++)
+            {
+                types.Add(type);
+            }
         }
-
-        SpawnTilesClientRpc(tileTypes);
+        Utilities.ShuffleList(types);
+        
+        
+        SpawnTilesClientRpc(types.ToArray());
     }
 
     [ClientRpc]
@@ -111,79 +97,11 @@ public class RandomBoardGenerator : NetworkBehaviour
         CreateHexagons(hexagonGOs, tileTypes);
     }
 
-    //TODO: algorithm
-    private void CreateHexagons(List<GameObject> hexas, TileType[] tileTypes)
+    private void CreateHexagons(List<GameObject> hexagons, TileType[] tileTypes)
     {
         for (var i = 0; i < _tileOffsets.Length; i++)
         {
-            hexas.Add(CreateHexagon(_tileOffsets[i], tileTypes[i]));
+            hexagons.Add(CreateHexagon(_tileOffsets[i], tileTypes[i]));
         }
-    }
-
-    private TileType GetRandomTileType()
-    {
-        var rand = Random.Range(0, 5);
-        var tileType = TileType.Bricks;
-        var run = true;
-        while (run)
-        {
-            switch (rand)
-            {
-                case 0:
-                    if (_noBricks == 0)
-                        break;
-                    else
-                    {
-                        tileType = TileType.Bricks;
-                        _noBricks--;
-                        run = false;
-                        break;
-                    }
-                case 1:
-                    if (_noOres == 0)
-                        break;
-                    else
-                    {
-                        tileType = TileType.Ore;
-                        _noOres--;
-                        run = false;
-                        break;
-                    }
-                case 2:
-                    if (_noWheets == 0)
-                        break;
-                    else
-                    {
-                        tileType = TileType.Wheat;
-                        _noWheets--;
-                        run = false;
-                        break;
-                    }
-                case 3:
-                    if (_noWoods == 0)
-                        break;
-                    else
-                    {
-                        tileType = TileType.Wood;
-                        _noWoods--;
-                        run = false;
-                        break;
-                    }
-                case 4:
-                    if (_noWools == 0)
-                        break;
-                    else
-                    {
-                        tileType = TileType.Wool;
-                        _noWools--;
-                        run = false;
-                        break;
-                    }
-            }
-
-            rand = Random.Range(0, 5);
-        }
-
-        return tileType;
     }
 }

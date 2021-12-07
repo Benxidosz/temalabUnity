@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: f23bda5cac5e5aa42b809fbea46ccccf
+=======
+guid: 57e7bb4dc0a89fc45813482f2709184b
+>>>>>>> origin/RandomizedMap
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
