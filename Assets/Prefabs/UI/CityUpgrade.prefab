@@ -88,8 +88,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc4efe5995d9c854fa880dd8af1224b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unDone: {fileID: 21300000, guid: 93774d53bc00cf44daf21b9de6474337, type: 3}
-  done: {fileID: 21300000, guid: 6428e95ccb9e8414abaa38ab66899116, type: 3}
+  backend: {fileID: 11400000, guid: 79c004dafb82b494d865a79f66c55e64, type: 2}
 --- !u!1 &6342725533711400632
 GameObject:
   m_ObjectHideFlags: 0
@@ -312,8 +311,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc4efe5995d9c854fa880dd8af1224b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unDone: {fileID: 21300000, guid: 39e49e64883e8b841803ac98dfff009f, type: 3}
-  done: {fileID: 21300000, guid: c9c6e45526354174099ce7207fbc59fe, type: 3}
+  backend: {fileID: 11400000, guid: b97ba1167666f304ebd81b938a05b4a7, type: 2}
 --- !u!1 &6342725533780423381
 GameObject:
   m_ObjectHideFlags: 0
@@ -402,8 +400,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc4efe5995d9c854fa880dd8af1224b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unDone: {fileID: 21300000, guid: 51494b402add75c4b8aaccdee7f46f58, type: 3}
-  done: {fileID: 21300000, guid: 9ebc0df70b0ea4c40a3cb7a1be646fe6, type: 3}
+  backend: {fileID: 11400000, guid: 43f5f634105987345b2ca0a918526403, type: 2}
 --- !u!1 &6342725533846870004
 GameObject:
   m_ObjectHideFlags: 0
@@ -712,8 +709,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc4efe5995d9c854fa880dd8af1224b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unDone: {fileID: 21300000, guid: b6d4179548452904ba04e4fbedf5acd8, type: 3}
-  done: {fileID: 21300000, guid: 09f7fc6261b7b0f4f8ccb59baf3a3455, type: 3}
+  backend: {fileID: 11400000, guid: 7b23067bf66f158438c0721815a3c677, type: 2}
 --- !u!1 &6342725534141204818
 GameObject:
   m_ObjectHideFlags: 0
@@ -802,8 +798,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc4efe5995d9c854fa880dd8af1224b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unDone: {fileID: 21300000, guid: c626894485081f74ba8bafd457cbbc08, type: 3}
-  done: {fileID: 21300000, guid: f4e679793d45dc7498bab5b4bb34706a, type: 3}
+  backend: {fileID: 11400000, guid: a6001a6993fff4f42ac05b0b9b71a49a, type: 2}
 --- !u!1 &6342725534308277560
 GameObject:
   m_ObjectHideFlags: 0
@@ -1026,8 +1021,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc4efe5995d9c854fa880dd8af1224b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unDone: {fileID: 21300000, guid: 5d80d50f1c98539488561e5089fd64b0, type: 3}
-  done: {fileID: 21300000, guid: 8b0a36a329c3213488196754140f53fd, type: 3}
+  backend: {fileID: 11400000, guid: 8bbd1a73fbca9dc4f9629a57ff1bacba, type: 2}
 --- !u!1 &6342725534408176624
 GameObject:
   m_ObjectHideFlags: 0
@@ -1148,7 +1142,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6342725534408176631}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: UpgradeManager, Assembly-CSharp
+        m_MethodName: UpgradeGreen
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &6342725534466182199
 GameObject:
   m_ObjectHideFlags: 0
@@ -1277,8 +1283,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc4efe5995d9c854fa880dd8af1224b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unDone: {fileID: 21300000, guid: 5f7eef3a3ced320438bb9446859dfd27, type: 3}
-  done: {fileID: 21300000, guid: f2ce17a250ac3704fab17f4ffcf81020, type: 3}
+  backend: {fileID: 11400000, guid: a331818a16916824396e33d1d2512a66, type: 2}
 --- !u!1 &6342725534765216060
 GameObject:
   m_ObjectHideFlags: 0
@@ -1407,8 +1412,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc4efe5995d9c854fa880dd8af1224b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unDone: {fileID: 21300000, guid: 9d840f7d4527ee6428a18d0d5dc0cd3c, type: 3}
-  done: {fileID: 21300000, guid: adfaee5fad58ae24f9c5def2b1740dfe, type: 3}
+  backend: {fileID: 11400000, guid: 6f05eefbf6731a44aa11b389e4f34ef6, type: 2}
 --- !u!1 &6342725534837747679
 GameObject:
   m_ObjectHideFlags: 0
@@ -1568,7 +1572,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6342725535080990578}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: UpgradeManager, Assembly-CSharp
+        m_MethodName: UpgradeYellow
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &6342725535171354566
 GameObject:
   m_ObjectHideFlags: 0
@@ -1657,8 +1673,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc4efe5995d9c854fa880dd8af1224b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unDone: {fileID: 21300000, guid: 3c2de12e52b4ca54f9c103cb87e14d00, type: 3}
-  done: {fileID: 21300000, guid: 1a732c439a096d44e9634d570d35043b, type: 3}
+  backend: {fileID: 11400000, guid: 3cad4c38d851cf84087aa635635df235, type: 2}
 --- !u!1 &6342725535172514897
 GameObject:
   m_ObjectHideFlags: 0
@@ -1881,8 +1896,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc4efe5995d9c854fa880dd8af1224b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unDone: {fileID: 21300000, guid: 4da0ee1044577ca4f9d8d74a65342e3d, type: 3}
-  done: {fileID: 21300000, guid: 96eacd1a111c5e84099b3b56f00e26c4, type: 3}
+  backend: {fileID: 11400000, guid: 9eae237376241e546a3fca9fb4e09a6c, type: 2}
 --- !u!1 &6342725535194483683
 GameObject:
   m_ObjectHideFlags: 0
@@ -1971,8 +1985,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc4efe5995d9c854fa880dd8af1224b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unDone: {fileID: 21300000, guid: 5dfd7256a144c61458ee7bd3df818578, type: 3}
-  done: {fileID: 21300000, guid: 3f5359e5012d89d48a4eb578deb9fc97, type: 3}
+  backend: {fileID: 11400000, guid: 5efa5b13fd141cd44b4ff48c099ebe24, type: 2}
 --- !u!1 &6342725535215790997
 GameObject:
   m_ObjectHideFlags: 0
@@ -2061,8 +2074,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc4efe5995d9c854fa880dd8af1224b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unDone: {fileID: 21300000, guid: da9fbe3cdf274844eaabb554bff721ca, type: 3}
-  done: {fileID: 21300000, guid: da3f207e70463a74fb05a3362e940282, type: 3}
+  backend: {fileID: 11400000, guid: fa6ca5b51c0d6da41b3f6da111fded97, type: 2}
 --- !u!1 &6342725535292849992
 GameObject:
   m_ObjectHideFlags: 0
@@ -2252,8 +2264,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc4efe5995d9c854fa880dd8af1224b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unDone: {fileID: 21300000, guid: 1e1d157f2b6f4fb47aee97266d6441c4, type: 3}
-  done: {fileID: 21300000, guid: 33622ad15427cc142ab4205086d4fc90, type: 3}
+  backend: {fileID: 11400000, guid: 5e1c57ee4ecf6934f907c3006f3e7297, type: 2}
 --- !u!1 &6342725535528545220
 GameObject:
   m_ObjectHideFlags: 0
@@ -2342,8 +2353,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc4efe5995d9c854fa880dd8af1224b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unDone: {fileID: 21300000, guid: f205ef8728a6ac84689293b30f2abde2, type: 3}
-  done: {fileID: 21300000, guid: 444eb6706b11361489c5fdc706654580, type: 3}
+  backend: {fileID: 11400000, guid: 8aea04c98f7d5c74e9465e389d7d3e49, type: 2}
 --- !u!1 &6342725535563015237
 GameObject:
   m_ObjectHideFlags: 0
@@ -2432,8 +2442,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc4efe5995d9c854fa880dd8af1224b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unDone: {fileID: 21300000, guid: 14d943146c0117149a6fab74d806f5ee, type: 3}
-  done: {fileID: 21300000, guid: b10a809c3b483fd4f87190827af66636, type: 3}
+  backend: {fileID: 11400000, guid: 6726b7da8eaae5d4991be2817be2d258, type: 2}
 --- !u!1 &6342725535602122762
 GameObject:
   m_ObjectHideFlags: 0
@@ -2554,4 +2563,16 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6342725535602122761}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: UpgradeManager, Assembly-CSharp
+        m_MethodName: UpgradeBlue
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2

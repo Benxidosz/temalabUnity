@@ -17,14 +17,14 @@ public class CardManager : MonoBehaviour {
         }
     }
 
-    public void testAction(string player) {
+    public void testAction(PlayerController player) {
         Debug.Log(player);
     }
 
-    public void testSokAction(string player) {
-        Debug.Log(player.ToUpper());
+    public void testSokAction(PlayerController player) {
+        Debug.Log(player);
     }
-    public void uj(string player) {
-        Debug.Log(player.ToUpper());
+    public void uj(PlayerController player) {
+        Debug.Log(player);
     }
 }
