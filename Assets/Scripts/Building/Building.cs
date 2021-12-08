@@ -12,8 +12,4 @@ public class Building : ScriptableObject{
     public GameObject Model => model;
     public BaseRule MyRule => myRule;
     public BuildingsType MyType => myType;
-
-    public void ChangeMaterial(UnityEngine.Material material){
-        model.GetComponent<MeshRenderer>().material = material;
-    }
 }

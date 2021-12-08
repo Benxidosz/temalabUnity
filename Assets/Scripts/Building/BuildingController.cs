@@ -7,6 +7,7 @@ using UnityEngine.Serialization;
 public class BuildingController : MonoBehaviour{ 
     [SerializeField] private RaycastController raycastController;
     [FormerlySerializedAs("PlaceHolders")] [SerializeField] private List<PlaceHolder> placeHolders;
+    [SerializeField] private int FreeVillage = 0;
 
     [Header("Buildings")] 
     public Building Village;
@@ -21,6 +22,13 @@ public class BuildingController : MonoBehaviour{
     }
 
     public void BuildVillage(){
+        if (FreeVillage > 0 && raycastController.FocusedPlaceHolder.Type == PlaceHolderType.NODE){
+            raycastController.FocusedPlaceHolder.PlaceNew(Village);
+            raycastController.SetFocusNull();
+            FreeVillage--;
+            return;
+        }
+        
         if (raycastController.FocusedObj is null || !Village.MyRule.Rule(raycastController.FocusedPlaceHolder)) return;
         raycastController.FocusedPlaceHolder.PlaceNew(Village);
         raycastController.SetFocusNull();

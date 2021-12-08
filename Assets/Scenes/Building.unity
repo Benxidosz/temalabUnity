@@ -590,7 +590,7 @@ PrefabInstance:
     - target: {fileID: 2539916105827996192, guid: 873f271b45b3f8f4d9eb8c535fb03f70, type: 3}
       propertyPath: neighbours.Array.data[2]
       value: 
-      objectReference: {fileID: 332726789}
+      objectReference: {fileID: 1519678603}
     - target: {fileID: 7582409609533011500, guid: 873f271b45b3f8f4d9eb8c535fb03f70, type: 3}
       propertyPath: m_Name
       value: PlaceHolder
@@ -737,6 +737,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   raycastController: {fileID: 571773600}
   placeHolders: []
+  FreeVillage: 1
   Village: {fileID: 11400000, guid: ccce9e0b0d404f949b5a2d4841688212, type: 2}
   City: {fileID: 11400000, guid: d4bebcda802fc5a4da1415b130f66f1b, type: 2}
   Road: {fileID: 11400000, guid: cc72318ed30650a41845a1df5829a96b, type: 2}
@@ -1253,10 +1254,6 @@ PrefabInstance:
       propertyPath: type
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 2539916105827996192, guid: 873f271b45b3f8f4d9eb8c535fb03f70, type: 3}
-      propertyPath: StartingObj
-      value: 
-      objectReference: {fileID: 111425591298780813, guid: 7676bf0cbf3a984429a1d4823e319dd7, type: 3}
     - target: {fileID: 2539916105827996192, guid: 873f271b45b3f8f4d9eb8c535fb03f70, type: 3}
       propertyPath: neighbours.Array.size
       value: 2
