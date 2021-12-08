@@ -5,11 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8129cd36-f6a2-431a-8b67-678a40b6ccb7" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/Buildings/BuildingsRule.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/Buildings/BuildingsRule/CityRule.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/Buildings/BuildingsRule/CityRule.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/Buildings/BuildingsRule/RoadRule.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/Buildings/BuildingsRule/RoadRule.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/Buildings/BuildingsRule/VillageRule.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/Buildings/BuildingsRule/VillageRule.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.temalabUnity/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.temalabUnity/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Material.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Material.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/MaterialController.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/MaterialController.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Building.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Building.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Building/PlaceHolder.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Building/PlaceHolder.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -28,14 +34,27 @@
     <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/EventSystem/UIBehaviour.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/EventSystem/ExecuteEvents.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Building/PlaceHolder.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/ScriptableObjects/Buildings/BuildingsRule/BaseRule.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/EventSystem/UIBehaviour.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Building/Building.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/EventSystem/ExecuteEvents.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
       <option value="$PROJECT_DIR$/Assets/Scripts/Material.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/MaterialController.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/RaycastController.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/BuildingController.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Building/RaycastController.cs" />
+      <option value="$PROJECT_DIR$/Assets/VillageRule.cs" />
+      <option value="$PROJECT_DIR$/Assets/ScriptableObjects/Buildings/BuildingsRule/BaseRule.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Building/PlaceHolder.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Building/Building.cs" />
+      <option value="$PROJECT_DIR$/Assets/ScriptableObjects/Buildings/BuildingsRule/VillageRule.cs" />
+      <option value="$PROJECT_DIR$/Assets/ScriptableObjects/Buildings/BuildingsRule/CityRule.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Building/BuildingController.cs" />
+      <option value="$PROJECT_DIR$/Assets/ScriptableObjects/Buildings/BuildingsRule/RoadRule.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="21eGD9ioF1rq0vj3uxlEd1jrQwz" />
@@ -116,6 +135,23 @@
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
   </component>
   <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/ScriptableObjects/Buildings/BuildingsRule/RoadRule.cs</url>
+          <line>5</line>
+          <properties documentPath="C:\Users\czani\Documents\GitHub\temalabUnity\Assets\ScriptableObjects\Buildings\BuildingsRule\RoadRule.cs" initialLine="5" containingFunctionPresentation="method 'Rule'">
+            <startOffsets>
+              <option value="212" />
+            </startOffsets>
+            <endOffsets>
+              <option value="227" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="11" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
     <pin-to-top-manager>
       <pinned-members>
         <PinnedItemInfo parentTag="Type#CardDealer" memberName="blueDiscardDeck" />
