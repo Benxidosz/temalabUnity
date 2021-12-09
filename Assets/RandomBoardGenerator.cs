@@ -117,7 +117,7 @@ public class RandomBoardGenerator : NetworkBehaviour
     private GameObject CreateDisk(Vector3 position, Disk disk)
     {
         var numberDisk = Instantiate(diskPrefab);
-        numberDisk.transform.position = new Vector3(position.x * tileOffset.x, 0.1f, position.z * tileOffset.y);
+        numberDisk.transform.position = new Vector3(position.x * tileOffset.x, 0.05f, position.z * tileOffset.y);
         numberDisk.GetComponent<Renderer>().material.mainTexture = disk.texture;
         return numberDisk;
     }
