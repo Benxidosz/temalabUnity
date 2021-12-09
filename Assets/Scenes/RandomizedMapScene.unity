@@ -253,6 +253,18 @@ MonoBehaviour:
   wheat: {fileID: 11400000, guid: 6900e736f476f5746a0254c21d5df336, type: 2}
   wool: {fileID: 11400000, guid: 6c9eadbf78e0cc24db9b7cb1c47d2212, type: 2}
   desert: {fileID: 11400000, guid: a2965fd6035a9624b91949f8c3ca4f75, type: 2}
+  ocean: {fileID: 11400000, guid: 888860a56653ff048922c6cd1efbefe4, type: 2}
+  numberDisks:
+  - {fileID: 11400000, guid: 8dd3bfcd2f16c0d4bb5427fbd76f8167, type: 2}
+  - {fileID: 11400000, guid: beba80d249b7be94f820cb8a3ce6b66e, type: 2}
+  - {fileID: 11400000, guid: 9e7ae3a2e8b7def41ac5443143ea7957, type: 2}
+  - {fileID: 11400000, guid: 05c1952c15a9cc1419143cbd16bc5fb6, type: 2}
+  - {fileID: 11400000, guid: f27e04ada74fa7646b5e1cba4371f11b, type: 2}
+  - {fileID: 11400000, guid: 739e6d33fa8756049aacb6f4c84e48a0, type: 2}
+  - {fileID: 11400000, guid: dee8cb6893387294f8876fce002d4b81, type: 2}
+  - {fileID: 11400000, guid: 3aa161482ab06d14b99fd04a5eb1daac, type: 2}
+  - {fileID: 11400000, guid: ee8925e1d2b276140b34436a859e3729, type: 2}
+  - {fileID: 11400000, guid: 1673dbbca580185468ef64f10c9e8d34, type: 2}
   tileOffset: {x: 0.86602, y: 1.5}
 --- !u!4 &396470561
 Transform:

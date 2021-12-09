@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5443d33015bca1843b663341195b7d2f, type: 3}
+  m_Name: OceanTile
+  m_EditorClassIdentifier: 
+  name: Ocean
+  texture: {fileID: 2800000, guid: 655d9a3d1c70a334293993851285e89e, type: 3}
+  firstMaterial: 0
+  secondMaterial: 0
+  quantity: 18
