@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3143720480779142370}
   - component: {fileID: -6553331454257961098}
   m_Layer: 0
-  m_Name: hexagon(Clone)
+  m_Name: TilePrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
