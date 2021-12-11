@@ -10,7 +10,7 @@ public class Material : MonoBehaviour{
     private MaterialController _myController;
     public MaterialType Type => _type;
 
-    private void Start(){
+    private void Awake(){
         tmpText = GetComponent<TextMeshProUGUI>();
         _myController = GameObject.FindWithTag("InventoryController").GetComponent<MaterialController>();
         _myController.SetText += setText;
