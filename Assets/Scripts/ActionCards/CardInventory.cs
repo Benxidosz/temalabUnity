@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Runtime.CompilerServices;
 using TMPro;
 using UnityEngine;
@@ -22,84 +23,145 @@ public class CardInventory : MonoBehaviour {
     [SerializeField] private TextMeshProUGUI errorMsg;
     [SerializeField] private Canvas CardUi;
     [SerializeField] private CardSO EmptyCard;
-    
+
+    private List<CardSO> _cardInventory;
+    private Queue<CardSO> _cardQueue;
+
     void Start() {
         CardScript[] scripts = CardUi.GetComponentsInChildren<CardScript>();
         _cards = new List<Card>();
+        _cardInventory = new List<CardSO>();
+
+        _cardQueue = new Queue<CardSO>();
         foreach (var script in scripts) {
             _cards.Add(new Card(script));
+            _cardInventory.Add(EmptyCard);
         }
+
+        SwitchUiState();
+    }
+
+    private void RefillUI() {
+        for (int i = 0; i < _cardInventory.Count; i++) {
+            _cards[i].Script.Backend = _cardInventory[i];
+        }
+
+        if (_cardQueue.Count == 0) {
+            SwitchToPlayState();
+        } else {
+            SwitchToDiscardState();
+        }
+    }
+
+    private void EmptyUI() {
         _cards.ForEach(c => c.Script.Backend = EmptyCard);
-        _cards.ForEach(c => c.Button.onClick.AddListener(() => {
-            c.Script.Backend.Action?.Invoke("Player");
-            DiscardACard(c);
-        }));
+        _cards.ForEach(c => c.Button.onClick.AddListener(() => { c.Script.Backend.Action?.Invoke(GameManager.Instance.CurrentPlayer); }));
+    }
+
+    private int FindEmpty() {
+        foreach (var card in _cardInventory) {
+            if (card.Equals(EmptyCard))
+                return _cardInventory.IndexOf(card);
+        }
         
-        errorMsg.gameObject.SetActive(false);
+        return -1;
     }
-
-    private CardScript FindEmpty() {
-        foreach (var card in _cards) {
-            if (card.Script.Backend.Equals(EmptyCard))
-                return card.Script;
-        }
-        errorMsg.gameObject.SetActive(true);
-        foreach (var card in _cards) {
-            card.Button.onClick.RemoveAllListeners();
-            card.Button.onClick.AddListener(() => {
-                DiscardACard(card);
-                lastCalled?.Invoke();
-                _cards.ForEach(c => {
-                    c.Button.onClick.RemoveAllListeners();
-                    c.Button.onClick.AddListener(() => {
-                        c.Script.Backend.Action?.Invoke("Player");
-                        DiscardACard(c);
-                    });
-                });
-                errorMsg.gameObject.SetActive(false);
+    private void SwitchToDiscardState() {
+        errorMsg.enabled = true;
+        errorMsg.text = $"Error Not enough space.\nChoose {_cardQueue.Count} card to replace.";
+        _cards.ForEach(c => {
+            c.Button.onClick.RemoveAllListeners();
+            c.Button.onClick.AddListener(() => {
+                DiscardACard(c);
+                var idx = _cards.IndexOf(c);
+                _cardInventory[idx] = _cardQueue.Dequeue();
+                if (_cardQueue.Count == 0) {
+                    SwitchToPlayState();
+                }
+                RefillUI();
             });
-        }
-        return null;
+        });
+    } 
+    private void SwitchToPlayState() {
+        errorMsg.enabled = false;
+        _cards.ForEach(c => {
+            c.Button.onClick.RemoveAllListeners();
+            c.Button.onClick.AddListener(() => {
+                c.Script.Backend.Action?.Invoke(GameManager.Instance.CurrentPlayer);
+                DiscardACard(c);
+            });
+        });
     }
-
     private void DiscardACard(Card card) {
         if (!card.Script.Backend.Equals(EmptyCard)) {
             CardDealer.Instance.AddToDiscard(card.Script.Backend);
             card.Script.Backend = EmptyCard;
+
+            int idx = _cards.IndexOf(card);
+            _cardInventory[idx] = EmptyCard;
         }
     }
 
-    public void AddBlueCard() {
-        CardScript emptySlot = FindEmpty();
-        if (!(emptySlot is null)) {
-            if (!emptySlot.Backend.Equals(EmptyCard)) {
-                CardDealer.Instance.AddToDiscard(emptySlot.Backend);   
-            }
-            emptySlot.Backend = CardDealer.Instance.NextBlueCard;
+    public void AddCard(CardSO card) {
+        var idx = FindEmpty();
+        if (idx != -1) {
+            _cardInventory[idx] = card;
         } else {
-            lastCalled = AddBlueCard;
+            _cardQueue.Enqueue(card);
+        }
+        RefillUI();
+    }
+    // public void AddBlueCard() {
+    //     int emptySlot = FindEmpty();
+    //     var nextCard = CardDealer.Instance.NextBlueCard;
+    //     if (emptySlot != -1) {
+    //         _cardInventory[emptySlot] = nextCard;
+    //     } else {
+    //         _cardQueue.Enqueue(nextCard);
+    //         SwitchToDiscardState();
+    //     }
+    // }
+    //
+    // public void AddGreenCard() {
+    //     Card emptySlot = FindEmpty();
+    //     var nextCard = CardDealer.Instance.NextGreenCard;
+    //     if (!(emptySlot is null)) {
+    //         emptySlot.Script.Backend = nextCard;
+    //
+    //         int idx = _cards.IndexOf(emptySlot);
+    //         _cardInventory[idx] = nextCard;
+    //     } else {
+    //         _cardQueue.Enqueue(nextCard);
+    //         SwitchToDiscardState();
+    //     }
+    // }
+    //
+    // public void AddYellowCard() {
+    //     Card emptySlot = FindEmpty();
+    //     var nextCard = CardDealer.Instance.NextYellowCard;
+    //     if (!(emptySlot is null)) {
+    //         emptySlot.Script.Backend = nextCard;
+    //
+    //         int idx = _cards.IndexOf(emptySlot);
+    //         _cardInventory[idx] = nextCard;
+    //     } else {
+    //         _cardQueue.Enqueue(nextCard);
+    //         SwitchToDiscardState();
+    //     }
+    // }
+
+    public void SwitchUiState() {
+        CardUi.enabled = !CardUi.enabled;
+        if (CardUi.enabled) {
+            RefillUI();
+        } else {
+            EmptyUI();
         }
     }
-    public void AddGreenCard() {
-        CardScript emptySlot = FindEmpty();
-        if (!(emptySlot is null)) {
-            if (!emptySlot.Backend.Equals(EmptyCard)) {
-                CardDealer.Instance.AddToDiscard(emptySlot.Backend);   
-            }
-            emptySlot.Backend = CardDealer.Instance.NextGreenCard;
-        } else {
-            lastCalled = AddGreenCard;
-        }
-    }
-    public void AddYellowCard() {
-        CardScript emptySlot = FindEmpty();
-        if (!(emptySlot is null)) {
-            if (!emptySlot.Backend.Equals(EmptyCard)) {
-                CardDealer.Instance.AddToDiscard(emptySlot.Backend);   
-            }
-            emptySlot.Backend = CardDealer.Instance.NextYellowCard;
-        } else {
-            lastCalled = AddYellowCard;
-        }
+
+    public void Disable() {
+        CardUi.enabled = false;
+        EmptyUI();
+        errorMsg.enabled = false;
     }
 }

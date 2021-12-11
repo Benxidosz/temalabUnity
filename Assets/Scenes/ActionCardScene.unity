@@ -214,33 +214,9 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 423484359922187607, guid: cbcf3c9c7d1b0134686b8f2bd85c14d7, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 423484359922187607, guid: cbcf3c9c7d1b0134686b8f2bd85c14d7, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 423484359922187607, guid: cbcf3c9c7d1b0134686b8f2bd85c14d7, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1340423451}
-    - target: {fileID: 423484359922187607, guid: cbcf3c9c7d1b0134686b8f2bd85c14d7, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 423484359922187607, guid: cbcf3c9c7d1b0134686b8f2bd85c14d7, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: AddGreenCard
-      objectReference: {fileID: 0}
-    - target: {fileID: 423484359922187607, guid: cbcf3c9c7d1b0134686b8f2bd85c14d7, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: CardInventory, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 423484359922187607, guid: cbcf3c9c7d1b0134686b8f2bd85c14d7, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
     - target: {fileID: 1107202329459065838, guid: cbcf3c9c7d1b0134686b8f2bd85c14d7, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -385,58 +361,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3335359798544087984, guid: cbcf3c9c7d1b0134686b8f2bd85c14d7, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3605876574088154807, guid: cbcf3c9c7d1b0134686b8f2bd85c14d7, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1340423451}
-    - target: {fileID: 3605876574088154807, guid: cbcf3c9c7d1b0134686b8f2bd85c14d7, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: AddYellowCard
-      objectReference: {fileID: 0}
-    - target: {fileID: 3605876574088154807, guid: cbcf3c9c7d1b0134686b8f2bd85c14d7, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: CardInventory, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 3605876574088154807, guid: cbcf3c9c7d1b0134686b8f2bd85c14d7, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 3894933570212013980, guid: cbcf3c9c7d1b0134686b8f2bd85c14d7, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3894933570212013980, guid: cbcf3c9c7d1b0134686b8f2bd85c14d7, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3894933570212013980, guid: cbcf3c9c7d1b0134686b8f2bd85c14d7, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3894933570212013980, guid: cbcf3c9c7d1b0134686b8f2bd85c14d7, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3915091961732329866, guid: cbcf3c9c7d1b0134686b8f2bd85c14d7, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3915091961732329866, guid: cbcf3c9c7d1b0134686b8f2bd85c14d7, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3915091961732329866, guid: cbcf3c9c7d1b0134686b8f2bd85c14d7, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3915091961732329866, guid: cbcf3c9c7d1b0134686b8f2bd85c14d7, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3978707841559954067, guid: cbcf3c9c7d1b0134686b8f2bd85c14d7, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -473,18 +401,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1340423451}
-    - target: {fileID: 5143891784531284198, guid: cbcf3c9c7d1b0134686b8f2bd85c14d7, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: AddBlueCard
-      objectReference: {fileID: 0}
-    - target: {fileID: 5143891784531284198, guid: cbcf3c9c7d1b0134686b8f2bd85c14d7, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: CardInventory, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 5143891784531284198, guid: cbcf3c9c7d1b0134686b8f2bd85c14d7, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
     - target: {fileID: 5992441887370091193, guid: cbcf3c9c7d1b0134686b8f2bd85c14d7, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -508,50 +424,6 @@ PrefabInstance:
     - target: {fileID: 5992441887370091193, guid: cbcf3c9c7d1b0134686b8f2bd85c14d7, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6263118220666668067, guid: cbcf3c9c7d1b0134686b8f2bd85c14d7, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6263118220666668067, guid: cbcf3c9c7d1b0134686b8f2bd85c14d7, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6263118220666668067, guid: cbcf3c9c7d1b0134686b8f2bd85c14d7, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6263118220666668067, guid: cbcf3c9c7d1b0134686b8f2bd85c14d7, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6263118220666668067, guid: cbcf3c9c7d1b0134686b8f2bd85c14d7, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6263118220666668067, guid: cbcf3c9c7d1b0134686b8f2bd85c14d7, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7642146447040389605, guid: cbcf3c9c7d1b0134686b8f2bd85c14d7, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7642146447040389605, guid: cbcf3c9c7d1b0134686b8f2bd85c14d7, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7642146447040389605, guid: cbcf3c9c7d1b0134686b8f2bd85c14d7, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7642146447040389605, guid: cbcf3c9c7d1b0134686b8f2bd85c14d7, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8524208844750741028, guid: cbcf3c9c7d1b0134686b8f2bd85c14d7, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cbcf3c9c7d1b0134686b8f2bd85c14d7, type: 3}
@@ -648,9 +520,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84db8d5b872b14d42913170ced4a941f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1519039245 stripped
+--- !u!114 &1889781811 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3335359798544087984, guid: cbcf3c9c7d1b0134686b8f2bd85c14d7, type: 3}
+  m_CorrespondingSourceObject: {fileID: 1889781811, guid: cbcf3c9c7d1b0134686b8f2bd85c14d7, type: 3}
   m_PrefabInstance: {fileID: 72880545}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
@@ -831,7 +703,7 @@ PrefabInstance:
     - target: {fileID: 6978572256058173444, guid: 84e65f70317a9d54ead032b569a048be, type: 3}
       propertyPath: errorMsg
       value: 
-      objectReference: {fileID: 1519039245}
+      objectReference: {fileID: 1889781811}
     - target: {fileID: 6978572256058173444, guid: 84e65f70317a9d54ead032b569a048be, type: 3}
       propertyPath: EmptyCard
       value: 
