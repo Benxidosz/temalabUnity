@@ -31,6 +31,6 @@ public class CardScript : MonoBehaviour {
     }
 
     public void onClick() {
-        Backend.Action?.Invoke("Hello");
+        Backend.Action?.Invoke(GameManager.Instance.CurrentPlayer);
     }
 }
