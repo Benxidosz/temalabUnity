@@ -13,9 +13,11 @@ public class MaterialController : MonoBehaviour{
         materials = new Dictionary<MaterialType, int>();
         var tmp = GameObject.FindGameObjectsWithTag("MaterialText");
         foreach (var m in tmp){
-            materials.Add(m.GetComponent<Material>().Type, 2);
-           // SetText?.Invoke(materials[m.GetComponent<Material>().Type],m.GetComponent<Material>().Type);
+            var type = m.GetComponent<Material>().Type;
+            materials.Add(type, 0);
+            Increase(type, 1);
         }
+        
         print("");
     }
 
@@ -26,6 +28,11 @@ public class MaterialController : MonoBehaviour{
 
     public void Decrease(MaterialType type, int deltaCount){
         materials[type] -= deltaCount;
+        SetText?.Invoke(materials[type], type);
+    }
+
+    public void SetCount(MaterialType type, int count){
+        materials[type] = count;
         SetText?.Invoke(materials[type], type);
     }
 
