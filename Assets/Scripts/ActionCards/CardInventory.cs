@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using ScriptableObjects.CardObjects;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace ActionCards
@@ -21,124 +22,152 @@ namespace ActionCards
 
     public class CardInventory : MonoBehaviour
     {
-        private Action lastCalled;
         private List<Card> _cards;
         [SerializeField] private TextMeshProUGUI errorMsg;
-        [SerializeField] private Canvas CardUi;
-        [SerializeField] private CardObject EmptyCard;
 
-        void Start()
+        [FormerlySerializedAs("CardUi")] [SerializeField]
+        private Canvas cardUi;
+
+        [FormerlySerializedAs("EmptyCard")] [SerializeField]
+        private CardObject emptyCard;
+
+        private List<CardObject> _cardInventory;
+        private Queue<CardObject> _cardQueue;
+
+        private void Start()
         {
-            CardScript[] scripts = CardUi.GetComponentsInChildren<CardScript>();
+            var scripts = cardUi.GetComponentsInChildren<CardScript>();
             _cards = new List<Card>();
+            _cardInventory = new List<CardObject>();
+
+            _cardQueue = new Queue<CardObject>();
             foreach (var script in scripts)
             {
                 _cards.Add(new Card(script));
+                _cardInventory.Add(emptyCard);
             }
 
-            _cards.ForEach(c => c.Script.Backend = EmptyCard);
-            _cards.ForEach(c => c.Button.onClick.AddListener(() =>
-            {
-                c.Script.Backend.action?.Invoke("Player");
-                DiscardACard(c);
-            }));
-
-            errorMsg.gameObject.SetActive(false);
+            SwitchUiState();
         }
 
-        private CardScript FindEmpty()
+        private void RefillUI()
         {
-            foreach (var card in _cards)
+            for (int i = 0; i < _cardInventory.Count; i++)
             {
-                if (card.Script.Backend.Equals(EmptyCard))
-                    return card.Script;
+                _cards[i].Script.Backend = _cardInventory[i];
             }
 
-            errorMsg.gameObject.SetActive(true);
-            foreach (var card in _cards)
+            if (_cardQueue.Count == 0)
             {
-                card.Button.onClick.RemoveAllListeners();
-                card.Button.onClick.AddListener(() =>
+                SwitchToPlayState();
+            }
+            else
+            {
+                SwitchToDiscardState();
+            }
+        }
+
+        private void EmptyUI()
+        {
+            _cards.ForEach(c => c.Script.Backend = emptyCard);
+            _cards.ForEach(c => c.Button.onClick.AddListener(() =>
+            {
+                c.Script.Backend.action?.Invoke(GameManager.Instance.CurrentPlayer);
+            }));
+        }
+
+        private int FindEmpty()
+        {
+            foreach (var card in _cardInventory)
+            {
+                if (card.Equals(emptyCard))
+                    return _cardInventory.IndexOf(card);
+            }
+
+            return -1;
+        }
+
+        private void SwitchToDiscardState()
+        {
+            errorMsg.enabled = true;
+            errorMsg.text = $"Error Not enough space.\nChoose {_cardQueue.Count} card to replace.";
+            _cards.ForEach(c =>
+            {
+                c.Button.onClick.RemoveAllListeners();
+                c.Button.onClick.AddListener(() =>
                 {
-                    DiscardACard(card);
-                    lastCalled?.Invoke();
-                    _cards.ForEach(c =>
+                    DiscardACard(c);
+                    var idx = _cards.IndexOf(c);
+                    _cardInventory[idx] = _cardQueue.Dequeue();
+                    if (_cardQueue.Count == 0)
                     {
-                        c.Button.onClick.RemoveAllListeners();
-                        c.Button.onClick.AddListener(() =>
-                        {
-                            c.Script.Backend.action?.Invoke("Player");
-                            DiscardACard(c);
-                        });
-                    });
-                    errorMsg.gameObject.SetActive(false);
-                });
-            }
+                        SwitchToPlayState();
+                    }
 
-            return null;
+                    RefillUI();
+                });
+            });
+        }
+
+        private void SwitchToPlayState()
+        {
+            errorMsg.enabled = false;
+            _cards.ForEach(c =>
+            {
+                c.Button.onClick.RemoveAllListeners();
+                c.Button.onClick.AddListener(() =>
+                {
+                    c.Script.Backend.action?.Invoke(GameManager.Instance.CurrentPlayer);
+                    DiscardACard(c);
+                });
+            });
         }
 
         private void DiscardACard(Card card)
         {
-            if (!card.Script.Backend.Equals(EmptyCard))
+            if (!card.Script.Backend.Equals(emptyCard))
             {
                 CardDealer.Instance.AddToDiscard(card.Script.Backend);
-                card.Script.Backend = EmptyCard;
+                card.Script.Backend = emptyCard;
+
+                var idx = _cards.IndexOf(card);
+                _cardInventory[idx] = emptyCard;
             }
         }
 
-        public void AddBlueCard()
+        public void AddCard(CardObject card)
         {
-            CardScript emptySlot = FindEmpty();
-            if (!(emptySlot is null))
+            var idx = FindEmpty();
+            if (idx != -1)
             {
-                if (!emptySlot.Backend.Equals(EmptyCard))
-                {
-                    CardDealer.Instance.AddToDiscard(emptySlot.Backend);
-                }
-
-                emptySlot.Backend = CardDealer.Instance.NextBlueCard;
+                _cardInventory[idx] = card;
             }
             else
             {
-                lastCalled = AddBlueCard;
+                _cardQueue.Enqueue(card);
+            }
+
+            RefillUI();
+        }
+
+        public void SwitchUiState()
+        {
+            cardUi.enabled = !cardUi.enabled;
+            if (cardUi.enabled)
+            {
+                RefillUI();
+            }
+            else
+            {
+                EmptyUI();
             }
         }
 
-        public void AddGreenCard()
+        public void Disable()
         {
-            CardScript emptySlot = FindEmpty();
-            if (!(emptySlot is null))
-            {
-                if (!emptySlot.Backend.Equals(EmptyCard))
-                {
-                    CardDealer.Instance.AddToDiscard(emptySlot.Backend);
-                }
-
-                emptySlot.Backend = CardDealer.Instance.NextGreenCard;
-            }
-            else
-            {
-                lastCalled = AddGreenCard;
-            }
-        }
-
-        public void AddYellowCard()
-        {
-            CardScript emptySlot = FindEmpty();
-            if (!(emptySlot is null))
-            {
-                if (!emptySlot.Backend.Equals(EmptyCard))
-                {
-                    CardDealer.Instance.AddToDiscard(emptySlot.Backend);
-                }
-
-                emptySlot.Backend = CardDealer.Instance.NextYellowCard;
-            }
-            else
-            {
-                lastCalled = AddYellowCard;
-            }
+            cardUi.enabled = false;
+            EmptyUI();
+            errorMsg.enabled = false;
         }
     }
 }

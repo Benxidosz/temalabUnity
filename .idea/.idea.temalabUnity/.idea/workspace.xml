@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="8129cd36-f6a2-431a-8b67-678a40b6ccb7" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.temalabUnity/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.temalabUnity/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="ActionCardGet" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RESET_MODE" value="MIXED" />
+    <option name="UPDATE_TYPE" value="REBASE" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Utilities.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/ScriptableObjects/Buildings/BuildingsRule/BaseRule.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/EventSystem/ExecuteEvents.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/AD3EAA08-78D9-4CBE-8E45-F9C494D71647/eb/d8f70bf1/MonoBehaviour.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.netcode.gameobjects@1.0.0-pre.3/Runtime/Logging/NetworkLog.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/EventSystem/UIBehaviour.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Buildings/Building.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.netcode.gameobjects@1.0.0-pre.3/Runtime/Core/NetworkBehaviour.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.netcode.gameobjects@1.0.0-pre.3/Runtime/Messaging/Messages/RpcMessage.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/PlayerController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Controls/AngledPivot.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Buildings/PlaceHolder.cs" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <changedPaths>
+      <option value="$PROJECT_DIR$/Assets/Scripts/RaycastController.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/BuildingController.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Building/RaycastController.cs" />
+      <option value="$PROJECT_DIR$/Assets/VillageRule.cs" />
+      <option value="$PROJECT_DIR$/Assets/ScriptableObjects/Buildings/BuildingsRule/BaseRule.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Building/PlaceHolder.cs" />
+      <option value="$PROJECT_DIR$/Assets/ScriptableObjects/Buildings/BuildingsRule/RoadRule.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Building/Building.cs" />
+      <option value="$PROJECT_DIR$/Assets/ScriptableObjects/Buildings/BuildingsRule/CityRule.cs" />
+      <option value="$PROJECT_DIR$/Assets/ScriptableObjects/Buildings/BuildingsRule/VillageRule.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/ActionCards/CardManager.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/ActionCards/CardScript.cs" />
+      <option value="$PROJECT_DIR$/Assets/RandomBoardGenerator.cs" />
+      <option value="$PROJECT_DIR$/Assets/ScriptableObjects/CardObjects/CardObject.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Building/BuildingController.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Buildings/BuildingController.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Buildings/Building.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Buildings/PlaceHolder.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Buildings/RaycastController.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Material.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/PlayerController.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Utilities.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/ActionCards/CardDealer.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/ActionCards/CardInventory.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/MaterialController.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/DiceRoller.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/AngledPivot.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Map/Tile.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Controls/AngledPivot.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Map/RandomBoardGenerator.cs" />
+    </changedPaths>
+  </component>
+  <component name="ProjectId" id="21eGD9ioF1rq0vj3uxlEd1jrQwz" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DebuggerViewTab_PTCS_FirstProportionKey" value="0.34994525" />
+    <property name="DebuggerViewTab_PTCS_LastProportionKey" value="0.0" />
+    <property name="Discover.Launch.Via.Unity" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
+    <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+      <option name="allowRunningInParallel" value="false" />
+      <option name="listenPortForConnections" value="false" />
+      <option name="pid" />
+      <option name="selectedOptions">
+        <list />
+      </option>
+      <method v="2" />
+    </configuration>
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+      <option name="allowRunningInParallel" value="false" />
+      <option name="listenPortForConnections" value="false" />
+      <option name="pid" />
+      <option name="selectedOptions">
+        <list />
+      </option>
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="8129cd36-f6a2-431a-8b67-678a40b6ccb7" name="Changes" comment="" />
+      <created>1638294021325</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1638294021325</updated>
+      <workItem from="1638294027999" duration="945000" />
+      <workItem from="1638882021847" duration="4517000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="UnityCheckinConfiguration" checkUnsavedScenes="false" />
+  <component name="UnityProjectConfiguration" hasMinimizedUI="true" />
+  <component name="UnityUnitTestConfiguration" currentTestLauncher="EditMode" />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <pin-to-top-manager>
+      <pinned-members>
+        <PinnedItemInfo parentTag="Type#CardDealer" memberName="blueDiscardDeck" />
+        <PinnedItemInfo parentTag="Type#CardDealer" memberName="blueDeck" />
+      </pinned-members>
+    </pin-to-top-manager>
+  </component>
+</project>

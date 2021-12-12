@@ -128,8 +128,6 @@ namespace ActionCards
             {
                 InitDecksServerRpc();
             }
-
-            Debug.Log("Initialized");
         }
 
         [ServerRpc]
@@ -158,7 +156,6 @@ namespace ActionCards
             var deck = GetColorDeck(color);
             deck.RemoveTopCard();
             deck.Reshuffle(newOrder.ToList());
-            Debug.Log("Reshuffled");
         }
         
         private CardObject GetNextCard(CardColor color)
@@ -213,7 +210,6 @@ namespace ActionCards
         
         public void AddToDiscard(CardObject card)
         {
-            Debug.Log($"Discard {card.name}");
             if (blueCardSos.Contains(card))
             {
                 AddCardToDiscardServerRpc(CardColor.Blue, card.name);
@@ -237,7 +233,7 @@ namespace ActionCards
                     Initialize();
                 }
             }
-
+            
             if (IsClient || IsHost)
             {
                 if (GUI.Button(new Rect(10, 240, 150, 30), "Take top blue"))

@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Utilities
+public static class Utilities
 {
     
     public static void ShuffleList<T>(List<T> list)

@@ -22,7 +22,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 8027108953159870043, guid: cc650192b3a7aa74db22de4e00496422, type: 3}
         m_TargetAssemblyTypeName: CardManager, Assembly-CSharp
-        m_MethodName: testAction
+        m_MethodName: TestAction
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
