@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -30,6 +31,7 @@ namespace Buildings
             }
             var tmpNew = Instantiate(prefab.Model, gameObject.transform.position, Quaternion.identity);
             tmpNew.transform.parent = this.transform;
+            tmpNew.GetComponent<NetworkObject>().Spawn();
             _buildings.Add(tmpNew);
             _buildings[0].SetActive(false);
             MainBuilding = prefab;
