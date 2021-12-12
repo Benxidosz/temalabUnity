@@ -6,7 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="8129cd36-f6a2-431a-8b67-678a40b6ccb7" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.temalabUnity/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.temalabUnity/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/RandomizedMapScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/RandomizedMapScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ActionCards/CardDealer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ActionCards/CardDealer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectVersion.txt" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectVersion.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,6 +26,14 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RESET_MODE" value="MIXED" />
     <option name="UPDATE_TYPE" value="REBASE" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Utilities.cs" root0="FORCE_HIGHLIGHTING" />
@@ -62,7 +74,6 @@
       <option value="$PROJECT_DIR$/Assets/Scripts/Material.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/PlayerController.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Utilities.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/ActionCards/CardDealer.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/ActionCards/CardInventory.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/MaterialController.cs" />
@@ -72,6 +83,7 @@
       <option value="$PROJECT_DIR$/Assets/Scripts/Controls/AngledPivot.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Map/RandomBoardGenerator.cs" />
       <option value="$PROJECT_DIR$/Assets/OrientUp.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/ActionCards/CardDealer.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="21eGD9ioF1rq0vj3uxlEd1jrQwz" />
@@ -96,6 +108,14 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
+    <configuration name="Standalone Player" type="RunUnityExe" factoryName="Unity Executable">
+      <option name="EXE_PATH" value="$USER_HOME$/builds/temalabUnity/TemaLabUnity.exe" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="C:\Users\Balint\builds\temalabUnity" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <method v="2" />
+    </configuration>
     <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
@@ -125,6 +145,7 @@
       <updated>1638294021325</updated>
       <workItem from="1638294027999" duration="945000" />
       <workItem from="1638882021847" duration="4517000" />
+      <workItem from="1639316868736" duration="2701000" />
     </task>
     <servers />
   </component>

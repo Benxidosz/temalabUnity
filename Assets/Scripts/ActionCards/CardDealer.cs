@@ -17,43 +17,44 @@ namespace ActionCards
 
         private class Deck
         {
-            private List<CardObject> _deck = new List<CardObject>();
-            private readonly List<CardObject> _discardDeck = new List<CardObject>();
+            private List<CardObject> _cards = new List<CardObject>();
+            private readonly List<CardObject> _discardedCards = new List<CardObject>();
+
+            public List<CardObject> Cards => _cards;
 
             public Deck(List<CardObject> deck)
             {
-                _deck.AddRange(deck);
-                Utilities.ShuffleList(_deck);
+                _cards.AddRange(deck);
             }
 
             public CardObject GetNextCard()
             {
-                return _deck[0];
+                return _cards[0];
             }
 
             public void RemoveTopCard()
             {
-                _deck.RemoveAt(0);
+                _cards.RemoveAt(0);
             }
 
-            public int DeckCount => _deck.Count;
-            public int DiscardDeckCount => _discardDeck.Count;
+            public int DeckCount => _cards.Count;
+            public int DiscardDeckCount => _discardedCards.Count;
 
             public void Reshuffle(List<int> newOrder)
             {
-                _deck = newOrder.Select(index => _discardDeck[index]).ToList();
-                _discardDeck.Clear();
+                _cards = newOrder.Select(index => _discardedCards[index]).ToList();
+                _discardedCards.Clear();
             }
 
             public void AddToDiscard(CardObject card)
             {
-                if (_deck.Count == 0)
+                if (_cards.Count == 0)
                 {
-                    _deck.Add(card);
+                    _cards.Add(card);
                 }
                 else
                 {
-                    _discardDeck.Add(card);
+                    _discardedCards.Add(card);
                 }
             }
         }
@@ -130,7 +131,7 @@ namespace ActionCards
             }
         }
 
-        [ServerRpc]
+        [ServerRpc(RequireOwnership = false)]
         private void RemoveTopCardServerRpc(CardColor color)
         {
             RemoveTopCardClientRpc(color);
@@ -142,7 +143,7 @@ namespace ActionCards
             GetColorDeck(color).RemoveTopCard();
         }
 
-        [ServerRpc]
+        [ServerRpc(RequireOwnership = false)]
         private void RemoveTopCardAndReshuffleServerRpc(CardColor color, int remainingCount)
         {
             var order = Enumerable.Range(0, remainingCount).ToList();
@@ -251,6 +252,7 @@ namespace ActionCards
                     Debug.Log(NextYellowCard);
                 }
             }
+            
         }
     }
 }

@@ -399,7 +399,7 @@ MonoBehaviour:
   center: {x: 0, y: 0, z: 0}
   minZoom: 0.2
   maxZoom: 1
-  zoomStep: 0.2
+  zoomStep: 0.4
   zoomSpeed: 0.7
 --- !u!1 &713603395
 GameObject:
