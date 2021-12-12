@@ -378,7 +378,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   whiteDiceImage: {fileID: 4005334108806505188}
   redDiceImage: {fileID: 4005334108549635187}
-  actionDiceImage: {fileID: 0}
+  actionDiceImage: {fileID: 226811032301273452}
   whiteSprites:
   - {fileID: 1026941594032378316, guid: a25a9f7f8a3897d42b93f9984a3958b8, type: 3}
   - {fileID: -1611702914628681612, guid: a25a9f7f8a3897d42b93f9984a3958b8, type: 3}
@@ -393,13 +393,19 @@ MonoBehaviour:
   - {fileID: 4860509661650644410, guid: e6297d2f9b0bf0648bbb7fa02747c54f, type: 3}
   - {fileID: 1121871289737452129, guid: e6297d2f9b0bf0648bbb7fa02747c54f, type: 3}
   - {fileID: -3946840417601060529, guid: e6297d2f9b0bf0648bbb7fa02747c54f, type: 3}
-  actionSprites:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  actionDice:
+  - sprite: {fileID: 8721252158150106421, guid: 09c872a058a4fec43872a3ce834fd820, type: 3}
+    dice: 0
+  - sprite: {fileID: -1527487470476295773, guid: 09c872a058a4fec43872a3ce834fd820, type: 3}
+    dice: 1
+  - sprite: {fileID: -8247617844892422612, guid: 09c872a058a4fec43872a3ce834fd820, type: 3}
+    dice: 2
+  - sprite: {fileID: 2461842779457536761, guid: 09c872a058a4fec43872a3ce834fd820, type: 3}
+    dice: 3
+  - sprite: {fileID: 9107508668129347216, guid: 09c872a058a4fec43872a3ce834fd820, type: 3}
+    dice: 3
+  - sprite: {fileID: 7449714468213762290, guid: 09c872a058a4fec43872a3ce834fd820, type: 3}
+    dice: 3
 --- !u!1 &4005334110439290008
 GameObject:
   m_ObjectHideFlags: 0
