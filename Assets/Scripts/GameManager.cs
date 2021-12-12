@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using TMPro;
+using Unity.Netcode;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour {
@@ -9,7 +10,8 @@ public class GameManager : MonoBehaviour {
     private readonly List<PlayerController> _players = new List<PlayerController>();
 
     [SerializeField] private TextMeshProUGUI barbarText;
-    private int barbarTurn = 7;
+    private NetworkVariable<int> _barbarTurn = new NetworkVariable<int>(7);
+    
     private void Awake() {
         if (Instance == null)
             Instance = this;
@@ -24,17 +26,17 @@ public class GameManager : MonoBehaviour {
         _players.Add(player);
     }
     private void RefreshBarbarText() {
-        barbarText.text = $"{barbarTurn} Black Rolls Until Barbars";
+        barbarText.text = $"{_barbarTurn} Black Rolls Until Barbars";
     }
 
     private void BarbarsComing() {
         Debug.Log("Barbars!");
     }
     public void BlackRolled() {
-        barbarTurn--;
-        if (barbarTurn == 0) {
+        _barbarTurn.Value--;
+        if (_barbarTurn.Value == 0) {
             BarbarsComing();
-            barbarTurn = 7;
+            _barbarTurn.Value = 7;
         }
         RefreshBarbarText();
     }
