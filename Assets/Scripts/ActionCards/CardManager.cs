@@ -21,10 +21,11 @@ public class CardManager : MonoBehaviour {
         Debug.Log(player);
     }
 
-    public void testSokAction(PlayerController player) {
-        Debug.Log(player);
+    public void Alkimist(PlayerController player) {
+        player.PickDice();
     }
-    public void uj(PlayerController player) {
-        Debug.Log(player);
+
+    public void AddTestCard(CardSO testCard) {
+        GameManager.Instance.CurrentPlayer.AddTestCard(testCard);
     }
 }
