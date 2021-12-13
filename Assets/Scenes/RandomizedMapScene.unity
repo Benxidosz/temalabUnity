@@ -248,6 +248,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hexagonPrefab: {fileID: 6112573430322887445, guid: 060583d06a0e93e42bbde2fef02e28f9, type: 3}
   diskPrefab: {fileID: 7079338533366967569, guid: d22aebdae2bfafb4e9c1b1f40e13f392, type: 3}
+  portPrefab: {fileID: 3881978974361098167, guid: 97f39a156797c574b832bd9798515470, type: 3}
   brick: {fileID: 11400000, guid: 360d4f701f6e9e44888484b0cf5571d1, type: 2}
   ore: {fileID: 11400000, guid: 90bc70931c55b554099b12b139043e36, type: 2}
   wood: {fileID: 11400000, guid: f3e10961013d754418c997a108496c83, type: 2}
@@ -255,6 +256,12 @@ MonoBehaviour:
   wool: {fileID: 11400000, guid: 6c9eadbf78e0cc24db9b7cb1c47d2212, type: 2}
   desert: {fileID: 11400000, guid: a2965fd6035a9624b91949f8c3ca4f75, type: 2}
   ocean: {fileID: 11400000, guid: 888860a56653ff048922c6cd1efbefe4, type: 2}
+  brickPort: {fileID: 11400000, guid: 8135c82e7eaf1034a99ed3a2249aadaa, type: 2}
+  orePort: {fileID: 11400000, guid: df033508eb5719544a1d4d52ffe08b22, type: 2}
+  woodPort: {fileID: 11400000, guid: e64755b0946827947b4a11c62404a7c7, type: 2}
+  wheatPort: {fileID: 11400000, guid: 7e570c4c00efef14382c8fd2b9ef4e2c, type: 2}
+  woolPort: {fileID: 11400000, guid: dcd605539243eb44a9b7c54602d19def, type: 2}
+  anyPort: {fileID: 11400000, guid: eab1198fb63cb264490ec15f541682b9, type: 2}
   numberDisks:
   - {fileID: 11400000, guid: 8dd3bfcd2f16c0d4bb5427fbd76f8167, type: 2}
   - {fileID: 11400000, guid: beba80d249b7be94f820cb8a3ce6b66e, type: 2}

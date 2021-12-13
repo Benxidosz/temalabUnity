@@ -7,6 +7,7 @@ public class RandomBoardGenerator : NetworkBehaviour
 {
     public GameObject hexagonPrefab;
     public GameObject diskPrefab;
+    public GameObject portPrefab;
 
     public Tile brick;
     public Tile ore;
@@ -15,6 +16,13 @@ public class RandomBoardGenerator : NetworkBehaviour
     public Tile wool;
     public Tile desert;
     public Tile ocean;
+
+    public Port brickPort;
+    public Port orePort;
+    public Port woodPort;
+    public Port wheatPort;
+    public Port woolPort;
+    public Port anyPort;
 
     public Disk[] numberDisks;
 
@@ -27,6 +35,16 @@ public class RandomBoardGenerator : NetworkBehaviour
         Wood,
         Desert,
         Ocean
+    }
+
+    private enum PortType
+    {
+        Brick,
+        Ore,
+        Wheat,
+        Wool,
+        Wood,
+        Any
     }
 
     private readonly Vector3[] _tileOffsets = new[]
@@ -54,7 +72,6 @@ public class RandomBoardGenerator : NetworkBehaviour
 
     private readonly Vector3[] _oceanTileOffsets = new[]
     {
-        new Vector3(3, 0, 3),
         new Vector3(-3, 0, -3),
         new Vector3(-4, 0, -2),
         new Vector3(-5, 0, -1),
@@ -64,6 +81,7 @@ public class RandomBoardGenerator : NetworkBehaviour
         new Vector3(-3, 0, 3),
         new Vector3(-1, 0, 3),
         new Vector3(1, 0, 3),
+        new Vector3(3, 0, 3),
         new Vector3(4, 0, 2),
         new Vector3(5, 0, 1),
         new Vector3(6, 0, 0),
@@ -76,6 +94,7 @@ public class RandomBoardGenerator : NetworkBehaviour
 
     private readonly Dictionary<TileType, Tile> _tiles = new Dictionary<TileType, Tile>();
     private readonly Dictionary<int, Disk> _disks = new Dictionary<int, Disk>();
+    private readonly Dictionary<PortType, Port> _ports = new Dictionary<PortType, Port>();
 
     [SerializeField] private Vector2 tileOffset = new Vector2(0.9f, 1.6f);
 
@@ -99,6 +118,13 @@ public class RandomBoardGenerator : NetworkBehaviour
         _disks[10] = numberDisks[7];
         _disks[11] = numberDisks[8];
         _disks[12] = numberDisks[9];
+
+        _ports[PortType.Brick] = brickPort;
+        _ports[PortType.Ore] = orePort;
+        _ports[PortType.Wheat] = wheatPort;
+        _ports[PortType.Wool] = woolPort;
+        _ports[PortType.Wood] = woodPort;
+        _ports[PortType.Any] = anyPort;
     }
 
     public void CreateRandomBoard()
@@ -122,6 +148,15 @@ public class RandomBoardGenerator : NetworkBehaviour
         return numberDisk;
     }
 
+    private GameObject CreatePort(Vector3 position, PortType portType, int rotation)
+    {
+        var port = Instantiate(portPrefab);
+        port.transform.position = new Vector3(position.x * tileOffset.x, 0.05f, position.z * tileOffset.y);
+        port.transform.rotation = Quaternion.Euler(-90, 0, rotation);
+        port.GetComponent<Renderer>().material.mainTexture = _ports[portType].texture;
+        return null;
+    }
+
     [ServerRpc]
     private void GenerateTilesServerRPC()
     {
@@ -140,18 +175,29 @@ public class RandomBoardGenerator : NetworkBehaviour
         }
         Utilities.ShuffleList(types);
 
-        SpawnTilesClientRpc(types.ToArray());
+        var ports = new List<PortType>();
+        foreach (var port in (PortType[])Enum.GetValues(typeof(PortType)))
+        {
+            for (var i = 0; i < _ports[port].quantity; i++)
+            {
+                ports.Add(port);
+            }
+        }
+        Utilities.ShuffleList(ports);
+
+        SpawnTilesClientRpc(types.ToArray(), ports.ToArray());
     }
 
     [ClientRpc]
-    private void SpawnTilesClientRpc(TileType[] tileTypes)
+    private void SpawnTilesClientRpc(TileType[] tileTypes, PortType[] portTypes)
     {
         var hexagonGOs = new List<GameObject>();
         var diskGOs = new List<GameObject>();
-        CreateHexagons(hexagonGOs, tileTypes, diskGOs);
+        var portGOs = new List<GameObject>();
+        CreateHexagons(hexagonGOs, tileTypes, diskGOs, portGOs, portTypes);
     }
 
-    private void CreateHexagons(List<GameObject> hexagons, TileType[] tileTypes, List<GameObject> disks)
+    private void CreateHexagons(List<GameObject> hexagons, TileType[] tileTypes, List<GameObject> disks, List<GameObject> ports, PortType[] portTypes)
     {
 
         var numbers = new List<int>();
@@ -176,9 +222,20 @@ public class RandomBoardGenerator : NetworkBehaviour
 
         }
 
+        var rot = -150;
         for (var i = 0; i < _oceanTileOffsets.Length; i++)
         {
             hexagons.Add(CreateHexagon(_oceanTileOffsets[i], TileType.Ocean));
+            if (i % 2 == 0)
+            {
+                if (i == 12)
+                    rot += 60;
+
+                ports.Add(CreatePort(_oceanTileOffsets[i], portTypes[i/2], rot));
+
+                if (i % 4 == 0)
+                    rot += 60;
+            }
         }
     }
 }
