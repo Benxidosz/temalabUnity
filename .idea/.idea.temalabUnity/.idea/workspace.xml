@@ -6,20 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="8129cd36-f6a2-431a-8b67-678a40b6ccb7" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.temalabUnity/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.temalabUnity/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Player.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Player.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Building.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Building.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Dice.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Dice.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/ScriptableObjects/Buildings/BuildingsRule/CityRule.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/Buildings/BuildingsRule/CityRule.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ScriptableObjects/Buildings/BuildingsRule/RoadRule.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/Buildings/BuildingsRule/RoadRule.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ScriptableObjects/Buildings/BuildingsRule/VillageRule.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/Buildings/BuildingsRule/VillageRule.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Building/Building.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Building/Building.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Building/BuildingController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Building/BuildingController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Building/PlaceHolder.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Building/PlaceHolder.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Material.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Material.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MaterialController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MaterialController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PlayerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PlayerController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,14 +41,14 @@
       <option value="$PROJECT_DIR$/Assets/ScriptableObjects/Buildings/BuildingsRule/BaseRule.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Building/Building.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Building/PlaceHolder.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Building/BuildingController.cs" />
-      <option value="$PROJECT_DIR$/Assets/ScriptableObjects/Buildings/BuildingsRule/CityRule.cs" />
       <option value="$PROJECT_DIR$/Assets/ScriptableObjects/Buildings/BuildingsRule/RoadRule.cs" />
       <option value="$PROJECT_DIR$/Assets/ScriptableObjects/Buildings/BuildingsRule/VillageRule.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/PlayerController.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/MaterialController.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Material.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" />
+      <option value="$PROJECT_DIR$/Assets/ScriptableObjects/Buildings/BuildingsRule/CityRule.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Building/BuildingController.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="21eGD9ioF1rq0vj3uxlEd1jrQwz" />

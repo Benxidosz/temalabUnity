@@ -25,7 +25,10 @@ public class BuildingController : MonoBehaviour{
     }
 
     public void BuildVillage(){
-        if (raycastController.FocusedPlaceHolder.Player != null && raycastController.FocusedPlaceHolder.Player.id != myPlayer.id) return;
+        if (raycastController.FocusedObj is null||
+            (raycastController.FocusedPlaceHolder.Player != null &&
+             raycastController.FocusedPlaceHolder.Player.id != myPlayer.id)) return;
+        
         if (FreeVillage > 0 && raycastController.FocusedPlaceHolder.Type == PlaceHolderType.NODE){
             raycastController.FocusedPlaceHolder.PlaceNew(Village, myPlayer);
             raycastController.SetFocusNull();
@@ -33,8 +36,7 @@ public class BuildingController : MonoBehaviour{
             return;
         }
 
-        if (raycastController.FocusedObj is null ||
-            !Village.MyRule.Rule(raycastController.FocusedPlaceHolder) ||
+        if (!Village.MyRule.Rule(raycastController.FocusedPlaceHolder) ||
             !materialController.TryToRemove(Village)) return;
         
         raycastController.FocusedPlaceHolder.PlaceNew(Village, myPlayer);
@@ -42,9 +44,11 @@ public class BuildingController : MonoBehaviour{
     }
 
     public void BuildCity(){
-        if (raycastController.FocusedPlaceHolder.Player != null && raycastController.FocusedPlaceHolder.Player.id != myPlayer.id) return;
-        if (raycastController.FocusedObj is null || 
-            !City.MyRule.Rule(raycastController.FocusedPlaceHolder) ||
+        if (raycastController.FocusedObj is null||
+            raycastController.FocusedPlaceHolder.Player != null && 
+            raycastController.FocusedPlaceHolder.Player.id != myPlayer.id) return;
+        
+        if (!City.MyRule.Rule(raycastController.FocusedPlaceHolder) ||
             !materialController.TryToRemove(City)) return;
         
         raycastController.FocusedPlaceHolder.PlaceNew(City, myPlayer);
@@ -52,9 +56,11 @@ public class BuildingController : MonoBehaviour{
     }
 
     public void BuildRoad(){
-        if (raycastController.FocusedPlaceHolder.Player != null && raycastController.FocusedPlaceHolder.Player.id != myPlayer.id) return;
-        if (raycastController.FocusedObj is null || 
-            !Road.MyRule.Rule(raycastController.FocusedPlaceHolder) ||
+        if (raycastController.FocusedObj is null||
+            raycastController.FocusedPlaceHolder.Player != null && 
+            raycastController.FocusedPlaceHolder.Player.id != myPlayer.id) return;
+        
+        if (!Road.MyRule.Rule(raycastController.FocusedPlaceHolder) ||
             !materialController.TryToRemove(Road)) return;
         
         raycastController.FocusedPlaceHolder.PlaceNew(Road, myPlayer);
