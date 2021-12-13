@@ -7,12 +7,14 @@ public class PlaceHolder : MonoBehaviour{
     [SerializeField] private List<PlaceHolder> neighbours;
     [SerializeField] private PlaceHolderType type;
     [SerializeField] private GameObject StartingObj;
+    
     private List<GameObject> Buildings;
 
     public PlaceHolderType Type => type;
     public List<PlaceHolder> Neighbours => neighbours;
     public Building MainBuilding{ get; private set; }
-    
+    public PlayerController Player{ get; private set; }
+
     private void Start(){
         Buildings = new List<GameObject>();
         var tmpNew = Instantiate(StartingObj, gameObject.transform.position, Quaternion.identity);
@@ -20,7 +22,7 @@ public class PlaceHolder : MonoBehaviour{
         Buildings.Add(tmpNew);
     }
 
-    public void PlaceNew(Building prefab){
+    public void PlaceNew(Building prefab, PlayerController player){
         if (Buildings.Count > 1){
             Destroy(Buildings[1]);
             Buildings.RemoveAt(1);
@@ -30,6 +32,7 @@ public class PlaceHolder : MonoBehaviour{
         Buildings.Add(tmpNew);
         Buildings[0].SetActive(false);
         MainBuilding = prefab;
+        Player = player;
     }
         
 }

@@ -9,15 +9,19 @@ public class RoadRule : BaseRule{
             nb.Neighbours.ForEach(nnb => {
                 if (nnb.MainBuilding != null){
                     //Kapcsolodik e uthoz
-                    if (nnb != holder && nnb.MainBuilding.MyType == BuildingsType.ROAD){
+                    if (nnb != holder && 
+                        nnb.MainBuilding.MyType == BuildingsType.ROAD && 
+                        nnb.Player.id == GameManager.Instance.CurrentPlayer.id){
+                        
                         re = true;
                     }
                 }
                 else{
                     if (nb.MainBuilding != null){
                         // szomszedos e varossal
-                        if (nb.MainBuilding.MyType == BuildingsType.CITY ||
-                            nb.MainBuilding.MyType == BuildingsType.VILLAGE)
+                        if ((nb.MainBuilding.MyType == BuildingsType.CITY ||
+                            nb.MainBuilding.MyType == BuildingsType.VILLAGE) &&
+                            nb.Player.id == GameManager.Instance.CurrentPlayer.id)
                             re = true;
                     }    
                 }

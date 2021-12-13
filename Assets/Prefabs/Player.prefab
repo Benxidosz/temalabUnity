@@ -12,9 +12,11 @@ GameObject:
   - component: {fileID: 8430714868440308692}
   - component: {fileID: 8430714868440308695}
   - component: {fileID: 8430714868440308698}
+  - component: {fileID: 1809726538668706238}
+  - component: {fileID: 2525200806155185257}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -73,3 +75,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0af034a72154a346a09172833dbf667, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1809726538668706238
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8430714868440308694}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0d97502368621045b02e30738b9395a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2525200806155185257
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8430714868440308694}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a16b250409058d744bce429bad079afe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  raycastController: {fileID: 0}
+  materialController: {fileID: 1809726538668706238}
+  myPlayer: {fileID: 0}
+  placeHolders: []
+  FreeVillage: 1
+  Village: {fileID: 11400000, guid: ccce9e0b0d404f949b5a2d4841688212, type: 2}
+  City: {fileID: 11400000, guid: d4bebcda802fc5a4da1415b130f66f1b, type: 2}
+  Road: {fileID: 11400000, guid: cc72318ed30650a41845a1df5829a96b, type: 2}
