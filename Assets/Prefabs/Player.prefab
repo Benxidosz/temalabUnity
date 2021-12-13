@@ -246,6 +246,9 @@ GameObject:
   - component: {fileID: 8430714868440308692}
   - component: {fileID: 8430714868440308695}
   - component: {fileID: 8430714868440308698}
+  - component: {fileID: 924796901001401634}
+  - component: {fileID: 8006990573934685191}
+  - component: {fileID: 3753341493876085763}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -311,6 +314,52 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   points: {fileID: 8311411133341732318}
+--- !u!114 &924796901001401634
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8430714868440308694}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0d97502368621045b02e30738b9395a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8006990573934685191
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8430714868440308694}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a16b250409058d744bce429bad079afe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  raycastController: {fileID: 0}
+  materialController: {fileID: 0}
+  myPlayer: {fileID: 0}
+  placeHolders: []
+  FreeVillage: 1
+  Village: {fileID: 11400000, guid: ccce9e0b0d404f949b5a2d4841688212, type: 2}
+  City: {fileID: 11400000, guid: d4bebcda802fc5a4da1415b130f66f1b, type: 2}
+  Road: {fileID: 11400000, guid: cc72318ed30650a41845a1df5829a96b, type: 2}
+--- !u!114 &3753341493876085763
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8430714868440308694}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7af1fe060b30ad942af91d96abc8fb5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  focusMaterial: {fileID: 0}
+  basicMaterial: {fileID: 0}
 --- !u!1001 &1414481427147927993
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -334,6 +383,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6342725534408176630, guid: ef391287d5991094bbfa805ef4bc2803, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 8430714868440308692}
+    - target: {fileID: 6342725534408176630, guid: ef391287d5991094bbfa805ef4bc2803, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: UpgradeGreen
+      objectReference: {fileID: 0}
     - target: {fileID: 6342725535080990572, guid: ef391287d5991094bbfa805ef4bc2803, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -349,6 +406,14 @@ PrefabInstance:
     - target: {fileID: 6342725535080990572, guid: ef391287d5991094bbfa805ef4bc2803, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6342725535080990573, guid: ef391287d5991094bbfa805ef4bc2803, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 8430714868440308692}
+    - target: {fileID: 6342725535080990573, guid: ef391287d5991094bbfa805ef4bc2803, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: UpgradeYellow
       objectReference: {fileID: 0}
     - target: {fileID: 6342725535292849992, guid: ef391287d5991094bbfa805ef4bc2803, type: 3}
       propertyPath: m_Name
@@ -441,6 +506,14 @@ PrefabInstance:
     - target: {fileID: 6342725535292849996, guid: ef391287d5991094bbfa805ef4bc2803, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6342725535602122760, guid: ef391287d5991094bbfa805ef4bc2803, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 8430714868440308692}
+    - target: {fileID: 6342725535602122760, guid: ef391287d5991094bbfa805ef4bc2803, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: UpgradeBlue
       objectReference: {fileID: 0}
     - target: {fileID: 6342725535602122763, guid: ef391287d5991094bbfa805ef4bc2803, type: 3}
       propertyPath: m_AnchorMax.y

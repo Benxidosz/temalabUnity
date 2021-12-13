@@ -24,6 +24,7 @@ public class GameManager : MonoBehaviour {
     public Dictionary<UIKeys, Canvas> UIs;
 
     private List<PlayerController> _players = new List<PlayerController>();
+    public List<PlayerController> Players => _players;
     private int _currentPlayerIdx = 0;
     private void Awake() {
         if (Instance == null) {
@@ -44,6 +45,7 @@ public class GameManager : MonoBehaviour {
         }
         _players.Add(player);
     }
+
     public void DrawActionCard(ActionDice action) {
         CurrentPlayer.DrawActionCard(action);
     }
@@ -58,5 +60,21 @@ public class GameManager : MonoBehaviour {
             CurrentPlayer = _players[_currentPlayerIdx];
             CurrentTurnState = TurnState.beforeRoll;
         }
+    }
+
+    public void Village(){
+        CurrentPlayer.BuildingController.BuildVillage();
+    }
+
+    public void City(){
+        CurrentPlayer.BuildingController.BuildCity();
+    }
+
+    public void Road(){
+        CurrentPlayer.BuildingController.BuildRoad();
+    }
+
+    public void UpdatePanel(){
+        CurrentPlayer.MaterialController.UpdatePanel();
     }
 }

@@ -19,7 +19,8 @@ public class VillageRule : BaseRule{
                 }
                 else{
                     if (nb.MainBuilding != null && !loc){
-                        if(nb.MainBuilding.MyType == BuildingsType.ROAD)
+                        if(nb.MainBuilding.MyType == BuildingsType.ROAD && 
+                           nb.Player.id == GameManager.Instance.CurrentPlayer.id)
                             cou++;
                     }
                 }

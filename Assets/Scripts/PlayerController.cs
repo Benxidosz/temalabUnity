@@ -8,6 +8,14 @@ public class PlayerController : MonoBehaviour {
     private CardInventory _cardInventory;
     private UpgradeManager _upgradeManager;
     private GameManager _gameManager;
+    private MaterialController _materialController;
+    private BuildingController _buildingController;
+    
+    public long id{ get; private set; }
+    public BuildingController BuildingController => _buildingController;
+    public MaterialController MaterialController => _materialController;
+   
+
 
     private bool _uiActive = false;
 
@@ -34,9 +42,12 @@ public class PlayerController : MonoBehaviour {
     void Start() {
         _gameManager = GameManager.Instance;
         _gameManager.RegisterPlayer(this);
-
         _cardInventory = GetComponent<CardInventory>();
         _upgradeManager = GetComponent<UpgradeManager>();
+
+        _materialController = GetComponent<MaterialController>();
+        _buildingController = GetComponent<BuildingController>();
+        id = GetInstanceID();
 
         _dicePicker = _gameManager.UIs[GameManager.UIKeys.dicePicker];
 
@@ -45,7 +56,7 @@ public class PlayerController : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-        if (!_uiActive) {
+        if (!_uiActive && this == _gameManager.CurrentPlayer) {
             if (Input.GetKeyDown("i")) {
                 _upgradeManager.Disable();
                 _cardInventory.SwitchUiState();

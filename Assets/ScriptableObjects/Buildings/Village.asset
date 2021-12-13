@@ -15,3 +15,4 @@ MonoBehaviour:
   model: {fileID: 1628906338421229853, guid: 92350b92aa56c22489e1488f7f6e3aca, type: 3}
   myRule: {fileID: 11400000, guid: 900576f160ffd0146930a4bec177ca2c, type: 2}
   myType: 0
+  cost: 00000000010000000200000003000000
