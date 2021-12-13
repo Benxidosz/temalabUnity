@@ -23,10 +23,11 @@ public class GameManager : MonoBehaviour {
 
     public Dictionary<UIKeys, Canvas> UIs;
 
-    private List<PlayerController> _players = new List<PlayerController>();
-    public List<PlayerController> Players => _players;
+    public List<PlayerController> Players{ get; private set; }
+
     private int _currentPlayerIdx = 0;
-    private void Awake() {
+    private void Awake(){
+        Players = new List<PlayerController>();
         if (Instance == null) {
             Instance = this;
             CurrentTurnState = TurnState.beforeRoll;
@@ -40,10 +41,10 @@ public class GameManager : MonoBehaviour {
         }
     }
     public void RegisterPlayer(PlayerController player) {
-        if (_players.Count == 0) {
+        if (Players.Count == 0) {
             CurrentPlayer = player;
         }
-        _players.Add(player);
+        Players.Add(player);
     }
 
     public void DrawActionCard(ActionDice action) {
@@ -55,9 +56,9 @@ public class GameManager : MonoBehaviour {
     public void EndTurn() {
         if (CurrentTurnState == TurnState.rolled) {
             _currentPlayerIdx++;
-            if (_currentPlayerIdx > _players.Count)
+            if (_currentPlayerIdx > Players.Count)
                 _currentPlayerIdx = 0;
-            CurrentPlayer = _players[_currentPlayerIdx];
+            CurrentPlayer = Players[_currentPlayerIdx];
             CurrentTurnState = TurnState.beforeRoll;
         }
     }
