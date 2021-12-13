@@ -16,13 +16,12 @@ public class CardManager : MonoBehaviour {
             Destroy(this);
         }
     }
-
-    public void testAction(PlayerController player) {
-        Debug.Log(player);
-    }
-
     public void Alkimist(PlayerController player) {
         player.PickDice();
+    }
+
+    public void IncreasePoint(PlayerController player) {
+        ++player.Points;
     }
 
     public void AddTestCard(CardSO testCard) {

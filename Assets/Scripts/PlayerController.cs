@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
@@ -17,6 +18,19 @@ public class PlayerController : MonoBehaviour {
     public int WhiteDice { get; private set; }
     public int RedDice { get; private set; }
 
+    private int _points = 0;
+    public int Points {
+        get => _points;
+        set {
+            if (value < _points)
+                throw new ArgumentException("New Point cannot be lower!");
+            _points = value;
+            RefreshPoints();
+        }
+    }
+
+    [SerializeField] private TextMeshProUGUI points;
+
     void Start() {
         _gameManager = GameManager.Instance;
         _gameManager.RegisterPlayer(this);
@@ -25,6 +39,8 @@ public class PlayerController : MonoBehaviour {
         _upgradeManager = GetComponent<UpgradeManager>();
 
         _dicePicker = _gameManager.UIs[GameManager.UIKeys.dicePicker];
+
+        RefreshPoints();
     }
 
     // Update is called once per frame
@@ -40,6 +56,10 @@ public class PlayerController : MonoBehaviour {
                 _upgradeManager.SwitchUiState();
             }
         }
+    }
+
+    private void RefreshPoints() {
+        points.text = $"Points: {Points}";
     }
 
     public void DrawActionCard(ActionDice action) {
