@@ -24,6 +24,7 @@ public class GameManager : MonoBehaviour {
     public Dictionary<UIKeys, Canvas> UIs;
 
     private List<PlayerController> _players = new List<PlayerController>();
+    public List<PlayerController> Players => _players;
     private int _currentPlayerIdx = 0;
     private void Awake() {
         if (Instance == null) {

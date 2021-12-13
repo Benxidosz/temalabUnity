@@ -56,7 +56,7 @@ public class PlayerController : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-        if (!_uiActive) {
+        if (!_uiActive && this == _gameManager.CurrentPlayer) {
             if (Input.GetKeyDown("i")) {
                 _upgradeManager.Disable();
                 _cardInventory.SwitchUiState();

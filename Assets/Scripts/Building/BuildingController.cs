@@ -19,6 +19,9 @@ public class BuildingController : MonoBehaviour{
     private void Start(){
         placeHolders = new List<PlaceHolder>();
         myPlayer = GetComponent<PlayerController>();
+        materialController = GetComponent<MaterialController>();
+        raycastController = GetComponent<RaycastController>();
+            
         foreach (var o in GameObject.FindGameObjectsWithTag("PlaceHolder")){
             placeHolders.Add(o.GetComponent<PlaceHolder>());
         }
