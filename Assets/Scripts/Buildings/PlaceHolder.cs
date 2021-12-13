@@ -1,5 +1,3 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using Unity.Netcode;
 using UnityEngine;
@@ -16,7 +14,9 @@ namespace Buildings
         public PlaceHolderType Type => type;
         public List<PlaceHolder> Neighbours => neighbours;
         public Building MainBuilding{ get; private set; }
-    
+
+        public PlayerController Player { get; private set; }
+
         private void Start(){
             _buildings = new List<GameObject>();
             var tmpNew = Instantiate(startingObj, gameObject.transform.position, Quaternion.identity);
@@ -24,7 +24,7 @@ namespace Buildings
             _buildings.Add(tmpNew);
         }
 
-        public void PlaceNew(Building prefab){
+        public void PlaceNew(Building prefab, PlayerController player){
             if (_buildings.Count > 1){
                 Destroy(_buildings[1]);
                 _buildings.RemoveAt(1);
@@ -35,6 +35,7 @@ namespace Buildings
             _buildings.Add(tmpNew);
             _buildings[0].SetActive(false);
             MainBuilding = prefab;
+            Player = Player;
         }
         
     }

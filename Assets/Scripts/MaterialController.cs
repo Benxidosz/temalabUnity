@@ -1,4 +1,6 @@
 using System.Collections.Generic;
+using System.Linq;
+using Buildings;
 using UnityEngine;
 
 public delegate void SetTextDelegate(int count, MaterialType type);
@@ -13,10 +15,8 @@ public class MaterialController : MonoBehaviour{
         foreach (var m in tmp){
             var type = m.GetComponent<Material>().Type;
             _materials.Add(type, 0);
-            Increase(type, 1);
+            Increase(type, 10);
         }
-        
-        print("");
     }
 
     public void Increase(MaterialType type, int deltaCount){
@@ -36,6 +36,25 @@ public class MaterialController : MonoBehaviour{
 
     public int GetMaterialCount(MaterialType type){
         return _materials[type];
+    }
+
+    public void UpdatePanel(){
+        foreach (var material in _materials){
+            SetText?.Invoke(material.Value, material.Key);
+        }
+    }
+
+    public bool TryToRemove(Building building){
+        if (!CheckMaterials(building)) return false;
+        foreach (var mat in building.MyCost){
+            _materials[mat.Key] -= mat.Value;
+            SetText?.Invoke(_materials[mat.Key], mat.Key);
+        }
+
+        return true;
+    }
+    private bool CheckMaterials(Building building){
+        return building.MyCost.All(mat => GetMaterialCount(mat.Key) >= mat.Value);
     }
 }
 

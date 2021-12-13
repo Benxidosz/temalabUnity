@@ -1,4 +1,5 @@
 using ActionCards;
+using Buildings;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
@@ -6,12 +7,23 @@ public class PlayerController : MonoBehaviour {
     private UpgradeManager _upgradeManager;
     private GameManager _gameManager;
 
+    private MaterialController _materialController;
+    private BuildingController _buildingController;
+    
+    public long Id{ get; private set; }
+    public BuildingController BuildingController => _buildingController;
+    public MaterialController MaterialController => _materialController;
+   
+
     private void Start() {
         _gameManager = GameManager.Instance;
         _gameManager.RegisterPlayer(this);
-        
         _cardInventory = GetComponent<CardInventory>();
         _upgradeManager = GetComponent<UpgradeManager>();
+
+        _materialController = GetComponent<MaterialController>();
+        _buildingController = GetComponent<BuildingController>();
+        Id = GetInstanceID();
     }
 
     private void Update() {

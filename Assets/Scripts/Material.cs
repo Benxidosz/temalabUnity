@@ -8,10 +8,13 @@ public class Material : MonoBehaviour{
     private MaterialController _myController;
     public MaterialType Type => type;
 
-    private void Awake(){
+    private void Start(){
         tmpText = GetComponent<TextMeshProUGUI>();
         _myController = GameObject.FindWithTag("InventoryController").GetComponent<MaterialController>();
         _myController.SetText += SetText;
+        foreach (var player in GameManager.Instance.Players){
+            player.MaterialController.SetText += SetText;
+        }
     }
 
     private void SetText(int count, MaterialType materialType){
