@@ -87,8 +87,9 @@ public class CardInventory : MonoBehaviour {
         _cards.ForEach(c => {
             c.Button.onClick.RemoveAllListeners();
             c.Button.onClick.AddListener(() => {
-                c.Script.Backend.Action?.Invoke(GameManager.Instance.CurrentPlayer);
+                CardSO tmp = c.Script.Backend;
                 DiscardACard(c);
+                tmp.Action?.Invoke(GameManager.Instance.CurrentPlayer);
             });
         });
     }
@@ -111,44 +112,6 @@ public class CardInventory : MonoBehaviour {
         }
         RefillUI();
     }
-    // public void AddBlueCard() {
-    //     int emptySlot = FindEmpty();
-    //     var nextCard = CardDealer.Instance.NextBlueCard;
-    //     if (emptySlot != -1) {
-    //         _cardInventory[emptySlot] = nextCard;
-    //     } else {
-    //         _cardQueue.Enqueue(nextCard);
-    //         SwitchToDiscardState();
-    //     }
-    // }
-    //
-    // public void AddGreenCard() {
-    //     Card emptySlot = FindEmpty();
-    //     var nextCard = CardDealer.Instance.NextGreenCard;
-    //     if (!(emptySlot is null)) {
-    //         emptySlot.Script.Backend = nextCard;
-    //
-    //         int idx = _cards.IndexOf(emptySlot);
-    //         _cardInventory[idx] = nextCard;
-    //     } else {
-    //         _cardQueue.Enqueue(nextCard);
-    //         SwitchToDiscardState();
-    //     }
-    // }
-    //
-    // public void AddYellowCard() {
-    //     Card emptySlot = FindEmpty();
-    //     var nextCard = CardDealer.Instance.NextYellowCard;
-    //     if (!(emptySlot is null)) {
-    //         emptySlot.Script.Backend = nextCard;
-    //
-    //         int idx = _cards.IndexOf(emptySlot);
-    //         _cardInventory[idx] = nextCard;
-    //     } else {
-    //         _cardQueue.Enqueue(nextCard);
-    //         SwitchToDiscardState();
-    //     }
-    // }
 
     public void SwitchUiState() {
         CardUi.enabled = !CardUi.enabled;
