@@ -44,7 +44,14 @@ namespace Buildings
 
             var tmpNew = Instantiate(prefab.Model, gameObject.transform.position, Quaternion.identity);
             tmpNew.transform.parent = transform;
-            tmpNew.GetComponent<NetworkObject>().Spawn();
+            if (prefab.MyType != BuildingsType.Road){
+                tmpNew.transform.Rotate(270f, 0, 0);
+                tmpNew.transform.localScale = new Vector3(100, 100, 100);
+            }
+            else{
+                
+            }
+            //tmpNew.GetComponent<NetworkObject>().Spawn();
             _buildings.Add(tmpNew);
             _buildings[0].SetActive(false);
             MainBuilding = prefab;

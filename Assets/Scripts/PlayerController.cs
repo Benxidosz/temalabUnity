@@ -54,7 +54,6 @@ public class PlayerController : MonoBehaviour {
 
     private void Start(){
         _dicePicker = _gameManager.UIs[GameManager.UIKeys.dicePicker];
-
         RefreshPoints();
         Id = GetInstanceID();
     }

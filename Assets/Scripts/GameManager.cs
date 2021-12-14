@@ -21,13 +21,11 @@ public class GameManager : MonoBehaviour {
     }
     public static GameManager Instance { get; private set; }
     
-    [FormerlySerializedAs("_players")] [SerializeField]private List<PlayerController> players = new List<PlayerController>();
+    [FormerlySerializedAs("_players")] [SerializeField]private List<PlayerController> _players = new List<PlayerController>();
     public PlayerController CurrentPlayer { get; private set; }
     public TurnState CurrentTurnState { get; private set; }
 
     public Dictionary<UIKeys, Canvas> UIs;
-
-    private List<PlayerController> _players = new List<PlayerController>();
     public List<PlayerController> Players => _players;
     private int _currentPlayerIdx = 0;
 
@@ -47,12 +45,12 @@ public class GameManager : MonoBehaviour {
         }
     }
     public void RegisterPlayer(PlayerController player) {
-        if (players.Count == 0) {
+        if (_players.Count == 0) {
             CurrentPlayer = player;
         } else {
             player.PointsSwitchState();
         }
-        players.Add(player);
+        _players.Add(player);
     }
     private void RefreshBarbarianText() {
         barbarianText.text = $"{_barbarianTurn} Black Rolls Until Barbarians";

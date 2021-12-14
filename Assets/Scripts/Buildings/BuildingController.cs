@@ -79,6 +79,14 @@ namespace Buildings
             raycastController.FocusedPlaceHolder.PlaceNew(road, myPlayer);
             raycastController.SetFocusNull();
         }
+
+        public void LoadPlaceHolders(){
+            foreach (var o in GameObject.FindGameObjectsWithTag("PlaceHolder"))
+            {
+                placeHolders.Add(o.GetComponent<PlaceHolder>());
+            }
+        }
+        
     }
 
     public enum BuildingsType
