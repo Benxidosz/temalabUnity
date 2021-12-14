@@ -11,11 +11,10 @@ public class Material : MonoBehaviour{
 
     private void Start(){
         tmpText = GetComponent<TextMeshProUGUI>();
-        foreach (var player in GameManager.Instance.Players){
+        var tmp = GameManager.Instance.Players;
+        foreach (var player in tmp){
             player.MaterialController.SetText += setText;
         }
-        
-       
     }
 
     private void setText(int count, MaterialType type){
