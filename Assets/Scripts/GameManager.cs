@@ -5,41 +5,49 @@ using UnityEngine;
 using UnityEngine.Serialization;
 
 public class GameManager : MonoBehaviour {
+    [Serializable]
+    public struct NamedUI {
+        public UIKeys key;
+        public Canvas ui;
+    }
+    [SerializeField] private NamedUI[] namedUis;
+    public enum TurnState {
+        beforeRoll, rolled
+    }
+
+    public enum UIKeys {
+        dicePicker, materialPicker
+    }
     public static GameManager Instance { get; private set; }
-    public PlayerController CurrentPlayer { get => current; private set => current = value; }
     public PlayerController current;
     
     [FormerlySerializedAs("_players")] [SerializeField]private List<PlayerController> players = new List<PlayerController>();
+    public PlayerController CurrentPlayer { get; private set; }
+    public TurnState CurrentTurnState { get; private set; }
 
-    private PlayerController _tmpLastFramePlayer;
-    
-    public List<PlayerController> Players => players;
+    public Dictionary<UIKeys, Canvas> UIs;
 
-    [FormerlySerializedAs("barbarText")] [SerializeField] private TextMeshProUGUI barbarianText;
-    private readonly NetworkVariable<int> _barbarianTurn = new NetworkVariable<int>(7);
-    
+    private List<PlayerController> _players = new List<PlayerController>();
+    public List<PlayerController> Players => _players;
+    private int _currentPlayerIdx = 0;
     private void Awake() {
-        if (Instance == null)
+        if (Instance == null) {
             Instance = this;
-        else {
+            CurrentTurnState = TurnState.beforeRoll;
+            UIs = new Dictionary<UIKeys, Canvas>();
+            foreach (var ui in namedUis) {
+                UIs[ui.key] = ui.ui;
+                ui.ui.enabled = false;
+            }
+        } else {
             Destroy(this);
         }
     }
-
-    private void Update(){
-        if (!(_tmpLastFramePlayer is null) && _tmpLastFramePlayer.Id != current.Id){
-            UpdatePanel();
-            _tmpLastFramePlayer = CurrentPlayer;
-        }
-        else{
-            _tmpLastFramePlayer = CurrentPlayer;
-        }
-    }
-
     public void RegisterPlayer(PlayerController player) {
         if (players.Count == 0) {
             CurrentPlayer = player;
-            //UpdatePanel();
+        } else {
+            player.PointsSwitchState();
         }
         players.Add(player);
     }
@@ -61,6 +69,23 @@ public class GameManager : MonoBehaviour {
     public void DrawActionCard(ActionDice action) {
         CurrentPlayer.DrawActionCard(action);
     }
+    public void Rolled() {
+        CurrentTurnState = TurnState.rolled;
+    }
+    public void EndTurn() {
+        if (CurrentTurnState == TurnState.rolled) {
+            _currentPlayerIdx++;
+            if (_currentPlayerIdx >= _players.Count)
+                _currentPlayerIdx = 0;
+            CurrentPlayer.PointsSwitchState();
+            CurrentPlayer = _players[_currentPlayerIdx];
+            CurrentPlayer.PointsSwitchState();
+            CurrentTurnState = TurnState.beforeRoll;
+        }
+        _players.ForEach(player => {
+            print(player.MaterialController.GetMaterialCount(MaterialType.Coin));
+        });
+    }
 
     public void Village(){
         CurrentPlayer.BuildingController.BuildVillage();
@@ -76,5 +101,10 @@ public class GameManager : MonoBehaviour {
 
     public void UpdatePanel(){
         CurrentPlayer.MaterialController.UpdatePanel();
+    }
+
+    public void ShowPickMaterial(Action showUI, Action<MaterialType> callBack) {
+        showUI();
+        UIs[UIKeys.materialPicker].GetComponentInChildren<MaterialSubmitButton>().OnClick = callBack;
     }
 }

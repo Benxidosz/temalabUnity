@@ -50,90 +50,67 @@ namespace ActionCards
             SwitchUiState();
         }
 
-        private void RefillUI()
-        {
-            for (int i = 0; i < _cardInventory.Count; i++)
-            {
-                _cards[i].Script.Backend = _cardInventory[i];
-            }
-
-            if (_cardQueue.Count == 0)
-            {
-                SwitchToPlayState();
-            }
-            else
-            {
-                SwitchToDiscardState();
-            }
+    private void RefillUI() {
+        for (int i = 0; i < _cardInventory.Count; i++) {
+            _cards[i].Script.Backend = _cardInventory[i];
         }
 
-        private void EmptyUI()
-        {
-            _cards.ForEach(c => c.Script.Backend = emptyCard);
-            _cards.ForEach(c => c.Button.onClick.AddListener(() =>
-            {
-                c.Script.Backend.action?.Invoke(GameManager.Instance.CurrentPlayer);
-            }));
+        if (_cardQueue.Count == 0) {
+            SwitchToPlayState();
+        } else {
+            SwitchToDiscardState();
         }
+    }
 
-        private int FindEmpty()
-        {
-            foreach (var card in _cardInventory)
-            {
-                if (card.Equals(emptyCard))
-                    return _cardInventory.IndexOf(card);
-            }
+    private void EmptyUI() {
+        _cards.ForEach(c => c.Script.Backend = EmptyCard);
+        _cards.ForEach(c => c.Button.onClick.AddListener(() => { c.Script.Backend.Action?.Invoke(GameManager.Instance.CurrentPlayer); }));
+    }
 
-            return -1;
+    private int FindEmpty() {
+        foreach (var card in _cardInventory) {
+            if (card.Equals(EmptyCard))
+                return _cardInventory.IndexOf(card);
         }
-
-        private void SwitchToDiscardState()
-        {
-            errorMsg.enabled = true;
-            errorMsg.text = $"Error Not enough space.\nChoose {_cardQueue.Count} card to replace.";
-            _cards.ForEach(c =>
-            {
-                c.Button.onClick.RemoveAllListeners();
-                c.Button.onClick.AddListener(() =>
-                {
-                    DiscardACard(c);
-                    var idx = _cards.IndexOf(c);
-                    _cardInventory[idx] = _cardQueue.Dequeue();
-                    if (_cardQueue.Count == 0)
-                    {
-                        SwitchToPlayState();
-                    }
-
-                    RefillUI();
-                });
+        
+        return -1;
+    }
+    private void SwitchToDiscardState() {
+        errorMsg.enabled = true;
+        errorMsg.text = $"Error Not enough space.\nChoose {_cardQueue.Count} card to replace.";
+        _cards.ForEach(c => {
+            c.Button.onClick.RemoveAllListeners();
+            c.Button.onClick.AddListener(() => {
+                DiscardACard(c);
+                var idx = _cards.IndexOf(c);
+                _cardInventory[idx] = _cardQueue.Dequeue();
+                if (_cardQueue.Count == 0) {
+                    SwitchToPlayState();
+                }
+                RefillUI();
             });
-        }
-
-        private void SwitchToPlayState()
-        {
-            errorMsg.enabled = false;
-            _cards.ForEach(c =>
-            {
-                c.Button.onClick.RemoveAllListeners();
-                c.Button.onClick.AddListener(() =>
-                {
-                    c.Script.Backend.action?.Invoke(GameManager.Instance.CurrentPlayer);
-                    DiscardACard(c);
-                });
+        });
+    } 
+    private void SwitchToPlayState() {
+        errorMsg.enabled = false;
+        _cards.ForEach(c => {
+            c.Button.onClick.RemoveAllListeners();
+            c.Button.onClick.AddListener(() => {
+                CardSO tmp = c.Script.Backend;
+                DiscardACard(c);
+                tmp.Action?.Invoke(GameManager.Instance.CurrentPlayer);
             });
-        }
+        });
+    }
+    private void DiscardACard(Card card) {
+        if (!card.Script.Backend.Equals(EmptyCard)) {
+            CardDealer.Instance.AddToDiscard(card.Script.Backend);
+            card.Script.Backend = EmptyCard;
 
-        private void DiscardACard(Card card)
-        {
-            if (!card.Script.Backend.Equals(emptyCard))
-            {
-                CardDealer.Instance.AddToDiscard(card.Script.Backend);
-                card.Script.Backend = emptyCard;
-
-                var idx = _cards.IndexOf(card);
-                _cardInventory[idx] = emptyCard;
-            }
+            int idx = _cards.IndexOf(card);
+            _cardInventory[idx] = EmptyCard;
         }
+    }
 
         public void AddCard(CardObject card)
         {

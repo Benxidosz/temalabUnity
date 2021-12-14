@@ -1,5 +1,6 @@
 using ActionCards;
 using Buildings;
+using TMPro;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
@@ -15,7 +16,30 @@ public class PlayerController : MonoBehaviour {
     public MaterialController MaterialController => _materialController;
    
 
-    private void Start() {
+
+    private bool _uiActive = false;
+
+    private Canvas _dicePicker;
+    private DiceSubmitButton _dicePickerDiceSubmit;
+
+    public bool DiceSet { get; set; }
+    public int WhiteDice { get; private set; }
+    public int RedDice { get; private set; }
+
+    private int _points = 0;
+    public int Points {
+        get => _points;
+        set {
+            if (value < _points)
+                throw new ArgumentException("New Point cannot be lower!");
+            _points = value;
+            RefreshPoints();
+        }
+    }
+
+    [SerializeField] private TextMeshProUGUI points;
+
+    private void Awake(){
         _gameManager = GameManager.Instance;
         _gameManager.RegisterPlayer(this);
         _cardInventory = GetComponent<CardInventory>();
@@ -23,20 +47,30 @@ public class PlayerController : MonoBehaviour {
 
         _materialController = GetComponent<MaterialController>();
         _buildingController = GetComponent<BuildingController>();
+        _dicePicker = _gameManager.UIs[GameManager.UIKeys.dicePicker];
+
+        RefreshPoints();
         Id = GetInstanceID();
     }
 
     private void Update() {
-        if (Input.GetKeyDown(KeyCode.I)) {
-            _upgradeManager.Disable();
-            _cardInventory.SwitchUiState();
-        }
+        if (!_uiActive && this == _gameManager.CurrentPlayer) {
+            if (Input.GetKeyDown(KeyCode.I)) {
+                _upgradeManager.Disable();
+                _cardInventory.SwitchUiState();
+            }
 
-        if (Input.GetKeyDown(KeyCode.C)) {
-            _cardInventory.Disable();
-            _upgradeManager.SwitchUiState();
+            if (Input.GetKeyDown(KeyCode.C)) {
+                _cardInventory.Disable();
+                _upgradeManager.SwitchUiState();
+            }
         }
     }
+
+    private void RefreshPoints() {
+        points.text = $"Points: {Points}";
+    }
+
     public void DrawActionCard(ActionDice action) {
         switch (action) {
             case ActionDice.Blue: {
@@ -55,5 +89,33 @@ public class PlayerController : MonoBehaviour {
                 break;
             }
         }
+    }
+
+    public void AddTestCard(CardSO testCard) {
+        _cardInventory.AddCard(testCard);
+    }
+
+    public void PickDice() {
+        _dicePicker.enabled = true;
+        _dicePickerDiceSubmit = _dicePicker.GetComponentInChildren<DiceSubmitButton>();
+        _dicePickerDiceSubmit.Player = this;
+        _uiActive = true;
+        _cardInventory.Disable();
+        _upgradeManager.Disable();
+    }
+
+    public void SubmitPick(int whiteDice, int redDice) {
+        _dicePicker.enabled = false;
+        _uiActive = false;
+        WhiteDice = whiteDice;
+        RedDice = redDice;
+        DiceSet = true;
+        foreach (var group in _dicePicker.GetComponentsInChildren<DiceGroup>()) {
+            group.Clear();
+        }
+    }
+
+    public void PointsSwitchState() {
+        points.enabled = !points.enabled;
     }
 }

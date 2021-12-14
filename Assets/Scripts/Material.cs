@@ -10,10 +10,9 @@ public class Material : MonoBehaviour{
 
     private void Start(){
         tmpText = GetComponent<TextMeshProUGUI>();
-        _myController = GameObject.FindWithTag("InventoryController").GetComponent<MaterialController>();
-        _myController.SetText += SetText;
-        foreach (var player in GameManager.Instance.Players){
-            player.MaterialController.SetText += SetText;
+        var tmp = GameManager.Instance.Players;
+        foreach (var player in tmp){
+            player.MaterialController.SetText += setText;
         }
     }
 

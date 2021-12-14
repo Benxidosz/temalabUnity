@@ -22,6 +22,8 @@ public class DiceRoller : MonoBehaviour {
     }
     [SerializeField] private ActionSprites[] actionDice = new ActionSprites[6];
 
+    private GameManager _gameManager;
+
     public int RedDice{ get; private set; }
     public int WhiteDice{ get; private set; }
     public ActionDice ActionDice{ get; private set; }
@@ -35,20 +37,29 @@ public class DiceRoller : MonoBehaviour {
         else {
             Destroy(this);
         }
+        _gameManager = GameManager.Instance;
     }
 
-    public void Roll(){
-        WhiteDice = Random.Range(1, 7);
-        RedDice = Random.Range(1, 7);
-
+    public void Roll() {
+        PlayerController current = _gameManager.CurrentPlayer;
+        if (current.DiceSet) {
+            WhiteDice = current.WhiteDice;
+            RedDice = current.RedDice;
+            current.DiceSet = false;
+        } else {
+            WhiteDice = Random.Range(1, 7);
+            RedDice = Random.Range(1, 7);
+        }
+        
         var tmpAction = actionDice[Random.Range(0, 6)];
         ActionDice = tmpAction.dice;
         _actionSprite = tmpAction.sprite;
         Debug.Log($"{WhiteDice} {RedDice} = {Sum}");
-        GameManager.Instance.DrawActionCard(ActionDice);
+        _gameManager.DrawActionCard(ActionDice);
         if (ActionDice == ActionDice.Black)
             GameManager.Instance.BlackRolled();
         StartCoroutine(Roller());
+        _gameManager.Rolled();
     }
 
     private IEnumerator Roller(){
