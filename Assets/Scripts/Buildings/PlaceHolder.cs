@@ -17,7 +17,11 @@ namespace Buildings
         private List<GameObject> _buildings;
         private GameObject starting;
 
-        public PlaceHolderType Type => type;
+        public PlaceHolderType Type{
+            get => type;
+            set => type = value;
+        }
+
         public List<PlaceHolder> Neighbours => neighbours;
         public Building MainBuilding { get; private set; }
 
