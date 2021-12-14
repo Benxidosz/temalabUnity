@@ -24,8 +24,8 @@ namespace Buildings
         [FormerlySerializedAs("Road")] [SerializeField]
         private Building road;
 
-        private void Start()
-        {
+        private void Start(){
+            materialController = GetComponent<MaterialController>();
             placeHolders = new List<PlaceHolder>();
             myPlayer = GetComponent<PlayerController>();
             foreach (var o in GameObject.FindGameObjectsWithTag("PlaceHolder"))
