@@ -121,6 +121,8 @@ namespace Map
 
         [SerializeField] private Disk[] numberDisks;
 
+        [SerializeField] private GameObject[] diskObjects;
+        
         private readonly List<GameObject> _hexagonGameObjects = new List<GameObject>();
         private readonly List<GameObject> _disksGameObjects = new List<GameObject>();
         private readonly List<GameObject> _portGameObjects = new List<GameObject>();
@@ -301,10 +303,13 @@ namespace Map
 
         private GameObject CreateDisk(Vector3 position, Disk disk, TileController tile)
         {
-            var numberDisk = Instantiate(diskPrefab);
+            var id = disk.value;
+            if (id > 7)
+                id--;
+            id -= 2;
+            var numberDisk = Instantiate(diskObjects[id]);
             numberDisk.GetComponent<NetworkObject>().Spawn();
             numberDisk.transform.position = new Vector3(position.x * tileOffset.x, 0.05f, position.z * tileOffset.y);
-            numberDisk.GetComponent<Renderer>().material.mainTexture = disk.texture;
             tile.MyNumber = disk.value;
 
             return numberDisk;
@@ -355,3 +360,4 @@ namespace Map
         }
     }
 }
+

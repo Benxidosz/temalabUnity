@@ -341,8 +341,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   raycastController: {fileID: 0}
-  materialController: {fileID: 0}
-  myPlayer: {fileID: 0}
+  materialController: {fileID: 924796901001401634}
+  myPlayer: {fileID: 8430714868440308698}
   placeHolders: []
   freeVillage: 1
   village: {fileID: 11400000, guid: ccce9e0b0d404f949b5a2d4841688212, type: 2}

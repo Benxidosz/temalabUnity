@@ -5,28 +5,39 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8129cd36-f6a2-431a-8b67-678a40b6ccb7" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/UI/SystemTrade.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Prefabs/UI/SystemTrade.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scenes/TradingWithSystem.unity" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scenes/TradingWithSystem.unity.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SystemTrade.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SystemTrade/SubmitSystemTrade.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SystemTrade/SubmitSystemTrade.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SystemTrade/SystemTradeController.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SystemTrade/SystemTradeController.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SystemTrade/SystemTradeManager.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SystemTrade/SystemTradeManager.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Sprites/animation_1-8.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Sprites/animation_1-8.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Sprites/arrow.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Sprites/arrow.png.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.temalabUnity/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.temalabUnity/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/City.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/City.fbx.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Models/Settlement.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Models/Settlement.fbx.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/PlaceHolder.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/PlaceHolder.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Buildings/CityPrefab.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Buildings/CityPrefab.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Buildings/EmptyPrefab.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Buildings/EmptyPrefab.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Buildings/RoadPrefab.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Buildings/RoadPrefab.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Buildings/SettlementPrefab.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Buildings/SettlementPrefab.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Prefabs/GameManager.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/GameManager.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Map/DiskPrefab.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Map/DiskPrefab.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Map/PortPrefab.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Map/PortPrefab.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Map/TilePrefab.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Map/TilePrefab.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Map/TilePrefab.prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Map/TilePrefab.prefab.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Map/placeHolderBasicPrefab.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Map/placeHolderBasicPrefab.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Managers/CardManager.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Managers/CardManager.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Player.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Player.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/CardUI.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/UI/CardUI.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/BoardSetup.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/BoardSetup.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ScriptableObjects/Buildings/City.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/Buildings/City.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Buildings/BuildingController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Buildings/BuildingController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/RandomizedMapScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/RandomizedMapScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ActionCards/CardManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ActionCards/CardManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ActionCards/Trade + Monopolium/MaterialPicker.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ActionCards/Trade + Monopolium/MaterialPicker.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ActionCards/Trade + Monopolium/MaterialPickerUIController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ActionCards/Trade + Monopolium/MaterialPickerUIController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ActionCards/Trade + Monopolium/MaterialSubmitButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ActionCards/Trade + Monopolium/MaterialSubmitButton.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Buildings/PlaceHolder.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Buildings/PlaceHolder.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameStarter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameStarter.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/CityUpgrade/UpgradeManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/CityUpgrade/UpgradeManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/DiceRoller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/DiceRoller.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Map/RandomBoardGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Map/RandomBoardGenerator.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/MaterialController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MaterialController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PlayerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PlayerController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -60,6 +71,7 @@
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.netcode.gameobjects@1.0.0-pre.3/Runtime/Logging/NetworkLog.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.netcode.gameobjects@1.0.0-pre.3/Runtime/Messaging/MessagingSystem.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.netcode.gameobjects@1.0.0-pre.3/Runtime/Core/NetworkBehaviour.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.purchasing@3.2.2/Runtime/Security/Asn1Processor/Asn1Node.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/ScriptableObjects/Buildings/BuildingsRule/BaseRule.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/AD3EAA08-78D9-4CBE-8E45-F9C494D71647/eb/d8f70bf1/MonoBehaviour.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.netcode.gameobjects@1.0.0-pre.3/Runtime/Core/NetworkManager.cs" root0="SKIP_HIGHLIGHTING" />
@@ -69,6 +81,7 @@
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.netcode.gameobjects@1.0.0-pre.3/Runtime/Spawning/NetworkSpawnManager.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/PlayerController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/GameManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.textmeshpro@3.0.6/Scripts/Runtime/TMP_FontAssetUtilities.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
@@ -91,16 +104,18 @@
       <option value="$PROJECT_DIR$/Assets/RandomBoardGenerator.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Map/TileController.cs" />
       <option value="$APPLICATION_CONFIG_DIR$/scratches/scratch.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scenes/RandomizedMapScene.unity" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Controls/AngledPivot.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/EndTurnButton.cs.meta" />
-      <option value="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" />
-      <option value="$PROJECT_DIR$/Assets/Prefabs/GameManager.prefab" />
       <option value="$PROJECT_DIR$/Assets/Scripts/GameStarter.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Buildings/BuildingController.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Map/RandomBoardGenerator.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Buildings/PlaceHolder.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" />
+      <option value="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" />
+      <option value="$PROJECT_DIR$/Assets/Scenes/RandomizedMapScene.unity" />
+      <option value="$PROJECT_DIR$/Assets/Scenes/BoardSetup.unity" />
+      <option value="$PROJECT_DIR$/Assets/Prefabs/Player.prefab" />
+      <option value="$PROJECT_DIR$/Assets/Prefabs/GameManager.prefab" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Map/RandomBoardGenerator.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="21eGD9ioF1rq0vj3uxlEd1jrQwz" />

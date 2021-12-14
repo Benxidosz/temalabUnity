@@ -59,7 +59,7 @@ public class DiceRoller : MonoBehaviour {
         if (ActionDice == ActionDice.Black)
             GameManager.Instance.BlackRolled();
         StartCoroutine(Roller());
-        _gameManager.Rolled();
+        _gameManager.Rolled(Sum);
     }
 
     private IEnumerator Roller(){

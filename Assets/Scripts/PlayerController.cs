@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using ActionCards;
 using Buildings;
 using ScriptableObjects.CardObjects;
@@ -8,6 +9,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour {
     private CardInventory _cardInventory;
     private UpgradeManager _upgradeManager;
+    private SystemTradeManager _systemTradeManager;
     private GameManager _gameManager;
 
     private MaterialController _materialController;
@@ -16,8 +18,7 @@ public class PlayerController : MonoBehaviour {
     public long Id{ get; private set; }
     public BuildingController BuildingController => _buildingController;
     public MaterialController MaterialController => _materialController;
-   
-
+    public Dictionary<MaterialType, int> TradingNeeds { get; private set; }
 
     private bool _uiActive = false;
 
@@ -41,15 +42,19 @@ public class PlayerController : MonoBehaviour {
 
     [SerializeField] private TextMeshProUGUI points;
 
-    private void Awake(){
+    private void Awake() {
+        TradingNeeds = new Dictionary<MaterialType, int>();
+        foreach (var type in MaterialController.MaterialTypes) {
+            TradingNeeds[type] = 4;
+        }
         _gameManager = GameManager.Instance;
         _gameManager.RegisterPlayer(this);
         _cardInventory = GetComponent<CardInventory>();
         _upgradeManager = GetComponent<UpgradeManager>();
+        _systemTradeManager = GetComponent<SystemTradeManager>();
 
         _materialController = GetComponent<MaterialController>();
         _buildingController = GetComponent<BuildingController>();
-       
     }
 
     private void Start(){
@@ -62,12 +67,19 @@ public class PlayerController : MonoBehaviour {
         if (!_uiActive && this == _gameManager.CurrentPlayer) {
             if (Input.GetKeyDown(KeyCode.I)) {
                 _upgradeManager.Disable();
+                _systemTradeManager.Disable();
                 _cardInventory.SwitchUiState();
             }
 
             if (Input.GetKeyDown(KeyCode.C)) {
                 _cardInventory.Disable();
+                _systemTradeManager.Disable();
                 _upgradeManager.SwitchUiState();
+            }
+            if (Input.GetKeyDown(KeyCode.S)) {
+                _cardInventory.Disable();
+                _systemTradeManager.SwitchUiState();
+                _upgradeManager.Disable();
             }
         }
     }
@@ -122,5 +134,14 @@ public class PlayerController : MonoBehaviour {
 
     public void PointsSwitchState() {
         points.enabled = !points.enabled;
+    }
+    
+    public void BuyFromSystem(MaterialType? sell, MaterialType buy) {
+        if (sell != null) {
+            var notNullSell = (MaterialType) sell;
+            _materialController.Decrease(notNullSell, TradingNeeds[notNullSell]);
+            _materialController.Increase(buy, 1);
+        }
+        _systemTradeManager.Disable();
     }
 }

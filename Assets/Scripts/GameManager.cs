@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using Map;
 using TMPro;
 using Unity.Netcode;
 using UnityEngine;
@@ -34,9 +36,14 @@ public class GameManager : MonoBehaviour {
 
     public Dictionary<UIKeys, Canvas> UIs;
     public List<PlayerController> Players => players;
+    
+    private readonly List<TileController> _tileControllers = new List<TileController>();
     private int _currentPlayerIdx = 0;
 
     [SerializeField] private TextMeshProUGUI barbarianText;
+    
+    [SerializeField] private Sprite emptyCard;
+    public Sprite EmptyCard => emptyCard;
     private int _barbarianTurn = 7;
 
     private void Awake() {
@@ -52,7 +59,11 @@ public class GameManager : MonoBehaviour {
             Destroy(this);
         }
     }
-
+    
+    public void AddTileController(TileController controller){
+        _tileControllers.Add(controller);
+    }
+    
     public void RegisterPlayer(PlayerController player) {
         if (players.Count == 0) {
             CurrentPlayer = player;
@@ -85,8 +96,11 @@ public class GameManager : MonoBehaviour {
         CurrentPlayer.DrawActionCard(action);
     }
 
-    public void Rolled() {
+    public void Rolled(int sum) {
         CurrentTurnState = TurnState.Rolled;
+        foreach (var controller in _tileControllers.Where(oc => oc.MyNumber == sum)){
+            controller.Harvest();
+        }
     }
 
     public void EndTurn() {
@@ -119,7 +133,7 @@ public class GameManager : MonoBehaviour {
         CurrentPlayer.MaterialController.UpdatePanel();
     }
 
-    public void ShowPickMaterial(Action showUI, Action<MaterialType> callBack) {
+    public void ShowPickMaterial(Action showUI, Action<MaterialType?> callBack) {
         showUI();
         UIs[UIKeys.MaterialPicker].GetComponentInChildren<MaterialSubmitButton>().OnClick = callBack;
     }

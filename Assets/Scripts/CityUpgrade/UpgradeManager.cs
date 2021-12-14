@@ -9,12 +9,14 @@ public class UpgradeManager : MonoBehaviour {
     private UpgradeTile[] _yellowUpgrades;
     private UpgradeTile[] _blueUpgrades;
     private UpgradeTile[] _greenUpgrades;
+    private PlayerController player;
 
     public int YellowCounter { get; private set; }
     public int BlueCounter { get; private set; }
     public int GreenCounter { get; private set; }
     
-    void Start() {
+    void Start(){
+        player = GameManager.Instance.CurrentPlayer;
         var tmpUpgrades = ui.GetComponentsInChildren<UpgradeTile>();
         _yellowUpgrades = new UpgradeTile[5];
         _blueUpgrades = new UpgradeTile[5];
@@ -33,17 +35,23 @@ public class UpgradeManager : MonoBehaviour {
         ui.enabled = false;
     }
 
-    public void UpgradeYellow() {
-        if (YellowCounter < _yellowUpgrades.Length)
-            _yellowUpgrades[YellowCounter++].Build();
+    public void UpgradeYellow(){
+        if (player.MaterialController.GetMaterialCount(MaterialType.Canvas) < YellowCounter + 1) return;
+        if (YellowCounter >= _yellowUpgrades.Length) return;
+        _yellowUpgrades[YellowCounter++].Build();
+        player.MaterialController.Decrease(MaterialType.Canvas, YellowCounter);
     }
     public void UpgradeBlue() {
-        if (BlueCounter < _blueUpgrades.Length) 
-            _blueUpgrades[BlueCounter++].Build();
+        if (player.MaterialController.GetMaterialCount(MaterialType.Coin) < BlueCounter + 1) return;
+        if (BlueCounter >= _blueUpgrades.Length) return;
+        _blueUpgrades[BlueCounter++].Build();
+        player.MaterialController.Decrease(MaterialType.Coin, BlueCounter);
     }
     public void UpgradeGreen() {
-        if (GreenCounter < _greenUpgrades.Length) 
-            _greenUpgrades[GreenCounter++].Build();
+        if (player.MaterialController.GetMaterialCount(MaterialType.Paper) < GreenCounter + 1) return;
+        if (GreenCounter >= _greenUpgrades.Length) return;
+        _greenUpgrades[GreenCounter++].Build();
+        player.MaterialController.Decrease(MaterialType.Paper, GreenCounter);
     }
     
     private void EmptyUI() {

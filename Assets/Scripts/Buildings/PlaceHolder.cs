@@ -84,8 +84,9 @@ namespace Buildings
             Player = player;
         }
 
-        public void Harvest(MaterialType itemMain, MaterialType itemSecondary)
-        {
+
+        public void Harvest(MaterialType itemMain, MaterialType itemSecondary){
+            if (Player == null) return;
             Player.MaterialController.Increase(itemMain, 1);
             if (MainBuilding.MyType == BuildingsType.City)
             {
