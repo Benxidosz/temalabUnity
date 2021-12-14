@@ -20,7 +20,6 @@ public class GameManager : MonoBehaviour {
         dicePicker, materialPicker
     }
     public static GameManager Instance { get; private set; }
-    public PlayerController current;
     
     [FormerlySerializedAs("_players")] [SerializeField]private List<PlayerController> players = new List<PlayerController>();
     public PlayerController CurrentPlayer { get; private set; }
