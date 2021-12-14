@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using Map;
 using TMPro;
 using Unity.Netcode;
 using UnityEngine;
@@ -27,6 +29,8 @@ public class GameManager : MonoBehaviour {
 
     public Dictionary<UIKeys, Canvas> UIs;
     public List<PlayerController> Players => _players;
+    
+    private readonly List<TileController> _tileControllers = new List<TileController>();
     private int _currentPlayerIdx = 0;
 
     [SerializeField] private TextMeshProUGUI barbarianText;
@@ -44,6 +48,11 @@ public class GameManager : MonoBehaviour {
             Destroy(this);
         }
     }
+
+    public void AddTileController(TileController controller){
+        _tileControllers.Add(controller);
+    }
+    
     public void RegisterPlayer(PlayerController player) {
         if (_players.Count == 0) {
             CurrentPlayer = player;
@@ -70,8 +79,11 @@ public class GameManager : MonoBehaviour {
     public void DrawActionCard(ActionDice action) {
         CurrentPlayer.DrawActionCard(action);
     }
-    public void Rolled() {
+    public void Rolled(int sum) {
         CurrentTurnState = TurnState.rolled;
+        foreach (var controller in _tileControllers.Where(oc => oc.MyNumber == sum)){
+            controller.Harvest();
+        }
     }
     public void EndTurn() {
         if (CurrentTurnState == TurnState.rolled) {
