@@ -6,6 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/RandomizedMapScene.unity
-    guid: 56bd3265d6dfa90429dae02d89241636
+    path: Assets/Scenes/Banyasz + Ontozes.unity
+    guid: e88fa5c15146b8a48a48e52d1b57b29b
   m_configObjects: {}

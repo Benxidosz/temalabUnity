@@ -11,28 +11,34 @@ public class GameManager : MonoBehaviour {
         public UIKeys key;
         public Canvas ui;
     }
+
     [SerializeField] private NamedUI[] namedUis;
+
     public enum TurnState {
-        beforeRoll, rolled
+        beforeRoll,
+        rolled
     }
 
     public enum UIKeys {
-        dicePicker, materialPicker
+        dicePicker,
+        materialPicker
     }
+
     public static GameManager Instance { get; private set; }
-    
-    [FormerlySerializedAs("_players")] [SerializeField]private List<PlayerController> players = new List<PlayerController>();
+
+    [FormerlySerializedAs("_players")] [SerializeField]
+    private List<PlayerController> players = new List<PlayerController>();
+
     public PlayerController CurrentPlayer { get; private set; }
     public TurnState CurrentTurnState { get; private set; }
 
     public Dictionary<UIKeys, Canvas> UIs;
-
-    private List<PlayerController> _players = new List<PlayerController>();
-    public List<PlayerController> Players => _players;
+    public List<PlayerController> Players => players;
     private int _currentPlayerIdx = 0;
 
     [SerializeField] private TextMeshProUGUI barbarianText;
     private int _barbarianTurn = 7;
+
     private void Awake() {
         if (Instance == null) {
             Instance = this;
@@ -46,14 +52,17 @@ public class GameManager : MonoBehaviour {
             Destroy(this);
         }
     }
+
     public void RegisterPlayer(PlayerController player) {
         if (players.Count == 0) {
             CurrentPlayer = player;
         } else {
             player.PointsSwitchState();
         }
+
         players.Add(player);
     }
+
     private void RefreshBarbarianText() {
         barbarianText.text = $"{_barbarianTurn} Black Rolls Until Barbarians";
     }
@@ -61,53 +70,77 @@ public class GameManager : MonoBehaviour {
     private void BarbariansComing() {
         Debug.Log("Barbarians!");
     }
+
     public void BlackRolled() {
         _barbarianTurn--;
         if (_barbarianTurn == 0) {
             BarbariansComing();
             _barbarianTurn = 7;
         }
+
         RefreshBarbarianText();
     }
+
     public void DrawActionCard(ActionDice action) {
         CurrentPlayer.DrawActionCard(action);
     }
+
     public void Rolled() {
         CurrentTurnState = TurnState.rolled;
     }
+
     public void EndTurn() {
         if (CurrentTurnState == TurnState.rolled) {
             _currentPlayerIdx++;
-            if (_currentPlayerIdx >= _players.Count)
+            if (_currentPlayerIdx >= players.Count)
                 _currentPlayerIdx = 0;
             CurrentPlayer.PointsSwitchState();
-            CurrentPlayer = _players[_currentPlayerIdx];
+            CurrentPlayer = players[_currentPlayerIdx];
             CurrentPlayer.PointsSwitchState();
             CurrentTurnState = TurnState.beforeRoll;
         }
-        _players.ForEach(player => {
-            print(player.MaterialController.GetMaterialCount(MaterialType.Coin));
-        });
+
+        players.ForEach(player => { print(player.MaterialController.GetMaterialCount(MaterialType.Coin)); });
     }
 
-    public void Village(){
+    public void Village() {
         CurrentPlayer.BuildingController.BuildVillage();
     }
 
-    public void City(){
+    public void City() {
         CurrentPlayer.BuildingController.BuildCity();
     }
 
-    public void Road(){
+    public void Road() {
         CurrentPlayer.BuildingController.BuildRoad();
     }
 
-    public void UpdatePanel(){
+    public void UpdatePanel() {
         CurrentPlayer.MaterialController.UpdatePanel();
     }
 
     public void ShowPickMaterial(Action showUI, Action<MaterialType> callBack) {
         showUI();
         UIs[UIKeys.materialPicker].GetComponentInChildren<MaterialSubmitButton>().OnClick = callBack;
+    }
+
+    public void AddTestMaterial() {
+        MaterialType[] types = new[] {
+            MaterialType.Brick,
+            MaterialType.Canvas,
+            MaterialType.Coin,
+            MaterialType.Ore,
+            MaterialType.Paper,
+            MaterialType.Wheat,
+            MaterialType.Wood,
+            MaterialType.Wool
+        };
+        foreach (var player in players) {
+            foreach (var type in types) {
+                player.MaterialController.Increase(type, 5);
+            }
+
+            print(player.MaterialController.GetMaterialCount(MaterialType.Brick));
+        }
     }
 }

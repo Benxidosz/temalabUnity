@@ -12,7 +12,7 @@ public class MaterialPicker : MonoBehaviour {
     private Button _button;
     public Button Button => _button;
     // Start is called before the first frame update
-    void Start() {
+    void Awake() {
         _button = GetComponent<Button>();
         _button.onClick.AddListener(() => {
             ButtonClicked?.Invoke(this);
