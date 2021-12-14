@@ -57,6 +57,11 @@ namespace Buildings
                 Player.MaterialController.Increase(itemSecondary, 1);
             }
         }
+
+        public void AddNeighbour(PlaceHolder holder) {
+            if (!neighbours.Contains(holder))
+                neighbours.Add(holder);
+        }
     }
 
     public enum PlaceHolderType
