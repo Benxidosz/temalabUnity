@@ -1,10 +1,11 @@
 using System.Collections.Generic;
+using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.Serialization;
 
 namespace Buildings
 {
-    public class BuildingController : MonoBehaviour
+    public class BuildingController : NetworkBehaviour
     {
         [SerializeField] private RaycastController raycastController;
         [SerializeField] private MaterialController materialController; 
@@ -81,9 +82,12 @@ namespace Buildings
         }
 
         public void LoadPlaceHolders(){
-            foreach (var o in GameObject.FindGameObjectsWithTag("PlaceHolder"))
+            if (IsHost)
             {
-                placeHolders.Add(o.GetComponent<PlaceHolder>());
+                foreach (var o in GameObject.FindGameObjectsWithTag("PlaceHolder"))
+                {
+                    placeHolders.Add(o.GetComponent<PlaceHolder>());
+                }
             }
         }
         

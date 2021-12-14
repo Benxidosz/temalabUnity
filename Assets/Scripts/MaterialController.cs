@@ -71,5 +71,5 @@ public enum MaterialType{
     Paper,
     Canvas,
     Coin,
-    def
+    Default
 }
