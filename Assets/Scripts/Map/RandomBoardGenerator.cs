@@ -18,6 +18,16 @@ namespace Map
             Ocean
         }
 
+        private enum PortType
+        {
+            Brick,
+            Ore,
+            Wheat,
+            Wool,
+            Wood,
+            Any
+        }
+
         private readonly Vector3[] _tileOffsets = new[]
         {
             new Vector3(0, 0, 0),
@@ -43,7 +53,6 @@ namespace Map
 
         private readonly Vector3[] _oceanTileOffsets = new[]
         {
-            new Vector3(3, 0, 3),
             new Vector3(-3, 0, -3),
             new Vector3(-4, 0, -2),
             new Vector3(-5, 0, -1),
@@ -53,6 +62,7 @@ namespace Map
             new Vector3(-3, 0, 3),
             new Vector3(-1, 0, 3),
             new Vector3(1, 0, 3),
+            new Vector3(3, 0, 3),
             new Vector3(4, 0, 2),
             new Vector3(5, 0, 1),
             new Vector3(6, 0, 0),
@@ -65,6 +75,7 @@ namespace Map
 
         [SerializeField] private GameObject hexagonPrefab;
         [SerializeField] private GameObject diskPrefab;
+        [SerializeField] private GameObject portPrefab;
 
         [SerializeField] private Tile brick;
         [SerializeField] private Tile ore;
@@ -74,15 +85,24 @@ namespace Map
         [SerializeField] private Tile desert;
         [SerializeField] private Tile ocean;
 
+        [SerializeField] private Port brickPort;
+        [SerializeField] private Port orePort;
+        [SerializeField] private Port woodPort;
+        [SerializeField] private Port wheatPort;
+        [SerializeField] private Port woolPort;
+        [SerializeField] private Port anyPort;
+
         [SerializeField] private Disk[] numberDisks;
 
         private readonly List<GameObject> _hexagonGameObjects = new List<GameObject>();
         private readonly List<GameObject> _disksGameObjects = new List<GameObject>();
+        private readonly List<GameObject> _portGameObjects = new List<GameObject>();
 
         [SerializeField] private Vector2 tileOffset = new Vector2(0.9f, 1.6f);
 
         private readonly Dictionary<TileType, Tile> _tiles = new Dictionary<TileType, Tile>();
         private readonly Dictionary<int, Disk> _disks = new Dictionary<int, Disk>();
+        private readonly Dictionary<PortType, Port> _ports = new Dictionary<PortType, Port>();
 
         private void Start()
         {
@@ -93,6 +113,13 @@ namespace Map
             _tiles[TileType.Wood] = wood;
             _tiles[TileType.Desert] = desert;
             _tiles[TileType.Ocean] = ocean;
+
+            _ports[PortType.Brick] = brickPort;
+            _ports[PortType.Ore] = orePort;
+            _ports[PortType.Wheat] = wheatPort;
+            _ports[PortType.Wool] = woolPort;
+            _ports[PortType.Wood] = woodPort;
+            _ports[PortType.Any] = anyPort;
 
             _disks[2] = numberDisks[0];
             _disks[3] = numberDisks[1];
@@ -127,6 +154,16 @@ namespace Map
             return numberDisk;
         }
 
+        private GameObject CreatePort(Vector3 position, PortType portType, int rotation)
+        {
+            var port = Instantiate(portPrefab);
+            port.transform.position = new Vector3(position.x * tileOffset.x, 0.075f, position.z * tileOffset.y);
+            port.transform.rotation = Quaternion.Euler(-90, 0, rotation);
+            port.transform.position += 0.45f * port.transform.up;
+            port.GetComponent<Renderer>().material.mainTexture = _ports[portType].texture;
+            return null;
+        }
+
         [ServerRpc]
         private void GenerateTilesServerRPC()
         {
@@ -156,16 +193,27 @@ namespace Map
 
             Utilities.ShuffleList(numbers);
 
-            SpawnTilesClientRpc(types.ToArray(), numbers.ToArray());
+            var ports = new List<PortType>();
+            foreach (var port in (PortType[]) Enum.GetValues(typeof(PortType)))
+            {
+                for (var i = 0; i < _ports[port].quantity; i++)
+                {
+                    ports.Add(port);
+                }
+            }
+
+            Utilities.ShuffleList(ports);
+
+            SpawnTilesClientRpc(types.ToArray(), numbers.ToArray(), ports.ToArray());
         }
 
         [ClientRpc]
-        private void SpawnTilesClientRpc(TileType[] tileTypes, int[] numbers)
+        private void SpawnTilesClientRpc(TileType[] tileTypes, int[] numbers, PortType[] portTypes)
         {
-            CreateHexagons(tileTypes, numbers);
+            CreateHexagons(tileTypes, numbers, portTypes);
         }
 
-        private void CreateHexagons(TileType[] tileTypes, int[] numbers)
+        private void CreateHexagons(TileType[] tileTypes, int[] numbers, PortType[] portTypes)
         {
             var j = 0;
             for (var i = 0; i < _tileOffsets.Length; i++)
@@ -178,9 +226,20 @@ namespace Map
                 }
             }
 
-            foreach (var oceanTileOffset in _oceanTileOffsets)
+            var rot = -150;
+            for (var i = 0; i < _oceanTileOffsets.Length; i++)
             {
-                _hexagonGameObjects.Add(CreateHexagon(oceanTileOffset, TileType.Ocean));
+                _hexagonGameObjects.Add(CreateHexagon(_oceanTileOffsets[i], TileType.Ocean));
+                if (i % 2 == 0)
+                {
+                    if (i == 12)
+                        rot += 60;
+
+                    _portGameObjects.Add(CreatePort(_oceanTileOffsets[i], portTypes[i / 2], rot));
+
+                    if (i % 4 == 0)
+                        rot += 60;
+                }
             }
         }
     }
