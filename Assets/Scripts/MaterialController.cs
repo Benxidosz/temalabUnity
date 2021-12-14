@@ -9,14 +9,26 @@ public class MaterialController : MonoBehaviour{
     
     private Dictionary<MaterialType, int> materials;
 
+    public static readonly MaterialType[] MaterialTypes = new[] {
+        MaterialType.Brick,
+        MaterialType.Canvas,
+        MaterialType.Coin,
+        MaterialType.Ore,
+        MaterialType.Wheat,
+        MaterialType.Wood,
+        MaterialType.Wool,
+        MaterialType.Paper
+    };
+
     private void Start(){
         materials = new Dictionary<MaterialType, int>();
         var tmp = GameObject.FindGameObjectsWithTag("MaterialText");
-        foreach (var m in tmp){
-            var type = m.GetComponent<Material>().Type;
-            materials.Add(type, 0);
-            Increase(type, 10);
+        foreach (var m in MaterialTypes){
+            materials.Add(m, 0);
+            Increase(m, 3);
         }
+        Increase(MaterialType.Brick, 2);
+        Increase(MaterialType.Coin, 2);
     }
 
     public void Increase(MaterialType type, int deltaCount){

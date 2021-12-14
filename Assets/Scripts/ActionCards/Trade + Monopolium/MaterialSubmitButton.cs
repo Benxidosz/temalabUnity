@@ -8,7 +8,7 @@ public class MaterialSubmitButton : MonoBehaviour {
     private Button _button;
     [SerializeField] private MaterialPickerUIController materialPickerUIController;
 
-    public Action<MaterialType> OnClick {
+    public Action<MaterialType?> OnClick {
         set {
             _button.onClick.RemoveAllListeners();
             _button.onClick.AddListener(() => {

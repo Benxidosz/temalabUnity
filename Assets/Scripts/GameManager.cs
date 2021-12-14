@@ -32,6 +32,9 @@ public class GameManager : MonoBehaviour {
     private int _currentPlayerIdx = 0;
 
     [SerializeField] private TextMeshProUGUI barbarianText;
+    
+    [SerializeField] private Sprite emptyCard;
+    public Sprite EmptyCard => emptyCard;
     private int _barbarianTurn = 7;
     private void Awake() {
         if (Instance == null) {
@@ -106,7 +109,7 @@ public class GameManager : MonoBehaviour {
         CurrentPlayer.MaterialController.UpdatePanel();
     }
 
-    public void ShowPickMaterial(Action showUI, Action<MaterialType> callBack) {
+    public void ShowPickMaterial(Action showUI, Action<MaterialType?> callBack) {
         showUI();
         UIs[UIKeys.materialPicker].GetComponentInChildren<MaterialSubmitButton>().OnClick = callBack;
     }

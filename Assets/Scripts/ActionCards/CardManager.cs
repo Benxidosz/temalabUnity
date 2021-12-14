@@ -37,14 +37,14 @@ namespace ActionCards {
             GameManager.Instance.ShowPickMaterial(
                 () => GameManager.Instance.UIs[GameManager.UIKeys.materialPicker]
                     .GetComponentInChildren<MaterialPickerUIController>().ShowCommon(),
-                material => Monopoly(material, player));
+                material => Monopoly((MaterialType) material, player));
         }
 
         public void TradingMonopoly(PlayerController player) {
             GameManager.Instance.ShowPickMaterial(
                 () => GameManager.Instance.UIs[GameManager.UIKeys.materialPicker]
                     .GetComponentInChildren<MaterialPickerUIController>().ShowTrading(),
-                material => Monopoly(material, player));
+                material => Monopoly((MaterialType) material, player));
         }
 
         public void TradingFleet(PlayerController player) {

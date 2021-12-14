@@ -1012,6 +1012,7 @@ MonoBehaviour:
     ui: {fileID: 5949776622980937156}
   players: []
   barbarianText: {fileID: 8907364223834028825}
+  emptyCard: {fileID: 21300000, guid: 1722669b050084748b6f42a7d301ceb6, type: 3}
 --- !u!1 &8297508458505812112
 GameObject:
   m_ObjectHideFlags: 0
