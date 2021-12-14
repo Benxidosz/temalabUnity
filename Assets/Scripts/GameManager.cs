@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour {
     }
 
     public enum UIKeys {
-        dicePicker
+        dicePicker, materialPicker
     }
     public static GameManager Instance { get; private set; }
     public PlayerController CurrentPlayer { get; private set; }
@@ -23,11 +23,10 @@ public class GameManager : MonoBehaviour {
 
     public Dictionary<UIKeys, Canvas> UIs;
 
-    public List<PlayerController> Players{ get; private set; }
-
+    private List<PlayerController> _players = new List<PlayerController>();
+    public List<PlayerController> Players => _players;
     private int _currentPlayerIdx = 0;
-    private void Awake(){
-        Players = new List<PlayerController>();
+    private void Awake() {
         if (Instance == null) {
             Instance = this;
             CurrentTurnState = TurnState.beforeRoll;
@@ -41,10 +40,12 @@ public class GameManager : MonoBehaviour {
         }
     }
     public void RegisterPlayer(PlayerController player) {
-        if (Players.Count == 0) {
+        if (_players.Count == 0) {
             CurrentPlayer = player;
+        } else {
+            player.PointsSwitchState();
         }
-        Players.Add(player);
+        _players.Add(player);
     }
 
     public void DrawActionCard(ActionDice action) {
@@ -56,11 +57,16 @@ public class GameManager : MonoBehaviour {
     public void EndTurn() {
         if (CurrentTurnState == TurnState.rolled) {
             _currentPlayerIdx++;
-            if (_currentPlayerIdx > Players.Count)
+            if (_currentPlayerIdx >= _players.Count)
                 _currentPlayerIdx = 0;
-            CurrentPlayer = Players[_currentPlayerIdx];
+            CurrentPlayer.PointsSwitchState();
+            CurrentPlayer = _players[_currentPlayerIdx];
+            CurrentPlayer.PointsSwitchState();
             CurrentTurnState = TurnState.beforeRoll;
         }
+        _players.ForEach(player => {
+            print(player.MaterialController.GetMaterialCount(MaterialType.Coin));
+        });
     }
 
     public void Village(){
@@ -77,5 +83,10 @@ public class GameManager : MonoBehaviour {
 
     public void UpdatePanel(){
         CurrentPlayer.MaterialController.UpdatePanel();
+    }
+
+    public void ShowPickMaterial(Action showUI, Action<MaterialType> callBack) {
+        showUI();
+        UIs[UIKeys.materialPicker].GetComponentInChildren<MaterialSubmitButton>().OnClick = callBack;
     }
 }

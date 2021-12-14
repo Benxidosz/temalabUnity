@@ -19,6 +19,8 @@ public class MaterialController : MonoBehaviour{
             Increase(type, 10);
         }
 
+        SetCount(MaterialType.Coin, 2);
+        SetCount(MaterialType.Brick, 2);
         print("");
     }
 
@@ -27,9 +29,13 @@ public class MaterialController : MonoBehaviour{
         SetText?.Invoke(materials[type], type);
     }
 
-    public void Decrease(MaterialType type, int deltaCount){
-        materials[type] -= deltaCount;
-        SetText?.Invoke(materials[type], type);
+    public int Decrease(MaterialType type, int deltaCount) {
+        int tmpCounter = materials[type];
+        if (materials[type] - deltaCount >= 0) {
+            materials[type] -= deltaCount;
+            SetText?.Invoke(materials[type], type);
+        }
+        return tmpCounter - materials[type];
     }
 
     public void SetCount(MaterialType type, int count){

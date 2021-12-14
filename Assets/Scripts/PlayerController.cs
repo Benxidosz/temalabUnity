@@ -20,7 +20,7 @@ public class PlayerController : MonoBehaviour {
     private bool _uiActive = false;
 
     private Canvas _dicePicker;
-    private SubmitButton _dicePickerSubmit;
+    private DiceSubmitButton _dicePickerDiceSubmit;
 
     public bool DiceSet { get; set; }
     public int WhiteDice { get; private set; }
@@ -101,8 +101,8 @@ public class PlayerController : MonoBehaviour {
 
     public void PickDice() {
         _dicePicker.enabled = true;
-        _dicePickerSubmit = _dicePicker.GetComponentInChildren<SubmitButton>();
-        _dicePickerSubmit.Player = this;
+        _dicePickerDiceSubmit = _dicePicker.GetComponentInChildren<DiceSubmitButton>();
+        _dicePickerDiceSubmit.Player = this;
         _uiActive = true;
         _cardInventory.Disable();
         _upgradeManager.Disable();
@@ -117,5 +117,9 @@ public class PlayerController : MonoBehaviour {
         foreach (var group in _dicePicker.GetComponentsInChildren<DiceGroup>()) {
             group.Clear();
         }
+    }
+
+    public void PointsSwitchState() {
+        points.enabled = !points.enabled;
     }
 }
