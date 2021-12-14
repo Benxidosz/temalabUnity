@@ -1,7 +1,6 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Buildings;
 using UnityEngine;
 
 public delegate void SetTextDelegate(int count, MaterialType type);
@@ -18,10 +17,6 @@ public class MaterialController : MonoBehaviour{
             materials.Add(type, 0);
             Increase(type, 10);
         }
-
-        SetCount(MaterialType.Coin, 2);
-        SetCount(MaterialType.Brick, 2);
-        print("");
     }
 
     public void Increase(MaterialType type, int deltaCount){
@@ -75,5 +70,6 @@ public enum MaterialType{
     Ore,
     Paper,
     Canvas,
-    Coin
+    Coin,
+    def
 }

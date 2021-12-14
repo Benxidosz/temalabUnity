@@ -1,45 +1,54 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.CompilerServices;
+using ScriptableObjects.CardObjects;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
-class Card {
-    public CardScript Script { get; set; }
-    public Button Button { get; set; }
+namespace ActionCards
+{
+    internal class Card
+    {
+        public CardScript Script { get; set; }
+        public Button Button { get; set; }
 
-    public Card(CardScript script) {
-        Script = script;
-        Button = script.GetComponentInChildren<Button>();
-    }
-}
-
-public class CardInventory : MonoBehaviour {
-    private Action lastCalled;
-    private List<Card> _cards;
-    [SerializeField] private TextMeshProUGUI errorMsg;
-    [SerializeField] private Canvas CardUi;
-    [SerializeField] private CardSO EmptyCard;
-
-    private List<CardSO> _cardInventory;
-    private Queue<CardSO> _cardQueue;
-
-    void Start() {
-        CardScript[] scripts = CardUi.GetComponentsInChildren<CardScript>();
-        _cards = new List<Card>();
-        _cardInventory = new List<CardSO>();
-
-        _cardQueue = new Queue<CardSO>();
-        foreach (var script in scripts) {
-            _cards.Add(new Card(script));
-            _cardInventory.Add(EmptyCard);
+        public Card(CardScript script)
+        {
+            Script = script;
+            Button = script.GetComponentInChildren<Button>();
         }
-
-        SwitchUiState();
     }
+
+    public class CardInventory : MonoBehaviour
+    {
+        private List<Card> _cards;
+        [SerializeField] private TextMeshProUGUI errorMsg;
+
+        [FormerlySerializedAs("CardUi")] [SerializeField]
+        private Canvas cardUi;
+
+        [FormerlySerializedAs("EmptyCard")] [SerializeField]
+        private CardObject emptyCard;
+
+        private List<CardObject> _cardInventory;
+        private Queue<CardObject> _cardQueue;
+
+        private void Start()
+        {
+            var scripts = cardUi.GetComponentsInChildren<CardScript>();
+            _cards = new List<Card>();
+            _cardInventory = new List<CardObject>();
+
+            _cardQueue = new Queue<CardObject>();
+            foreach (var script in scripts)
+            {
+                _cards.Add(new Card(script));
+                _cardInventory.Add(emptyCard);
+            }
+
+            SwitchUiState();
+        }
 
     private void RefillUI() {
         for (int i = 0; i < _cardInventory.Count; i++) {
@@ -54,13 +63,13 @@ public class CardInventory : MonoBehaviour {
     }
 
     private void EmptyUI() {
-        _cards.ForEach(c => c.Script.Backend = EmptyCard);
-        _cards.ForEach(c => c.Button.onClick.AddListener(() => { c.Script.Backend.Action?.Invoke(GameManager.Instance.CurrentPlayer); }));
+        _cards.ForEach(c => c.Script.Backend = emptyCard);
+        _cards.ForEach(c => c.Button.onClick.AddListener(() => { c.Script.Backend.action?.Invoke(GameManager.Instance.CurrentPlayer); }));
     }
 
     private int FindEmpty() {
         foreach (var card in _cardInventory) {
-            if (card.Equals(EmptyCard))
+            if (card.Equals(emptyCard))
                 return _cardInventory.IndexOf(card);
         }
         
@@ -87,44 +96,55 @@ public class CardInventory : MonoBehaviour {
         _cards.ForEach(c => {
             c.Button.onClick.RemoveAllListeners();
             c.Button.onClick.AddListener(() => {
-                CardSO tmp = c.Script.Backend;
+                CardObject tmp = c.Script.Backend;
                 DiscardACard(c);
-                tmp.Action?.Invoke(GameManager.Instance.CurrentPlayer);
+                tmp.action?.Invoke(GameManager.Instance.CurrentPlayer);
             });
         });
     }
     private void DiscardACard(Card card) {
-        if (!card.Script.Backend.Equals(EmptyCard)) {
+        if (!card.Script.Backend.Equals(emptyCard)) {
             CardDealer.Instance.AddToDiscard(card.Script.Backend);
-            card.Script.Backend = EmptyCard;
+            card.Script.Backend = emptyCard;
 
             int idx = _cards.IndexOf(card);
-            _cardInventory[idx] = EmptyCard;
+            _cardInventory[idx] = emptyCard;
         }
     }
 
-    public void AddCard(CardSO card) {
-        var idx = FindEmpty();
-        if (idx != -1) {
-            _cardInventory[idx] = card;
-        } else {
-            _cardQueue.Enqueue(card);
-        }
-        RefillUI();
-    }
+        public void AddCard(CardObject card)
+        {
+            var idx = FindEmpty();
+            if (idx != -1)
+            {
+                _cardInventory[idx] = card;
+            }
+            else
+            {
+                _cardQueue.Enqueue(card);
+            }
 
-    public void SwitchUiState() {
-        CardUi.enabled = !CardUi.enabled;
-        if (CardUi.enabled) {
             RefillUI();
-        } else {
-            EmptyUI();
         }
-    }
 
-    public void Disable() {
-        CardUi.enabled = false;
-        EmptyUI();
-        errorMsg.enabled = false;
+        public void SwitchUiState()
+        {
+            cardUi.enabled = !cardUi.enabled;
+            if (cardUi.enabled)
+            {
+                RefillUI();
+            }
+            else
+            {
+                EmptyUI();
+            }
+        }
+
+        public void Disable()
+        {
+            cardUi.enabled = false;
+            EmptyUI();
+            errorMsg.enabled = false;
+        }
     }
 }

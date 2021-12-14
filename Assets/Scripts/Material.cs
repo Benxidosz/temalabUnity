@@ -1,24 +1,23 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class Material : MonoBehaviour{
-    [SerializeField] private MaterialType _type;
+    [FormerlySerializedAs("_type")] [SerializeField] private MaterialType type;
     [SerializeField] private TextMeshProUGUI tmpText;
-    public MaterialType Type => _type;
+    private MaterialController _myController;
+    public MaterialType Type => type;
 
     private void Start(){
         tmpText = GetComponent<TextMeshProUGUI>();
         var tmp = GameManager.Instance.Players;
         foreach (var player in tmp){
-            player.MaterialController.SetText += setText;
+            player.MaterialController.SetText += SetText;
         }
     }
 
-    private void setText(int count, MaterialType type){
-        if (type.Equals(_type)) tmpText.text = count.ToString();
+    private void SetText(int count, MaterialType materialType){
+        if (materialType.Equals(type)) tmpText.text = count.ToString();
     }
 
 }
