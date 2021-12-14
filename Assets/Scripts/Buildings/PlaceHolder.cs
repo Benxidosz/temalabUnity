@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Unity.Netcode;
 using UnityEngine;
@@ -14,6 +15,7 @@ namespace Buildings
         private GameObject startingObj;
 
         private List<GameObject> _buildings;
+        private GameObject starting;
 
         public PlaceHolderType Type => type;
         public List<PlaceHolder> Neighbours => neighbours;
@@ -24,9 +26,10 @@ namespace Buildings
         private void Start()
         {
             _buildings = new List<GameObject>();
-            var tmpNew = Instantiate(startingObj, gameObject.transform.position, Quaternion.identity);
-            tmpNew.transform.parent = transform;
-            _buildings.Add(tmpNew);
+            starting = Instantiate(startingObj, gameObject.transform.position, Quaternion.identity);
+            starting.transform.parent = transform;
+            _buildings.Add(starting);
+            
         }
 
         public void PlaceNew(Building prefab, PlayerController player)

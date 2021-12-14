@@ -248,6 +248,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hexagonPrefab: {fileID: 6112573430322887445, guid: 060583d06a0e93e42bbde2fef02e28f9, type: 3}
   diskPrefab: {fileID: 7079338533366967569, guid: d22aebdae2bfafb4e9c1b1f40e13f392, type: 3}
+  placeholderPrefab: {fileID: 7582409609533011500, guid: 873f271b45b3f8f4d9eb8c535fb03f70, type: 3}
   brick: {fileID: 11400000, guid: 360d4f701f6e9e44888484b0cf5571d1, type: 2}
   ore: {fileID: 11400000, guid: 90bc70931c55b554099b12b139043e36, type: 2}
   wood: {fileID: 11400000, guid: f3e10961013d754418c997a108496c83, type: 2}
