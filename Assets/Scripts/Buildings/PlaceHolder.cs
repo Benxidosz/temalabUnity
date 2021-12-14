@@ -52,6 +52,11 @@ namespace Buildings
             MainBuilding = prefab;
             Player = player;
         }
+
+        public void AddNeighbour(PlaceHolder holder) {
+            if (!neighbours.Contains(holder))
+                neighbours.Add(holder);
+        }
     }
 
     public enum PlaceHolderType
