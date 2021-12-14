@@ -57,13 +57,16 @@ public class GameManager : MonoBehaviour {
     public void EndTurn() {
         if (CurrentTurnState == TurnState.rolled) {
             _currentPlayerIdx++;
-            if (_currentPlayerIdx > _players.Count)
+            if (_currentPlayerIdx >= _players.Count)
                 _currentPlayerIdx = 0;
             CurrentPlayer.PointsSwitchState();
             CurrentPlayer = _players[_currentPlayerIdx];
             CurrentPlayer.PointsSwitchState();
             CurrentTurnState = TurnState.beforeRoll;
         }
+        _players.ForEach(player => {
+            print(player.MaterialController.GetMaterialCount(MaterialType.Coin));
+        });
     }
 
     public void Village(){

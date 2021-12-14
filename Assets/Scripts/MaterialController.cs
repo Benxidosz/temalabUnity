@@ -27,14 +27,14 @@ public class MaterialController : MonoBehaviour{
     public void Increase(MaterialType type, int deltaCount){
         materials[type] += deltaCount;
         SetText?.Invoke(materials[type], type);
-        print(materials[type]);
     }
 
     public int Decrease(MaterialType type, int deltaCount) {
         int tmpCounter = materials[type];
-        materials[type] -= deltaCount;
-        SetText?.Invoke(materials[type], type);
-        print(materials[type]);
+        if (materials[type] - deltaCount >= 0) {
+            materials[type] -= deltaCount;
+            SetText?.Invoke(materials[type], type);
+        }
         return tmpCounter - materials[type];
     }
 
