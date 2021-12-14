@@ -15,7 +15,6 @@ namespace Buildings
         private GameObject startingObj;
 
         private List<GameObject> _buildings;
-        private GameObject starting;
 
         public PlaceHolderType Type{
             get => type;
@@ -24,13 +23,12 @@ namespace Buildings
 
         public List<PlaceHolder> Neighbours => neighbours;
         public Building MainBuilding { get; private set; }
-
         public PlayerController Player { get; private set; }
 
         private void Start()
         {
             _buildings = new List<GameObject>();
-            starting = Instantiate(startingObj, gameObject.transform.position, Quaternion.identity);
+            var starting = Instantiate(startingObj, gameObject.transform.position, Quaternion.identity);
             starting.transform.parent = transform;
             _buildings.Add(starting);
             
@@ -51,6 +49,13 @@ namespace Buildings
             _buildings[0].SetActive(false);
             MainBuilding = prefab;
             Player = player;
+        }
+
+        public void Harvest(MaterialType itemMain, MaterialType itemSecondary){
+            Player.MaterialController.Increase(itemMain, 1);
+            if (MainBuilding.MyType == BuildingsType.City){
+                Player.MaterialController.Increase(itemSecondary, 1);
+            }
         }
 
         public void AddNeighbour(PlaceHolder holder) {

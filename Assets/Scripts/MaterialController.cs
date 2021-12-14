@@ -66,5 +66,6 @@ public enum MaterialType{
     Ore,
     Paper,
     Canvas,
-    Coin
+    Coin,
+    def
 }
