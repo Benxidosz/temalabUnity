@@ -46,7 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   neighbours: []
   type: 0
-  StartingObj: {fileID: 111425591298780813, guid: 7676bf0cbf3a984429a1d4823e319dd7, type: 3}
+  startingObj: {fileID: 2713658749480246035, guid: 321638d312e7ac449a326070ad13c893, type: 3}
 --- !u!212 &8928095437007194440
 SpriteRenderer:
   m_ObjectHideFlags: 0

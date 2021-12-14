@@ -24,8 +24,8 @@ namespace Buildings
         [FormerlySerializedAs("Road")] [SerializeField]
         private Building road;
 
-        private void Start()
-        {
+        private void Start(){
+            materialController = GetComponent<MaterialController>();
             placeHolders = new List<PlaceHolder>();
             myPlayer = GetComponent<PlayerController>();
             foreach (var o in GameObject.FindGameObjectsWithTag("PlaceHolder"))
@@ -79,6 +79,14 @@ namespace Buildings
             raycastController.FocusedPlaceHolder.PlaceNew(road, myPlayer);
             raycastController.SetFocusNull();
         }
+
+        public void LoadPlaceHolders(){
+            foreach (var o in GameObject.FindGameObjectsWithTag("PlaceHolder"))
+            {
+                placeHolders.Add(o.GetComponent<PlaceHolder>());
+            }
+        }
+        
     }
 
     public enum BuildingsType

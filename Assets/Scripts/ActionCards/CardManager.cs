@@ -1,7 +1,7 @@
+using ScriptableObjects.CardObjects;
 using UnityEngine;
 
-namespace ActionCards
-{
+namespace ActionCards {
     public class CardManager : MonoBehaviour {
         public static CardManager Instance { get; set; }
 
@@ -13,15 +13,44 @@ namespace ActionCards
             }
         }
 
-        public void TestAction(PlayerController player) {
-            Debug.Log(player);
+        public void Alkimist(PlayerController player) {
+            player.PickDice();
         }
 
-        public void TestSokAction(PlayerController player) {
-            Debug.Log(player);
+        public void IncreasePoint(PlayerController player) {
+            ++player.Points;
         }
-        public void Uj(PlayerController player) {
-            Debug.Log(player);
+
+        public void AddTestCard(CardObject testCard) {
+            GameManager.Instance.CurrentPlayer.AddTestCard(testCard);
+        }
+
+        private void Monopoly(MaterialType material, PlayerController playerController) {
+            int sum = 0;
+            GameManager.Instance.Players.ForEach(otherPlayer => {
+                sum += otherPlayer.MaterialController.Decrease(material, 2);
+            });
+            playerController.MaterialController.Increase(material, sum);
+        }
+
+        public void CommonMonopoly(PlayerController player) {
+            GameManager.Instance.ShowPickMaterial(
+                () => GameManager.Instance.UIs[GameManager.UIKeys.materialPicker]
+                    .GetComponentInChildren<MaterialPickerUIController>().ShowCommon(),
+                material => Monopoly(material, player));
+        }
+
+        public void TradingMonopoly(PlayerController player) {
+            GameManager.Instance.ShowPickMaterial(
+                () => GameManager.Instance.UIs[GameManager.UIKeys.materialPicker]
+                    .GetComponentInChildren<MaterialPickerUIController>().ShowTrading(),
+                material => Monopoly(material, player));
+        }
+
+        public void TradingFleet(PlayerController player) {
+            GameManager.Instance.ShowPickMaterial(
+                () => GameManager.Instance.UIs[GameManager.UIKeys.materialPicker]
+                    .GetComponentInChildren<MaterialPickerUIController>().ShowAll(), material => { print(material); });
         }
     }
 }

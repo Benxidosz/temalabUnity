@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc0b1b8eaae6be14fa23488308de4b90, type: 3}
   m_Name: Road
   m_EditorClassIdentifier: 
-  model: {fileID: 8422055897304973589, guid: b60b38f4d185e63409f3294bbdcb3826, type: 3}
+  model: {fileID: 6402394278084283586, guid: 0f75a7d81d9e63c4ba648a003c9da54a, type: 3}
   myRule: {fileID: 11400000, guid: e26b0e87309b07b488a8de0597aa74de, type: 2}
   myType: 2
   cost: 0000000001000000

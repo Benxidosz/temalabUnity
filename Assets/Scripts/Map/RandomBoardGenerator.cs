@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using Buildings;
 using Unity.Netcode;
 using UnityEngine;
 
@@ -73,9 +75,26 @@ namespace Map
             new Vector3(-1, 0, -3)
         };
 
+        private readonly Dictionary<Vector3, string> _placeHoldersOffset = new Dictionary<Vector3, string>()
+        {
+            {new Vector3(-0.87f, 0, 0), "E"},
+            {new Vector3(-0.87f, 0, 0.5f), "N"},
+            {new Vector3(-0.44f, 0, 0.75f), "E"},
+            {new Vector3(0, 0, 1), "N"},
+            {new Vector3(0.44f, 0, 0.75f), "E"},
+            {new Vector3(0.87f, 0, 0.5f), "N"},
+            {new Vector3(0.87f, 0, 0), "E"},
+            {new Vector3(0.87f, 0, -0.5f), "N"},
+            {new Vector3(0.44f, 0, -0.75f), "E"},
+            {new Vector3(0, 0, -1), "N"},
+            {new Vector3(-0.44f, 0, -0.75f), "E"},
+            {new Vector3(-0.87f, 0, -0.5f), "N"},
+        };
+
         [SerializeField] private GameObject hexagonPrefab;
         [SerializeField] private GameObject diskPrefab;
         [SerializeField] private GameObject portPrefab;
+        [SerializeField] private GameObject placeholderPrefab;
 
         [SerializeField] private Tile brick;
         [SerializeField] private Tile ore;
@@ -97,6 +116,9 @@ namespace Map
         private readonly List<GameObject> _hexagonGameObjects = new List<GameObject>();
         private readonly List<GameObject> _disksGameObjects = new List<GameObject>();
         private readonly List<GameObject> _portGameObjects = new List<GameObject>();
+
+        private readonly Dictionary<Vector3, GameObject>
+            _placeHolderGameObjects = new Dictionary<Vector3, GameObject>();
 
         [SerializeField] private Vector2 tileOffset = new Vector2(0.9f, 1.6f);
 
@@ -141,16 +163,89 @@ namespace Map
         private GameObject CreateHexagon(Vector3 position, TileType tileType)
         {
             var hexagon = Instantiate(hexagonPrefab);
-            hexagon.transform.position = new Vector3(position.x * tileOffset.x, 0, position.z * tileOffset.y);
+            var controller = hexagon.GetComponent<TileController>();
+            switch (tileType)
+            {
+                case TileType.Bricks:
+                    controller.MyType = MaterialType.Brick;
+                    break;
+                case TileType.Ore:
+                    controller.MyType = MaterialType.Ore;
+                    break;
+                case TileType.Wheat:
+                    controller.MyType = MaterialType.Wheat;
+                    break;
+                case TileType.Wool:
+                    controller.MyType = MaterialType.Wool;
+                    break;
+                case TileType.Wood:
+                    controller.MyType = MaterialType.Wood;
+                    break;
+                default:
+                    controller.MyType = MaterialType.def;
+                    break;
+            }
+
+            var pos = new Vector3(position.x * tileOffset.x, 0, position.z * tileOffset.y);
+            hexagon.transform.position = pos;
+
+            if (tileType != TileType.Ocean)
+            {
+                var placeHolders = new List<PlaceHolder>();
+                foreach (var offset in _placeHoldersOffset)
+                {
+                    print(offset.ToString());
+                    var placeHolderPos = new Vector3(pos.x + offset.Key.x, 0.05f + offset.Key.y, pos.z + offset.Key.z);
+                    // var roundPos = new Vector3((float) (Math.Floor((pos.x + offset.x) * 100) / 100), (float) (Math.Floor((0.1f + offset.y) * 100) / 100),  (float) (Math.Floor((pos.z + offset.z) * 100) / 100));
+                    PlaceHolder tmpPlaceHolder = null;
+                    var has = false;
+                    foreach (var tmpObj in _placeHolderGameObjects.Where(tmpObj =>
+                        (tmpObj.Key - placeHolderPos).sqrMagnitude <= 0.001))
+                    {
+                        has = true;
+                        tmpPlaceHolder = tmpObj.Value.GetComponent<PlaceHolder>();
+                        break;
+                    }
+
+                    if (!has)
+                    {
+                        var tmp = Instantiate(placeholderPrefab, placeHolderPos, hexagon.transform.rotation,
+                            hexagon.transform);
+                        tmp.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
+                        tmp.GetComponent<PlaceHolder>().Type =
+                            offset.Value.Equals("E") ? PlaceHolderType.Edge : PlaceHolderType.Node;
+                        tmpPlaceHolder = tmp.GetComponent<PlaceHolder>();
+                        _placeHolderGameObjects.Add(placeHolderPos, tmp);
+                    }
+
+                    placeHolders.Add(tmpPlaceHolder);
+                }
+
+                controller.AddPlaceHolders(placeHolders);
+                for (var i = 0; i < placeHolders.Count; i++)
+                {
+                    var nei1 = i - 1;
+                    var nei2 = i + 1;
+                    if (nei1 < 0)
+                        nei1 += placeHolders.Count;
+                    if (nei2 >= placeHolders.Count)
+                        nei2 -= placeHolders.Count;
+                    placeHolders[i].AddNeighbour(placeHolders[nei1]);
+                    placeHolders[i].AddNeighbour(placeHolders[nei2]);
+                }
+            }
+
             hexagon.GetComponent<Renderer>().material.mainTexture = _tiles[tileType].Texture;
             return hexagon;
         }
 
-        private GameObject CreateDisk(Vector3 position, Disk disk)
+        private GameObject CreateDisk(Vector3 position, Disk disk, TileController tile)
         {
             var numberDisk = Instantiate(diskPrefab);
             numberDisk.transform.position = new Vector3(position.x * tileOffset.x, 0.05f, position.z * tileOffset.y);
             numberDisk.GetComponent<Renderer>().material.mainTexture = disk.texture;
+            tile.MyNumber = disk.value;
+            
             return numberDisk;
         }
 
@@ -211,6 +306,7 @@ namespace Map
         private void SpawnTilesClientRpc(TileType[] tileTypes, int[] numbers, PortType[] portTypes)
         {
             CreateHexagons(tileTypes, numbers, portTypes);
+            GameManager.Instance.CurrentPlayer.BuildingController.LoadPlaceHolders();
         }
 
         private void CreateHexagons(TileType[] tileTypes, int[] numbers, PortType[] portTypes)
@@ -218,10 +314,11 @@ namespace Map
             var j = 0;
             for (var i = 0; i < _tileOffsets.Length; i++)
             {
-                _hexagonGameObjects.Add(CreateHexagon(_tileOffsets[i], tileTypes[i]));
+                var hexagon = CreateHexagon(_tileOffsets[i], tileTypes[i]);
+                _hexagonGameObjects.Add(hexagon);
                 if (tileTypes[i] != TileType.Desert)
                 {
-                    _disksGameObjects.Add(CreateDisk(_tileOffsets[i], _disks[numbers[j]]));
+                    _disksGameObjects.Add(CreateDisk(_tileOffsets[i], _disks[numbers[j]], hexagon.GetComponent<TileController>()));
                     j++;
                 }
             }
