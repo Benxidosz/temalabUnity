@@ -47,9 +47,6 @@ public class PlayerController : MonoBehaviour {
         foreach (var type in MaterialController.MaterialTypes) {
             TradingNeeds[type] = 4;
         }
-    }
-
-    private void Start(){
         _gameManager = GameManager.Instance;
         _gameManager.RegisterPlayer(this);
         _cardInventory = GetComponent<CardInventory>();
@@ -58,6 +55,9 @@ public class PlayerController : MonoBehaviour {
 
         _materialController = GetComponent<MaterialController>();
         _buildingController = GetComponent<BuildingController>();
+    }
+
+    private void Start(){
         _dicePicker = _gameManager.UIs[GameManager.UIKeys.dicePicker];
         RefreshPoints();
         Id = GetInstanceID();

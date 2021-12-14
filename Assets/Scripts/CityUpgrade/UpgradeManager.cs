@@ -36,19 +36,19 @@ public class UpgradeManager : MonoBehaviour {
     }
 
     public void UpgradeYellow(){
-        if (player.MaterialController.GetMaterialCount(MaterialType.Canvas) <= YellowCounter + 1) return;
+        if (player.MaterialController.GetMaterialCount(MaterialType.Canvas) < YellowCounter + 1) return;
         if (YellowCounter >= _yellowUpgrades.Length) return;
         _yellowUpgrades[YellowCounter++].Build();
         player.MaterialController.Decrease(MaterialType.Canvas, YellowCounter);
     }
     public void UpgradeBlue() {
-        if (player.MaterialController.GetMaterialCount(MaterialType.Coin) <= BlueCounter + 1) return;
+        if (player.MaterialController.GetMaterialCount(MaterialType.Coin) < BlueCounter + 1) return;
         if (BlueCounter >= _blueUpgrades.Length) return;
         _blueUpgrades[BlueCounter++].Build();
         player.MaterialController.Decrease(MaterialType.Coin, BlueCounter);
     }
     public void UpgradeGreen() {
-        if (player.MaterialController.GetMaterialCount(MaterialType.Paper) <= GreenCounter + 1) return;
+        if (player.MaterialController.GetMaterialCount(MaterialType.Paper) < GreenCounter + 1) return;
         if (GreenCounter >= _greenUpgrades.Length) return;
         _greenUpgrades[GreenCounter++].Build();
         player.MaterialController.Decrease(MaterialType.Paper, GreenCounter);
