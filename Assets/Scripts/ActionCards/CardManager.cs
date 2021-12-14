@@ -35,21 +35,21 @@ namespace ActionCards {
 
         public void CommonMonopoly(PlayerController player) {
             GameManager.Instance.ShowPickMaterial(
-                () => GameManager.Instance.UIs[GameManager.UIKeys.materialPicker]
+                () => GameManager.Instance.UIs[GameManager.UIKeys.MaterialPicker]
                     .GetComponentInChildren<MaterialPickerUIController>().ShowCommon(),
                 material => Monopoly(material, player));
         }
 
         public void TradingMonopoly(PlayerController player) {
             GameManager.Instance.ShowPickMaterial(
-                () => GameManager.Instance.UIs[GameManager.UIKeys.materialPicker]
+                () => GameManager.Instance.UIs[GameManager.UIKeys.MaterialPicker]
                     .GetComponentInChildren<MaterialPickerUIController>().ShowTrading(),
                 material => Monopoly(material, player));
         }
 
         public void TradingFleet(PlayerController player) {
             GameManager.Instance.ShowPickMaterial(
-                () => GameManager.Instance.UIs[GameManager.UIKeys.materialPicker]
+                () => GameManager.Instance.UIs[GameManager.UIKeys.MaterialPicker]
                     .GetComponentInChildren<MaterialPickerUIController>().ShowAll(), material => { print(material); });
         }
     }
