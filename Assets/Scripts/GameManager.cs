@@ -1,7 +1,9 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
+using TMPro;
+using Unity.Netcode;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class GameManager : MonoBehaviour {
     [Serializable]
@@ -18,6 +20,9 @@ public class GameManager : MonoBehaviour {
         dicePicker, materialPicker
     }
     public static GameManager Instance { get; private set; }
+    public PlayerController current;
+    
+    [FormerlySerializedAs("_players")] [SerializeField]private List<PlayerController> players = new List<PlayerController>();
     public PlayerController CurrentPlayer { get; private set; }
     public TurnState CurrentTurnState { get; private set; }
 
@@ -26,6 +31,9 @@ public class GameManager : MonoBehaviour {
     private List<PlayerController> _players = new List<PlayerController>();
     public List<PlayerController> Players => _players;
     private int _currentPlayerIdx = 0;
+
+    [SerializeField] private TextMeshProUGUI barbarianText;
+    private int _barbarianTurn = 7;
     private void Awake() {
         if (Instance == null) {
             Instance = this;
@@ -40,14 +48,28 @@ public class GameManager : MonoBehaviour {
         }
     }
     public void RegisterPlayer(PlayerController player) {
-        if (_players.Count == 0) {
+        if (players.Count == 0) {
             CurrentPlayer = player;
         } else {
             player.PointsSwitchState();
         }
-        _players.Add(player);
+        players.Add(player);
+    }
+    private void RefreshBarbarianText() {
+        barbarianText.text = $"{_barbarianTurn} Black Rolls Until Barbarians";
     }
 
+    private void BarbariansComing() {
+        Debug.Log("Barbarians!");
+    }
+    public void BlackRolled() {
+        _barbarianTurn--;
+        if (_barbarianTurn == 0) {
+            BarbariansComing();
+            _barbarianTurn = 7;
+        }
+        RefreshBarbarianText();
+    }
     public void DrawActionCard(ActionDice action) {
         CurrentPlayer.DrawActionCard(action);
     }

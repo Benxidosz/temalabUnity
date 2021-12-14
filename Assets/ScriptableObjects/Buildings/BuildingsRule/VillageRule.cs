@@ -1,35 +1,41 @@
-﻿using System;
+﻿using Buildings;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "VillageRule", menuName = "ScriptableObjects/Rules/VillageRule", order = 1)]
-public class VillageRule : BaseRule{
-    public override bool Rule(PlaceHolder holder){
-        var re = true;
-        var loc = false;
-        var cou = 0;
-        if (holder.Type != PlaceHolderType.NODE) return false;
-        holder.Neighbours.ForEach(nb => {
-            nb.Neighbours.ForEach(nnb => {
-                if (nnb.MainBuilding != null){
-                    if (nnb != holder && (nnb.MainBuilding.MyType == BuildingsType.VILLAGE ||
-                                          nnb.MainBuilding.MyType == BuildingsType.CITY)){
-                        re = false;
-                        loc = true;
+namespace ScriptableObjects.Buildings.BuildingsRule
+{
+    [CreateAssetMenu(fileName = "VillageRule", menuName = "ScriptableObjects/Rules/VillageRule", order = 1)]
+    public class VillageRule : BaseRule
+    {
+        public override bool Rule(PlaceHolder holder)
+        {
+            var located = false;
+            var count = 0;
+            if (holder.Type != PlaceHolderType.Node) return false;
+
+            holder.Neighbours.ForEach(neighbour =>
+            {
+                neighbour.Neighbours.ForEach(other =>
+                {
+                    if (other.MainBuilding != null)
+                    {
+                        if (other != holder && (other.MainBuilding.MyType == BuildingsType.Village ||
+                                                other.MainBuilding.MyType == BuildingsType.City))
+                        {
+                            located = true;
+                        }
                     }
-                }
-                else{
-                    if (nb.MainBuilding != null && !loc){
-                        if(nb.MainBuilding.MyType == BuildingsType.ROAD && 
-                           nb.Player.id == GameManager.Instance.CurrentPlayer.id)
-                            cou++;
+                    else
+                    {
+                        if (neighbour.MainBuilding != null && !located)
+                        {
+                            if (neighbour.MainBuilding.MyType == BuildingsType.Road &&
+                                neighbour.Player.Id == GameManager.Instance.CurrentPlayer.Id)
+                                count++;
+                        }
                     }
-                }
+                });
             });
-        });
-        if (!re)
-            return false;
-        if (re && cou > 0)
-            return true;
-        return false;
+            return !located && count > 0;
+        }
     }
 }

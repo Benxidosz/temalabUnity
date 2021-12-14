@@ -1,33 +1,44 @@
-﻿using UnityEngine;
+﻿using Buildings;
+using UnityEngine;
 
-[CreateAssetMenu(fileName = "RoadRule", menuName = "ScriptableObjects/Rules/RoadRule", order = 3)]
-public class RoadRule : BaseRule{
-    public override bool Rule(PlaceHolder holder){
-        var re = false;
-        if (holder.Type != PlaceHolderType.EDGE) return false;
-        holder.Neighbours.ForEach(nb => {
-            nb.Neighbours.ForEach(nnb => {
-                if (nnb.MainBuilding != null){
-                    //Kapcsolodik e uthoz
-                    if (nnb != holder && 
-                        nnb.MainBuilding.MyType == BuildingsType.ROAD && 
-                        nnb.Player.id == GameManager.Instance.CurrentPlayer.id){
-                        
-                        re = true;
+namespace ScriptableObjects.Buildings.BuildingsRule
+{
+    [CreateAssetMenu(fileName = "RoadRule", menuName = "ScriptableObjects/Rules/RoadRule", order = 3)]
+    public class RoadRule : BaseRule
+    {
+        public override bool Rule(PlaceHolder holder)
+        {
+            var result = false;
+            if (holder.Type != PlaceHolderType.Edge) return false;
+            holder.Neighbours.ForEach(neighbour =>
+            {
+                neighbour.Neighbours.ForEach(other =>
+                {
+                    if (other.MainBuilding != null)
+                    {
+                        // Kapcsolodik e uthoz
+                        if (other != holder &&
+                            other.MainBuilding.MyType == BuildingsType.Road &&
+                            other.Player.Id == GameManager.Instance.CurrentPlayer.Id)
+                        {
+                            result = true;
+                        }
                     }
-                }
-                else{
-                    if (nb.MainBuilding != null){
-                        // szomszedos e varossal
-                        if ((nb.MainBuilding.MyType == BuildingsType.CITY ||
-                            nb.MainBuilding.MyType == BuildingsType.VILLAGE) &&
-                            nb.Player.id == GameManager.Instance.CurrentPlayer.id)
-                            re = true;
-                    }    
-                }
+                    else
+                    {
+                        if (neighbour.MainBuilding != null)
+                        {
+                            // Szomszedos e varossal
+                            if ((neighbour.MainBuilding.MyType == BuildingsType.City ||
+                                 neighbour.MainBuilding.MyType == BuildingsType.Village) &&
+                                neighbour.Player.Id == GameManager.Instance.CurrentPlayer.Id)
+                                result = true;
+                        }
+                    }
+                });
             });
-        });
-        
-        return re;
+
+            return result;
+        }
     }
 }

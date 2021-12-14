@@ -1,6 +1,7 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
+using ActionCards;
+using Buildings;
+using ScriptableObjects.CardObjects;
 using TMPro;
 using UnityEngine;
 
@@ -8,10 +9,11 @@ public class PlayerController : MonoBehaviour {
     private CardInventory _cardInventory;
     private UpgradeManager _upgradeManager;
     private GameManager _gameManager;
+
     private MaterialController _materialController;
     private BuildingController _buildingController;
     
-    public long id{ get; private set; }
+    public long Id{ get; private set; }
     public BuildingController BuildingController => _buildingController;
     public MaterialController MaterialController => _materialController;
    
@@ -47,24 +49,20 @@ public class PlayerController : MonoBehaviour {
 
         _materialController = GetComponent<MaterialController>();
         _buildingController = GetComponent<BuildingController>();
-    }
-
-    void Start() {
-        id = GetInstanceID();
         _dicePicker = _gameManager.UIs[GameManager.UIKeys.dicePicker];
 
         RefreshPoints();
+        Id = GetInstanceID();
     }
 
-    // Update is called once per frame
-    void Update() {
+    private void Update() {
         if (!_uiActive && this == _gameManager.CurrentPlayer) {
-            if (Input.GetKeyDown("i")) {
+            if (Input.GetKeyDown(KeyCode.I)) {
                 _upgradeManager.Disable();
                 _cardInventory.SwitchUiState();
             }
 
-            if (Input.GetKeyDown("c")) {
+            if (Input.GetKeyDown(KeyCode.C)) {
                 _cardInventory.Disable();
                 _upgradeManager.SwitchUiState();
             }
@@ -77,17 +75,17 @@ public class PlayerController : MonoBehaviour {
 
     public void DrawActionCard(ActionDice action) {
         switch (action) {
-            case ActionDice.blue: {
+            case ActionDice.Blue: {
                 if (DiceRoller.Instance.RedDice <= _upgradeManager.BlueCounter)
                     _cardInventory.AddCard(CardDealer.Instance.NextBlueCard);
                 break;
             }
-            case ActionDice.green: {
+            case ActionDice.Green: {
                 if (DiceRoller.Instance.RedDice <= _upgradeManager.GreenCounter)
                     _cardInventory.AddCard(CardDealer.Instance.NextGreenCard);
                 break;
             }
-            case ActionDice.yellow: {
+            case ActionDice.Yellow: {
                 if (DiceRoller.Instance.RedDice <= _upgradeManager.YellowCounter)
                     _cardInventory.AddCard(CardDealer.Instance.NextYellowCard);
                 break;
@@ -95,7 +93,7 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
-    public void AddTestCard(CardSO testCard) {
+    public void AddTestCard(CardObject testCard) {
         _cardInventory.AddCard(testCard);
     }
 

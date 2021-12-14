@@ -1,14 +1,11 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Threading;
-using UnityEditor.Build.Content;
 using UnityEngine;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
 public enum ActionDice {
-    blue, green, yellow, black
+    Blue, Green, Yellow, Black
 }
 public class DiceRoller : MonoBehaviour {
     public static DiceRoller Instance { get; private set; }
@@ -32,7 +29,7 @@ public class DiceRoller : MonoBehaviour {
     public ActionDice ActionDice{ get; private set; }
     public int Sum => RedDice + WhiteDice;
 
-    private Sprite actionSprite;
+    private Sprite _actionSprite;
 
     private void Start() {
         if (Instance == null)
@@ -54,12 +51,13 @@ public class DiceRoller : MonoBehaviour {
             RedDice = Random.Range(1, 7);
         }
         
-        ActionSprites tmpAction = actionDice[Random.Range(0, 6)];
+        var tmpAction = actionDice[Random.Range(0, 6)];
         ActionDice = tmpAction.dice;
-        actionSprite = tmpAction.sprite;
-        print(WhiteDice + " " + RedDice + " = " + Sum);
+        _actionSprite = tmpAction.sprite;
+        Debug.Log($"{WhiteDice} {RedDice} = {Sum}");
         _gameManager.DrawActionCard(ActionDice);
-        
+        if (ActionDice == ActionDice.Black)
+            GameManager.Instance.BlackRolled();
         StartCoroutine(Roller());
         _gameManager.Rolled();
     }
@@ -73,7 +71,7 @@ public class DiceRoller : MonoBehaviour {
         }
         whiteDiceImage.sprite = whiteSprites[WhiteDice - 1];
         redDiceImage.sprite = redSprites[RedDice - 1];
-        actionDiceImage.sprite = actionSprite;
+        actionDiceImage.sprite = _actionSprite;
     }
     
 }
