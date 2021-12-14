@@ -19,15 +19,7 @@ public class GameStarter : MonoBehaviour
     private string _ip = "127.0.0.1";
     private ClientType _clientType = ClientType.None;
     private bool _mapGenerated = false;
-
-
-    private void Start()
-    {
-    }
-
-    private void Update()
-    {
-    }
+    
 
     private void OnGUI()
     {

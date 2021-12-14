@@ -6,6 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/RandomizedMapScene.unity
-    guid: 56bd3265d6dfa90429dae02d89241636
+    path: Assets/Scenes/BoardSetup.unity
+    guid: c699758899ab1ed44aded40aee6ab4e1
   m_configObjects: {}

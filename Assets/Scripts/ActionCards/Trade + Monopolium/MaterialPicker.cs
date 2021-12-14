@@ -15,7 +15,7 @@ public class MaterialPicker : MonoBehaviour {
 
     private Sprite original;
     // Start is called before the first frame update
-    void Start() {
+    void Awake() {
         _button = GetComponent<Button>();
         original = _button.image.sprite;
         _button.onClick.AddListener(() => {
