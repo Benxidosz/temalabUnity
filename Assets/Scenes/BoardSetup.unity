@@ -1114,6 +1114,34 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6820531802141501881, guid: cd965d86e39563841b4d8b6fb39fdfdb, type: 3}
+      propertyPath: anyPort
+      value: 
+      objectReference: {fileID: 11400000, guid: eab1198fb63cb264490ec15f541682b9, type: 2}
+    - target: {fileID: 6820531802141501881, guid: cd965d86e39563841b4d8b6fb39fdfdb, type: 3}
+      propertyPath: orePort
+      value: 
+      objectReference: {fileID: 11400000, guid: df033508eb5719544a1d4d52ffe08b22, type: 2}
+    - target: {fileID: 6820531802141501881, guid: cd965d86e39563841b4d8b6fb39fdfdb, type: 3}
+      propertyPath: woodPort
+      value: 
+      objectReference: {fileID: 11400000, guid: e64755b0946827947b4a11c62404a7c7, type: 2}
+    - target: {fileID: 6820531802141501881, guid: cd965d86e39563841b4d8b6fb39fdfdb, type: 3}
+      propertyPath: woolPort
+      value: 
+      objectReference: {fileID: 11400000, guid: dcd605539243eb44a9b7c54602d19def, type: 2}
+    - target: {fileID: 6820531802141501881, guid: cd965d86e39563841b4d8b6fb39fdfdb, type: 3}
+      propertyPath: brickPort
+      value: 
+      objectReference: {fileID: 11400000, guid: 8135c82e7eaf1034a99ed3a2249aadaa, type: 2}
+    - target: {fileID: 6820531802141501881, guid: cd965d86e39563841b4d8b6fb39fdfdb, type: 3}
+      propertyPath: wheatPort
+      value: 
+      objectReference: {fileID: 11400000, guid: 7e570c4c00efef14382c8fd2b9ef4e2c, type: 2}
+    - target: {fileID: 6820531802141501881, guid: cd965d86e39563841b4d8b6fb39fdfdb, type: 3}
+      propertyPath: portPrefab
+      value: 
+      objectReference: {fileID: 3360915820828775827, guid: c364355e93afc4c4b8ad0b438579fdbe, type: 3}
     - target: {fileID: 6820531802141501883, guid: cd965d86e39563841b4d8b6fb39fdfdb, type: 3}
       propertyPath: GlobalObjectIdHash
       value: 2439375943

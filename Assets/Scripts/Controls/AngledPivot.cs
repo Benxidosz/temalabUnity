@@ -77,12 +77,12 @@ namespace Controls
 
             // Drag 
             var mouse = Input.mousePosition;
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButtonDown(1))
             {
                 _lastMousePosition = mouse;
             }
 
-            if (Input.GetMouseButton(0))
+            if (Input.GetMouseButton(1))
             {
                 var lastRay = _camera.ScreenPointToRay(_lastMousePosition);
                 var currentRay = _camera.ScreenPointToRay(mouse);

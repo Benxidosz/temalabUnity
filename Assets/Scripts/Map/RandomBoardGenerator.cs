@@ -194,8 +194,7 @@ namespace Map
                 var placeHolders = new List<PlaceHolder>();
                 foreach (var offset in _placeHoldersOffset)
                 {
-                    print(offset.ToString());
-                    var placeHolderPos = new Vector3(pos.x + offset.Key.x, 0.05f + offset.Key.y, pos.z + offset.Key.z);
+                    var placeHolderPos = new Vector3(0, 0.05f, 0) + pos + offset.Key;
                     // var roundPos = new Vector3((float) (Math.Floor((pos.x + offset.x) * 100) / 100), (float) (Math.Floor((0.1f + offset.y) * 100) / 100),  (float) (Math.Floor((pos.z + offset.z) * 100) / 100));
                     PlaceHolder tmpPlaceHolder = null;
                     var has = false;
@@ -214,6 +213,7 @@ namespace Map
                         tmp.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
                         tmp.GetComponent<PlaceHolder>().Type =
                             offset.Value.Equals("E") ? PlaceHolderType.Edge : PlaceHolderType.Node;
+                        tmp.transform.rotation = Quaternion.LookRotation(offset.Key);
                         tmpPlaceHolder = tmp.GetComponent<PlaceHolder>();
                         _placeHolderGameObjects.Add(placeHolderPos, tmp);
                     }

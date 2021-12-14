@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc0b1b8eaae6be14fa23488308de4b90, type: 3}
   m_Name: City
   m_EditorClassIdentifier: 
-  model: {fileID: 919132149155446097, guid: 740996ae3ba89f149abd2bfbc226687e, type: 3}
+  model: {fileID: 1382841308728394801, guid: 8b5b6b8ad070db944bf92d39ee577d52, type: 3}
   myRule: {fileID: 11400000, guid: bb00344cf7a9cd641877416873d7e738, type: 2}
   myType: 1
   cost: 0400000004000000030000000300000003000000

@@ -44,6 +44,7 @@ namespace Buildings
 
             var tmpNew = Instantiate(prefab.Model, gameObject.transform.position, Quaternion.identity);
             tmpNew.transform.parent = transform;
+            tmpNew.transform.rotation = transform.rotation;
             if (prefab.MyType != BuildingsType.Road){
                 tmpNew.transform.Rotate(270f, 0, 0);
                 tmpNew.transform.localScale = new Vector3(100, 100, 100);
