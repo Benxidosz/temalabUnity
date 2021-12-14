@@ -28,7 +28,7 @@ public class TradeButtonClicks : MonoBehaviour
         } 
     }
 
-    public void MaterialsClicked()
+    public void OfferMaterialsClicked()
     {
         Text txt = GameObject.Find("SelectedMaterial").GetComponent<Text>();
         string material = EventSystem.current.currentSelectedGameObject.name;
@@ -39,5 +39,30 @@ public class TradeButtonClicks : MonoBehaviour
     {
         Text material = GameObject.Find("SelectedMaterial").GetComponent<Text>();
         Text amount = GameObject.Find("Amount").GetComponent<Text>();
+    }
+
+    public void InspectMaterialsClicked()
+    {
+        //Text txt = GameObject.Find("SelectedMaterial").GetComponent<Text>();
+    }
+
+    public void SendOfferClick()
+    {
+
+    }
+
+    public void DeclineOfferClick()
+    {
+
+    }
+
+    public void AcceptClick()
+    {
+
+    }
+
+    public void DeclineClick()
+    {
+
     }
 }
