@@ -7,13 +7,13 @@ using UnityEngine;
 public class TileController : MonoBehaviour{
     
     public MaterialType MyType{ get; set; }
-    public int myNumber{ get; set; }
+    public int MyNumber{ get; set; }
 
     [Header("Placeholders")] [SerializeField]
     private List<PlaceHolder> placeHolders = new List<PlaceHolder>();
 
-    public void AddPlaceHolder(PlaceHolder placeHolder){
-        placeHolders.Add(placeHolder);
+    public void AddPlaceHolders(List<PlaceHolder> placeHolder){
+        placeHolders = placeHolder;
     }
     
     public void Harvest(){
