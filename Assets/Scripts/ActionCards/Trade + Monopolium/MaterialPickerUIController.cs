@@ -11,7 +11,13 @@ public class MaterialPickerUIController : MonoBehaviour {
     private MaterialPicker _lastMaterialPicker;
     private MaterialPicker[] _materialPickers;
 
-    public MaterialType Value => _lastMaterialPicker.Value;
+    public MaterialType? Value {
+        get {
+            if (_lastMaterialPicker is null)
+                return null;
+            return _lastMaterialPicker.Value;
+        }
+    }
 
     private MaterialPickerUIController _materialPickerUIController;
     public Canvas Canvas { get; private set; }
@@ -29,6 +35,12 @@ public class MaterialPickerUIController : MonoBehaviour {
         foreach (var materialPicker in _materialPickers) {
             materialPicker.ButtonClicked += ButtonClicked;
         }
+    }
+
+    public void PickMaterial(MaterialPicker materialPicker) {
+        _lastMaterialPicker.Button.interactable = true;
+        _lastMaterialPicker = materialPicker;
+        _lastMaterialPicker.Button.interactable = false;
     }
     
     private void ButtonClicked(MaterialPicker materialPicker) {
@@ -58,5 +70,12 @@ public class MaterialPickerUIController : MonoBehaviour {
         commonGroup.SetActive(true);
         tradingGroup.SetActive(true);
         Canvas.enabled = true;
+    }
+
+    public void SelectNone() {
+        if (_lastMaterialPicker != null) {
+            _lastMaterialPicker.Button.interactable = true;
+            _lastMaterialPicker = null;
+        }
     }
 }
