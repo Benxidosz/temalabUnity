@@ -44,7 +44,14 @@ namespace Buildings
 
             var tmpNew = Instantiate(prefab.Model, gameObject.transform.position, Quaternion.identity);
             tmpNew.transform.parent = transform;
-            tmpNew.GetComponent<NetworkObject>().Spawn();
+            if (prefab.MyType != BuildingsType.Road){
+                tmpNew.transform.Rotate(270f, 0, 0);
+                tmpNew.transform.localScale = new Vector3(100, 100, 100);
+            }
+            else{
+                
+            }
+            //tmpNew.GetComponent<NetworkObject>().Spawn();
             _buildings.Add(tmpNew);
             _buildings[0].SetActive(false);
             MainBuilding = prefab;
@@ -52,6 +59,7 @@ namespace Buildings
         }
 
         public void Harvest(MaterialType itemMain, MaterialType itemSecondary){
+            if (Player == null) return;
             Player.MaterialController.Increase(itemMain, 1);
             if (MainBuilding.MyType == BuildingsType.City){
                 Player.MaterialController.Increase(itemSecondary, 1);

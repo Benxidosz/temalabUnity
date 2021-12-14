@@ -58,8 +58,11 @@ public class PlayerController : MonoBehaviour {
 
         _materialController = GetComponent<MaterialController>();
         _buildingController = GetComponent<BuildingController>();
-        _dicePicker = _gameManager.UIs[GameManager.UIKeys.dicePicker];
+       
+    }
 
+    private void Start(){
+        _dicePicker = _gameManager.UIs[GameManager.UIKeys.dicePicker];
         RefreshPoints();
         Id = GetInstanceID();
     }
