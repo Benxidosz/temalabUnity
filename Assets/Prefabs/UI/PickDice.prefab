@@ -2761,7 +2761,7 @@ GameObject:
   - component: {fileID: 7620493672766324121}
   - component: {fileID: 937236902527764286}
   - component: {fileID: 2835337637625028616}
-  - component: {fileID: 2662565744474746665}
+  - component: {fileID: 4456053291482107011}
   m_Layer: 5
   m_Name: Submit
   m_TagString: Untagged
@@ -2871,7 +2871,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &2662565744474746665
+--- !u!114 &4456053291482107011
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2880,10 +2880,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 6785869481728128346}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a4be74c600f2a084a8a3c0b897cd1614, type: 3}
+  m_Script: {fileID: 11500000, guid: 54ede9bf664e51348a22dc61fe8677da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DicePickerUI: {fileID: 2524199220480044948}
   whiteDice: {fileID: 501604114}
   redDice: {fileID: 5698954359892076236}
 --- !u!1 &7352752261919287135

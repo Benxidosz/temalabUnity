@@ -298,8 +298,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   errorMsg: {fileID: 5537226012281776693}
-  CardUi: {fileID: 4865505114340265624}
-  EmptyCard: {fileID: 11400000, guid: eaad280b93cefd34c83af706c0b46fb4, type: 2}
+  cardUi: {fileID: 4865505114340265624}
+  emptyCard: {fileID: 11400000, guid: eaad280b93cefd34c83af706c0b46fb4, type: 2}
 --- !u!114 &8430714868440308698
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -341,10 +341,10 @@ MonoBehaviour:
   materialController: {fileID: 0}
   myPlayer: {fileID: 0}
   placeHolders: []
-  FreeVillage: 1
-  Village: {fileID: 11400000, guid: ccce9e0b0d404f949b5a2d4841688212, type: 2}
-  City: {fileID: 11400000, guid: d4bebcda802fc5a4da1415b130f66f1b, type: 2}
-  Road: {fileID: 11400000, guid: cc72318ed30650a41845a1df5829a96b, type: 2}
+  freeVillage: 1
+  village: {fileID: 11400000, guid: ccce9e0b0d404f949b5a2d4841688212, type: 2}
+  city: {fileID: 11400000, guid: d4bebcda802fc5a4da1415b130f66f1b, type: 2}
+  road: {fileID: 11400000, guid: cc72318ed30650a41845a1df5829a96b, type: 2}
 --- !u!1001 &1414481427147927993
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -535,6 +535,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8430714868440308693}
     m_Modifications:
+    - target: {fileID: 2099796233, guid: cbcf3c9c7d1b0134686b8f2bd85c14d7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: ActionCards.CardManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2099796233, guid: cbcf3c9c7d1b0134686b8f2bd85c14d7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 11400000, guid: 67411f9f78eeb9c499b61631197baf0e, type: 2}
+    - target: {fileID: 2099796233, guid: cbcf3c9c7d1b0134686b8f2bd85c14d7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: ScriptableObjects.CardObjects.CardObject, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 1107202329459065838, guid: cbcf3c9c7d1b0134686b8f2bd85c14d7, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
