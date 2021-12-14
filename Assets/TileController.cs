@@ -6,8 +6,8 @@ using UnityEngine;
 
 public class TileController : MonoBehaviour{
     
-    public MaterialType myType;
-    public int myNumber;
+    public MaterialType MyType{ get; set; }
+    public int myNumber{ get; set; }
 
     [Header("Placeholders")] [SerializeField]
     private List<PlaceHolder> placeHolders = new List<PlaceHolder>();
@@ -19,19 +19,19 @@ public class TileController : MonoBehaviour{
     public void Harvest(){
         placeHolders.ForEach(item => {
             if (item.Type != PlaceHolderType.Node) return;
-            switch (myType){
+            switch (MyType){
                 case MaterialType.Brick:
                 case MaterialType.Wheat:
-                    item.Harvest( myType,myType);
+                    item.Harvest( MyType,MyType);
                     break;
                 case MaterialType.Ore:
-                    item.Harvest( myType,MaterialType.Coin);
+                    item.Harvest( MyType,MaterialType.Coin);
                     break;
                 case MaterialType.Wood:
-                    item.Harvest( myType,MaterialType.Paper);
+                    item.Harvest( MyType,MaterialType.Paper);
                     break;
                 case MaterialType.Wool:
-                    item.Harvest( myType,MaterialType.Canvas);
+                    item.Harvest( MyType,MaterialType.Canvas);
                     break;
                 default:
                     return;
