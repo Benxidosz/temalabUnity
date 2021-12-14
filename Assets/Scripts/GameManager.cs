@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour {
     }
 
     public enum UIKeys {
-        dicePicker, materialPicker
+        dicePicker
     }
     public static GameManager Instance { get; private set; }
     public PlayerController CurrentPlayer { get; private set; }
@@ -42,8 +42,6 @@ public class GameManager : MonoBehaviour {
     public void RegisterPlayer(PlayerController player) {
         if (_players.Count == 0) {
             CurrentPlayer = player;
-        } else {
-            player.PointsSwitchState();
         }
         _players.Add(player);
     }
@@ -59,9 +57,7 @@ public class GameManager : MonoBehaviour {
             _currentPlayerIdx++;
             if (_currentPlayerIdx > _players.Count)
                 _currentPlayerIdx = 0;
-            CurrentPlayer.PointsSwitchState();
             CurrentPlayer = _players[_currentPlayerIdx];
-            CurrentPlayer.PointsSwitchState();
             CurrentTurnState = TurnState.beforeRoll;
         }
     }
@@ -80,10 +76,5 @@ public class GameManager : MonoBehaviour {
 
     public void UpdatePanel(){
         CurrentPlayer.MaterialController.UpdatePanel();
-    }
-
-    public void ShowPickMaterial(Action showUI, Action<MaterialType> callBack) {
-        showUI();
-        UIs[UIKeys.materialPicker].GetComponentInChildren<MaterialSubmitButton>().OnClick = callBack;
     }
 }

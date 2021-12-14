@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class DiceSubmitButton : MonoBehaviour {
+public class SubmitButton : MonoBehaviour {
     [Header("Disces")]
     [SerializeField] private DiceGroup whiteDice;
     [SerializeField] private DiceGroup redDice;
