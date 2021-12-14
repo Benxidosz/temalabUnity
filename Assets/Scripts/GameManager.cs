@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using TMPro;
 using Unity.Netcode;
@@ -30,6 +31,9 @@ public class GameManager : MonoBehaviour {
     private List<PlayerController> _players = new List<PlayerController>();
     public List<PlayerController> Players => _players;
     private int _currentPlayerIdx = 0;
+
+    [SerializeField] private TextMeshProUGUI barbarianText;
+    private int _barbarianTurn = 7;
     private void Awake() {
         if (Instance == null) {
             Instance = this;
@@ -59,10 +63,10 @@ public class GameManager : MonoBehaviour {
         Debug.Log("Barbarians!");
     }
     public void BlackRolled() {
-        _barbarianTurn.Value--;
-        if (_barbarianTurn.Value == 0) {
+        _barbarianTurn--;
+        if (_barbarianTurn == 0) {
             BarbariansComing();
-            _barbarianTurn.Value = 7;
+            _barbarianTurn = 7;
         }
         RefreshBarbarianText();
     }

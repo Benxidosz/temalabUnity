@@ -63,13 +63,13 @@ namespace ActionCards
     }
 
     private void EmptyUI() {
-        _cards.ForEach(c => c.Script.Backend = EmptyCard);
-        _cards.ForEach(c => c.Button.onClick.AddListener(() => { c.Script.Backend.Action?.Invoke(GameManager.Instance.CurrentPlayer); }));
+        _cards.ForEach(c => c.Script.Backend = emptyCard);
+        _cards.ForEach(c => c.Button.onClick.AddListener(() => { c.Script.Backend.action?.Invoke(GameManager.Instance.CurrentPlayer); }));
     }
 
     private int FindEmpty() {
         foreach (var card in _cardInventory) {
-            if (card.Equals(EmptyCard))
+            if (card.Equals(emptyCard))
                 return _cardInventory.IndexOf(card);
         }
         
@@ -96,19 +96,19 @@ namespace ActionCards
         _cards.ForEach(c => {
             c.Button.onClick.RemoveAllListeners();
             c.Button.onClick.AddListener(() => {
-                CardSO tmp = c.Script.Backend;
+                CardObject tmp = c.Script.Backend;
                 DiscardACard(c);
-                tmp.Action?.Invoke(GameManager.Instance.CurrentPlayer);
+                tmp.action?.Invoke(GameManager.Instance.CurrentPlayer);
             });
         });
     }
     private void DiscardACard(Card card) {
-        if (!card.Script.Backend.Equals(EmptyCard)) {
+        if (!card.Script.Backend.Equals(emptyCard)) {
             CardDealer.Instance.AddToDiscard(card.Script.Backend);
-            card.Script.Backend = EmptyCard;
+            card.Script.Backend = emptyCard;
 
             int idx = _cards.IndexOf(card);
-            _cardInventory[idx] = EmptyCard;
+            _cardInventory[idx] = emptyCard;
         }
     }
 

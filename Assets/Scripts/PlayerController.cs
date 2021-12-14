@@ -1,5 +1,7 @@
+using System;
 using ActionCards;
 using Buildings;
+using ScriptableObjects.CardObjects;
 using TMPro;
 using UnityEngine;
 
@@ -91,7 +93,7 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
-    public void AddTestCard(CardSO testCard) {
+    public void AddTestCard(CardObject testCard) {
         _cardInventory.AddCard(testCard);
     }
 

@@ -12,7 +12,7 @@ public class Material : MonoBehaviour{
         tmpText = GetComponent<TextMeshProUGUI>();
         var tmp = GameManager.Instance.Players;
         foreach (var player in tmp){
-            player.MaterialController.SetText += setText;
+            player.MaterialController.SetText += SetText;
         }
     }
 
