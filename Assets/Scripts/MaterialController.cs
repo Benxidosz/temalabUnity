@@ -19,17 +19,23 @@ public class MaterialController : MonoBehaviour{
             Increase(type, 10);
         }
 
+        SetCount(MaterialType.Coin, 2);
+        SetCount(MaterialType.Brick, 2);
         print("");
     }
 
     public void Increase(MaterialType type, int deltaCount){
         materials[type] += deltaCount;
         SetText?.Invoke(materials[type], type);
+        print(materials[type]);
     }
 
-    public void Decrease(MaterialType type, int deltaCount){
+    public int Decrease(MaterialType type, int deltaCount) {
+        int tmpCounter = materials[type];
         materials[type] -= deltaCount;
         SetText?.Invoke(materials[type], type);
+        print(materials[type]);
+        return tmpCounter - materials[type];
     }
 
     public void SetCount(MaterialType type, int count){
