@@ -23,7 +23,11 @@ namespace Buildings
             if (!Physics.Raycast(_ray, out _hit)) return;
             
             if(Input.GetMouseButtonDown(0)){
-                print(_hit.collider.name);
+                if (_hit.collider.gameObject.tag.Equals("Tile")){
+                    GameManager.Instance.MoveRobber(_hit.collider.gameObject);
+                    return;
+                }
+                
                 if (!(FocusedObj is null)) FocusedObj.GetComponent<MeshRenderer>().material = basicMaterial;
                 FocusedObj = _hit.collider.gameObject;
                 FocusedPlaceHolder = _hit.collider.gameObject.GetComponentInParent<PlaceHolder>();

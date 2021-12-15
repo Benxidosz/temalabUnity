@@ -14,9 +14,10 @@ GameObject:
   - component: {fileID: 6426380995051814690}
   - component: {fileID: 2869364150976728953}
   - component: {fileID: -7877122973365123881}
+  - component: {fileID: 5397582043893089988}
   m_Layer: 0
   m_Name: BrickPrefab
-  m_TagString: Untagged
+  m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -140,3 +141,17 @@ MonoBehaviour:
   InLocalSpace: 0
   Interpolate: 1
   CanCommitToTransform: 0
+--- !u!64 &5397582043893089988
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2951772633627091777}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 2534964839176971238, guid: 9639c693166e74b41a1e3107dce513dc, type: 3}

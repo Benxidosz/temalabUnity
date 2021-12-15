@@ -46,6 +46,8 @@ public class GameManager : MonoBehaviour {
     [SerializeField] private Sprite emptyCard;
     public Sprite EmptyCard => emptyCard;
     private int _barbarianTurn = 7;
+    public Robber Robber{ private get; set; }
+    private bool _robberMovable;
 
     private void Awake() {
         if (Instance == null) {
@@ -98,10 +100,17 @@ public class GameManager : MonoBehaviour {
     }
 
     public void Rolled(int sum) {
+        _robberMovable = sum == 7;
         CurrentTurnState = TurnState.Rolled;
         foreach (var controller in _tileControllers.Where(oc => oc.MyNumber == sum)){
             controller.Harvest();
         }
+    }
+
+    public void MoveRobber(GameObject tile){
+        if (_robberMovable == false) return;
+        Robber.ChangeTile(tile);
+        _robberMovable = false;
     }
 
     public void EndTurn() {

@@ -28,7 +28,7 @@ namespace ActionCards {
         }
 
         private void Monopoly(MaterialType material, PlayerController playerController) {
-            int sum = 0;
+            var sum = 0;
             GameManager.Instance.Players.ForEach(otherPlayer => {
                 sum += otherPlayer.MaterialController.Decrease(material, 2);
             });

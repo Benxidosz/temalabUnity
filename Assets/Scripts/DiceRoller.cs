@@ -55,7 +55,7 @@ public class DiceRoller : MonoBehaviour {
             var tmpAction = actionDice[Random.Range(0, 6)];
             ActionDice = tmpAction.dice;
             _actionSprite = tmpAction.sprite;
-            Debug.Log($"{WhiteDice} {RedDice} = {Sum}");
+            
             _gameManager.DrawActionCard(ActionDice);
             if (ActionDice == ActionDice.Black)
                 GameManager.Instance.BlackRolled();
