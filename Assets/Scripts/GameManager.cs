@@ -161,7 +161,7 @@ public class GameManager : NetworkBehaviour
     public void MoveRobber(GameObject tile)
     {
         if (_robberMovable == false) return;
-        Robber.ChangeTile(tile);
+        GameObject.FindWithTag("Robber").GetComponent<Robber>().ChangeTile(tile);
         _robberMovable = false;
         UIs[UIKeys.RobberMsg].enabled = false;
     }
@@ -182,6 +182,7 @@ public class GameManager : NetworkBehaviour
         {
             Player.PointsSwitchState();
             CurrentTurnState = TurnState.BeforeRoll;
+            Alert("Your turn!");
         }
     }
 

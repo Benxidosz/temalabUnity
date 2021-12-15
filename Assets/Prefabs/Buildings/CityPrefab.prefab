@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 3732306531320727441}
   - component: {fileID: -6241287395441087052}
   - component: {fileID: -7437086940382663580}
+  - component: {fileID: -3651255321374169100}
   m_Layer: 0
   m_Name: CityPrefab
   m_TagString: Untagged
@@ -141,3 +142,15 @@ MonoBehaviour:
   InLocalSpace: 0
   Interpolate: 1
   CanCommitToTransform: 0
+--- !u!114 &-3651255321374169100
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1382841308728394801}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50f23da72bcd04147818444ab5b49000, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

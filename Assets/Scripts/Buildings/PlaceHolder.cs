@@ -67,19 +67,19 @@ namespace Buildings
             }
             var tmpNew = Instantiate(prefab, position, Quaternion.identity);
             tmpNew.transform.rotation = transform.rotation;
-            tmpNew.GetComponent<NetworkObject>().Spawn();
-            tmpNew.transform.parent = transform;
             
             var rand = new Random((uint) instanceId + 1337);
             var red = rand.NextFloat();
             var green = rand.NextFloat();
             var blue = rand.NextFloat();
             
-            tmpNew.GetComponent<Renderer>().material.color = new Color(red, green, blue);
             if (buildingsType != BuildingsType.Road)
             {
                 tmpNew.transform.Rotate(270f, 0, 0);
             }
+            tmpNew.GetComponent<NetworkObject>().Spawn();
+            tmpNew.transform.parent = transform;
+            tmpNew.GetComponent<BuildingComponent>().SetColor(red, green, blue);
             
             _buildings.Add(tmpNew);
             _buildings[0].SetActive(false);

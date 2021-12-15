@@ -8,7 +8,7 @@ namespace ScriptableObjects.Buildings.BuildingsRule
     {
         public override bool Rule(PlaceHolder holder)
         {
-            var result = false;
+            var result = true;
             if (holder.Type != PlaceHolderType.Edge) return false;
             holder.Neighbours.ForEach(neighbour =>
             {

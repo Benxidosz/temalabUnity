@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 778952861858848457}
   - component: {fileID: 1308223551870570356}
   - component: {fileID: -5269359158876076338}
+  - component: {fileID: 8876009810723298717}
   m_Layer: 0
   m_Name: RoadPrefab
   m_TagString: Untagged
@@ -140,3 +141,15 @@ MonoBehaviour:
   InLocalSpace: 0
   Interpolate: 1
   CanCommitToTransform: 0
+--- !u!114 &8876009810723298717
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6402394278084283586}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50f23da72bcd04147818444ab5b49000, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

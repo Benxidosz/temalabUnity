@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 1664745221335363533}
   m_Layer: 0
   m_Name: RobberPrefab
-  m_TagString: Untagged
+  m_TagString: Robber
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -96,7 +96,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e27e48bccd56a304eb2f571fd3280a04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boardGenerator: {fileID: 6820531803672358740, guid: 740321919b6cbd74c95bb2b5da0d1ecf, type: 3}
 --- !u!114 &-7588322388436780917
 MonoBehaviour:
   m_ObjectHideFlags: 0
