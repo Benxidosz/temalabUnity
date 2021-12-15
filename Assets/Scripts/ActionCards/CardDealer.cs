@@ -206,6 +206,8 @@ namespace ActionCards
                 default:
                     return;
             }
+
+            Debug.Log(color + " " + card);
             GetColorDeck(color).AddToDiscard(card);
         }
         
@@ -223,36 +225,6 @@ namespace ActionCards
             {
                 AddCardToDiscardServerRpc(CardColor.Yellow, card.name);
             }
-        }
-
-        private void OnGUI()
-        {
-            if (IsServer)
-            {
-                if (GUI.Button(new Rect(10, 200, 150, 30), "Initialize decks"))
-                {
-                    Initialize();
-                }
-            }
-            
-            if (IsClient || IsHost)
-            {
-                if (GUI.Button(new Rect(10, 240, 150, 30), "Take top blue"))
-                {
-                    Debug.Log(NextBlueCard);
-                }
-
-                if (GUI.Button(new Rect(10, 280, 150, 30), "Take top green"))
-                {
-                    Debug.Log(NextGreenCard);
-                }
-
-                if (GUI.Button(new Rect(10, 320, 150, 30), "Take top yellow"))
-                {
-                    Debug.Log(NextYellowCard);
-                }
-            }
-            
         }
     }
 }
