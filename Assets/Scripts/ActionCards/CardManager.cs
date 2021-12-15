@@ -96,5 +96,9 @@ namespace ActionCards {
         public void Builder(PlayerController player) {
             player.UpgradeManager.CostReduction++;
         }
+
+        public void RoadBuilding(PlayerController player) {
+            player.BuildingController.FreeRoad += 2;
+        }
     }
 }

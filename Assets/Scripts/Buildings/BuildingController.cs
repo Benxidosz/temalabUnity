@@ -27,6 +27,8 @@ namespace Buildings
         [FormerlySerializedAs("Road")] [SerializeField]
         private Building road;
 
+        public int FreeRoad { get; set; }
+        
         private void Start(){
             materialController = GetComponent<MaterialController>();
             placeHolders = new List<PlaceHolder>();
@@ -65,7 +67,7 @@ namespace Buildings
         
             if (!city.MyRule.Rule(raycastController.FocusedPlaceHolder) ||
                 !materialController.TryToRemove(city)) return;
-        
+
             raycastController.FocusedPlaceHolder.PlaceNew(city, myPlayer);
             raycastController.SetFocusNull();
         }
@@ -75,9 +77,12 @@ namespace Buildings
             if (raycastController.FocusedObj is null||
                 raycastController.FocusedPlaceHolder.Player != null && 
                 raycastController.FocusedPlaceHolder.Player.Id != myPlayer.Id) return;
-        
+
             if (!road.MyRule.Rule(raycastController.FocusedPlaceHolder) ||
-                !materialController.TryToRemove(road)) return;
+                FreeRoad == 0 && !materialController.TryToRemove(road)) return;
+
+            if (FreeRoad > 0)
+                --FreeRoad;
         
             raycastController.FocusedPlaceHolder.PlaceNew(road, myPlayer);
             raycastController.SetFocusNull();
