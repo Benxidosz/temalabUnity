@@ -89,6 +89,7 @@ public class GameManager : NetworkBehaviour
             player.PointsSwitchState();
         }
 
+        player.PointIncreased += CheckWin;
         players.Add(player);
     }
 
@@ -267,5 +268,11 @@ public class GameManager : NetworkBehaviour
                 res.Add(tile);
         });
         return res;
+    }
+
+    private void CheckWin(int point, PlayerController player) {
+        if (point >= 10) {
+            Alert($"{player.Id} is Won!");
+        }
     }
 }

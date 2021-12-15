@@ -53,6 +53,7 @@ namespace Buildings
                 raycastController.FocusedPlaceHolder.PlaceNew(village, myPlayer);
                 raycastController.SetFocusNull();
                 freeVillage--;
+                myPlayer.Points++;
                 return;
             }
 
@@ -60,6 +61,7 @@ namespace Buildings
                 !materialController.TryToRemove(village)) return;
         
             raycastController.FocusedPlaceHolder.PlaceNew(village, myPlayer);
+            myPlayer.Points++;
             raycastController.SetFocusNull();
         }
 
@@ -78,6 +80,7 @@ namespace Buildings
                 ReducedCity--;
 
             raycastController.FocusedPlaceHolder.PlaceNew(city, myPlayer);
+            myPlayer.Points++;
             raycastController.SetFocusNull();
         }
 
