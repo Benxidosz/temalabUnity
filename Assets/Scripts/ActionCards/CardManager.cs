@@ -89,5 +89,9 @@ namespace ActionCards {
             }
             player.MaterialController.Increase(MaterialType.Wheat, count * 2);
         }
+
+        public void Builder(PlayerController player) {
+            player.UpgradeManager.CostReduction++;
+        }
     }
 }

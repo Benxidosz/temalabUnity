@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour {
     public long Id{ get; private set; }
     public BuildingController BuildingController => _buildingController;
     public MaterialController MaterialController => _materialController;
+    public UpgradeManager UpgradeManager => _upgradeManager;
     public Dictionary<MaterialType, int> TradingNeeds { get; private set; }
 
     private bool _uiActive = false;
