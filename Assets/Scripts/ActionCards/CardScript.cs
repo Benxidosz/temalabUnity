@@ -37,7 +37,7 @@ namespace ActionCards
 
         public void OnClick()
         {
-            Backend.action?.Invoke(GameManager.Instance.CurrentPlayer);
+            Backend.action?.Invoke(GameManager.Instance.Player);
         }
     }
 }

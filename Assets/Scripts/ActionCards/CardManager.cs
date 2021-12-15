@@ -24,7 +24,7 @@ namespace ActionCards {
         }
 
         public void AddTestCard(CardObject testCard) {
-            GameManager.Instance.CurrentPlayer.AddTestCard(testCard);
+            GameManager.Instance.Player.AddTestCard(testCard);
         }
 
         private void Monopoly(MaterialType material, PlayerController playerController) {

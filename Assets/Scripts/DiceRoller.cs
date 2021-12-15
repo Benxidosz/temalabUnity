@@ -42,7 +42,7 @@ public class DiceRoller : MonoBehaviour {
 
     public void Roll() {
         if (_gameManager.CurrentTurnState == GameManager.TurnState.BeforeRoll ) {
-            PlayerController current = _gameManager.CurrentPlayer;
+            PlayerController current = _gameManager.Player;
             if (current.DiceSet) {
                 WhiteDice = current.WhiteDice;
                 RedDice = current.RedDice;

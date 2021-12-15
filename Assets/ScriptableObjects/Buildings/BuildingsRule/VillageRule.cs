@@ -29,7 +29,7 @@ namespace ScriptableObjects.Buildings.BuildingsRule
                         if (neighbour.MainBuilding != null && !located)
                         {
                             if (neighbour.MainBuilding.MyType == BuildingsType.Road &&
-                                neighbour.Player.Id == GameManager.Instance.CurrentPlayer.Id)
+                                neighbour.Player.Id == GameManager.Instance.Player.Id)
                                 count++;
                         }
                     }

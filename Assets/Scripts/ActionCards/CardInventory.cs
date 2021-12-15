@@ -64,7 +64,7 @@ namespace ActionCards
 
     private void EmptyUI() {
         _cards.ForEach(c => c.Script.Backend = emptyCard);
-        _cards.ForEach(c => c.Button.onClick.AddListener(() => { c.Script.Backend.action?.Invoke(GameManager.Instance.CurrentPlayer); }));
+        _cards.ForEach(c => c.Button.onClick.AddListener(() => { c.Script.Backend.action?.Invoke(GameManager.Instance.Player); }));
     }
 
     private int FindEmpty() {
@@ -98,7 +98,7 @@ namespace ActionCards
             c.Button.onClick.AddListener(() => {
                 CardObject tmp = c.Script.Backend;
                 DiscardACard(c);
-                tmp.action?.Invoke(GameManager.Instance.CurrentPlayer);
+                tmp.action?.Invoke(GameManager.Instance.Player);
             });
         });
     }
