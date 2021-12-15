@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Buildings;
 using UnityEngine;
@@ -8,6 +9,7 @@ namespace Map
     
         public MaterialType MyType{ get; set; }
         public int MyNumber{ get; set; }
+        public bool Block{ private get; set; }
 
         [Header("Placeholders")] [SerializeField]
         private List<PlaceHolder> placeHolders = new List<PlaceHolder>();
@@ -15,8 +17,13 @@ namespace Map
         public void AddPlaceHolders(List<PlaceHolder> placeHolder){
             placeHolders = placeHolder;
         }
-    
+
+        private void Start(){
+            Block = false;
+        }
+
         public void Harvest(){
+            if (Block) return;
             placeHolders.ForEach(item => {
                 if (item.Type != PlaceHolderType.Node) return;
                 switch (MyType){

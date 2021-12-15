@@ -95,6 +95,7 @@ namespace Map
         [SerializeField] private GameObject diskPrefab;
         [SerializeField] private GameObject portPrefab;
         [SerializeField] private GameObject placeholderPrefab;
+        [SerializeField] private GameObject robberPrefab;
 
         [SerializeField] private Tile brick;
         [SerializeField] private Tile ore;
@@ -298,6 +299,12 @@ namespace Map
                 }
             }
             GameManager.Instance.AddTileController(controller);
+            
+            if (tileType == TileType.Desert){
+               var tmpRob = Instantiate(robberPrefab, hexagon.transform.position, Quaternion.Euler(-90,0,0));
+               GameManager.Instance.Robber = tmpRob.GetComponent<Robber>();
+            }
+            
             return hexagon;
         }
 

@@ -55,6 +55,7 @@ MonoBehaviour:
   - key: 1
     ui: {fileID: 5949776622980937156}
   players: []
+  _tileControllers: []
   barbarianText: {fileID: 8907364223834028825}
   emptyCard: {fileID: 21300000, guid: 1722669b050084748b6f42a7d301ceb6, type: 3}
 --- !u!114 &3452779713937992205
@@ -86,6 +87,7 @@ MonoBehaviour:
   diskPrefab: {fileID: 7079338533366967569, guid: d22aebdae2bfafb4e9c1b1f40e13f392, type: 3}
   portPrefab: {fileID: 3360915820828775827, guid: c364355e93afc4c4b8ad0b438579fdbe, type: 3}
   placeholderPrefab: {fileID: 7582409609533011500, guid: 873f271b45b3f8f4d9eb8c535fb03f70, type: 3}
+  robberPrefab: {fileID: 2536030029666323877, guid: 849a37917722f51409df90d32820fcfc, type: 3}
   brick: {fileID: 11400000, guid: 360d4f701f6e9e44888484b0cf5571d1, type: 2}
   ore: {fileID: 11400000, guid: 90bc70931c55b554099b12b139043e36, type: 2}
   wood: {fileID: 11400000, guid: f3e10961013d754418c997a108496c83, type: 2}
