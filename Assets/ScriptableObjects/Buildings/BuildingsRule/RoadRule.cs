@@ -19,7 +19,7 @@ namespace ScriptableObjects.Buildings.BuildingsRule
                         // Kapcsolodik e uthoz
                         if (other != holder &&
                             other.MainBuilding.MyType == BuildingsType.Road &&
-                            other.Player.Id == GameManager.Instance.CurrentPlayer.Id)
+                            other.Player.Id == GameManager.Instance.Player.Id)
                         {
                             result = true;
                         }
@@ -31,7 +31,7 @@ namespace ScriptableObjects.Buildings.BuildingsRule
                             // Szomszedos e varossal
                             if ((neighbour.MainBuilding.MyType == BuildingsType.City ||
                                  neighbour.MainBuilding.MyType == BuildingsType.Village) &&
-                                neighbour.Player.Id == GameManager.Instance.CurrentPlayer.Id)
+                                neighbour.Player.Id == GameManager.Instance.Player.Id)
                                 result = true;
                         }
                     }

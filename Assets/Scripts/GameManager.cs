@@ -7,9 +7,11 @@ using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-public class GameManager : MonoBehaviour {
+public class GameManager : NetworkBehaviour
+{
     [Serializable]
-    public struct NamedUI {
+    public struct NamedUI
+    {
         public UIKeys key;
         public Canvas ui;
     }
@@ -32,81 +34,122 @@ public class GameManager : MonoBehaviour {
 
     [FormerlySerializedAs("_players")] [SerializeField]
     private List<PlayerController> players = new List<PlayerController>();
-    
-    public PlayerController CurrentPlayer { get; private set; }
+
+    public PlayerController Player { get; private set; }
     public TurnState CurrentTurnState { get; private set; }
 
     public Dictionary<UIKeys, Canvas> UIs;
     public List<PlayerController> Players => players;
-    
+
     [SerializeField] private List<TileController> _tileControllers = new List<TileController>();
-    private int _currentPlayerIdx = 0;
+    private NetworkVariable<ulong> _currentPlayerIdx = new NetworkVariable<ulong>(0UL);
 
     [SerializeField] private TextMeshProUGUI barbarianText;
-    
+
     [SerializeField] private Sprite emptyCard;
     public Sprite EmptyCard => emptyCard;
     private int _barbarianTurn = 7;
-    public Robber Robber{ private get; set; }
+    public Robber Robber { private get; set; }
     private bool _robberMovable;
 
-    private void Awake() {
-        if (Instance == null) {
+    public bool IsCurrent => NetworkManager.Singleton.LocalClientId == _currentPlayerIdx.Value;
+
+    private void Awake()
+    {
+        if (Instance == null)
+        {
             Instance = this;
             CurrentTurnState = TurnState.BeforeRoll;
             UIs = new Dictionary<UIKeys, Canvas>();
-            foreach (var ui in namedUis) {
+            foreach (var ui in namedUis)
+            {
                 UIs[ui.key] = ui.ui;
                 ui.ui.enabled = false;
             }
-        } else {
+        }
+        else
+        {
             Destroy(this);
         }
     }
-    
-    public void AddTileController(TileController controller){
+
+    public void AddTileController(TileController controller)
+    {
         _tileControllers.Add(controller);
     }
-    
-    public void RegisterPlayer(PlayerController player) {
-        if (players.Count == 0) {
-            CurrentPlayer = player;
-        } else {
+
+    public void RegisterPlayer(PlayerController player)
+    {
+        if (players.Count == 0)
+        {
+            Player = player;
+        }
+        else
+        {
             player.PointsSwitchState();
         }
 
         players.Add(player);
     }
 
-    private void RefreshBarbarianText() {
+    private void Alert(string msg)
+    {
+        UIs[UIKeys.AlertDialog].GetComponent<AlertDialog>().ShowDialog(msg);
+    }
+
+    private void RefreshBarbarianText()
+    {
         barbarianText.text = $"{_barbarianTurn} Black Rolls Until Barbarians";
     }
 
-    private void BarbariansComing() {
+    private void BarbariansComing()
+    {
         Debug.Log("Barbarians!");
     }
 
-    public void BlackRolled() {
-        _barbarianTurn--;
-        if (_barbarianTurn == 0) {
-            BarbariansComing();
-            _barbarianTurn = 7;
-        }
+    public void BlackRolled()
+    {
+        if (IsCurrent)
+        {
+            _barbarianTurn--;
+            if (_barbarianTurn == 0)
+            {
+                BarbariansComing();
+                _barbarianTurn = 7;
+            }
 
-        RefreshBarbarianText();
+            RefreshBarbarianText();
+        }
+        else
+        {
+            Alert("Not your turn!");
+        }
     }
 
-    public void DrawActionCard(ActionDice action) {
-        CurrentPlayer.DrawActionCard(action);
+    public void DrawActionCard(ActionDice action)
+    {
+        if (IsCurrent)
+        {
+            Player.DrawActionCard(action);
+        }
+        else
+        {
+            Alert("Not your turn!");
+        }
     }
 
     public void Rolled(int sum) {
-        if (sum == 7) {
-            RobberMovable();
-        }
-        CurrentTurnState = TurnState.Rolled;
-        foreach (var controller in _tileControllers.Where(oc => oc.MyNumber == sum)){
-            controller.Harvest();
+        if (IsCurrent) {
+            if (sum == 7) {
+                RobberMovable();
+            }
+            CurrentTurnState = TurnState.Rolled;
+            foreach (var controller in _tileControllers.Where(oc => oc.MyNumber == sum)){
+                controller.Harvest();
+            }
+        } else
+        {
+            Alert("Not your turn!");
         }
     }
 
@@ -114,53 +157,112 @@ public class GameManager : MonoBehaviour {
         _robberMovable = true;
         UIs[UIKeys.RobberMsg].enabled = true;
     }
-    public void MoveRobber(GameObject tile){
+    public void MoveRobber(GameObject tile)
+    {
         if (_robberMovable == false) return;
         Robber.ChangeTile(tile);
         _robberMovable = false;
         UIs[UIKeys.RobberMsg].enabled = false;
     }
 
-    public void EndTurn() {
-        print(CurrentTurnState);
-        if (CurrentTurnState == TurnState.Rolled) {
-            CurrentPlayer.ResetTemporaryNeed();
-            _currentPlayerIdx++;
-            if (_currentPlayerIdx >= players.Count)
-                _currentPlayerIdx = 0;
-            CurrentPlayer.PointsSwitchState();
-            CurrentPlayer = players[_currentPlayerIdx];
-            CurrentPlayer.PointsSwitchState();
+    [ServerRpc(RequireOwnership = false)]
+    private void NextPlayerServerRPC()
+    {
+        _currentPlayerIdx.Value++;
+        if (_currentPlayerIdx.Value >= (ulong) NetworkManager.Singleton.ConnectedClientsList.Count)
+            _currentPlayerIdx.Value = 0UL;
+        NotifyPlayersClientRPC();
+    }
+
+    [ClientRpc]
+    private void NotifyPlayersClientRPC()
+    {
+        if (IsCurrent)
+        {
+            Player.PointsSwitchState();
             CurrentTurnState = TurnState.BeforeRoll;
-        } else {
-            UIs[UIKeys.AlertDialog].GetComponent<AlertDialog>().ShowDialog("You have not rolled yet!");
         }
     }
 
-    public void Village() {
-        CurrentPlayer.BuildingController.BuildVillage();
+    public void EndTurn()
+    {
+        if (!IsCurrent)
+        {
+            Alert("Not your turn!");
+            return;
+        }
+
+        if (CurrentTurnState == TurnState.Rolled)
+        {
+            Player.ResetTemporaryNeed();
+            Player.PointsSwitchState();
+            NextPlayerServerRPC();
+        }
+        else
+        {
+            Alert("You have not rolled yet!");
+        }
     }
 
-    public void City() {
-        CurrentPlayer.BuildingController.BuildCity();
+    public void Village()
+    {
+        if (IsCurrent)
+        {
+            Player.BuildingController.BuildVillage();
+        }
+        else
+        {
+            Alert("Not your turn!");
+        }
     }
 
-    public void Road() {
-        CurrentPlayer.BuildingController.BuildRoad();
+    public void City()
+    {
+        if (IsCurrent)
+        {
+            Player.BuildingController.BuildCity();
+        }
+        else
+        {
+            Alert("Not your turn!");
+        }
     }
 
-    public void UpdatePanel() {
-        CurrentPlayer.MaterialController.UpdatePanel();
+    public void Road()
+    {
+        if (IsCurrent)
+        {
+            Player.BuildingController.BuildRoad();
+        }
+        else
+        {
+            Alert("Not your turn!");
+        }
     }
 
-    public void ShowPickMaterial(Action showUI, Action<MaterialType?> callBack) {
+    public void UpdatePanel()
+    {
+        if (IsCurrent)
+        {
+            Player.MaterialController.UpdatePanel();
+        }
+        else
+        {
+            Alert("Not your turn!");
+        }
+    }
+
+    public void ShowPickMaterial(Action showUI, Action<MaterialType?> callBack)
+    {
         showUI();
         UIs[UIKeys.MaterialPicker].GetComponentInChildren<MaterialSubmitButton>().OnClick = callBack;
     }
 
-    public IEnumerable<TileController> GetTiles(MaterialType type) {
+    public IEnumerable<TileController> GetTiles(MaterialType type)
+    {
         List<TileController> res = new List<TileController>();
-        _tileControllers.ForEach(tile => {
+        _tileControllers.ForEach(tile =>
+        {
             if (tile.MyType == type)
                 res.Add(tile);
         });

@@ -10,7 +10,7 @@ namespace ScriptableObjects.Buildings.BuildingsRule
         {
             if (holder.MainBuilding == null ||
                 holder.MainBuilding.MyType != BuildingsType.Village ||
-                holder.Player.Id != GameManager.Instance.CurrentPlayer.Id) return false;
+                holder.Player.Id != GameManager.Instance.Player.Id) return false;
             return holder.MainBuilding.MyType == BuildingsType.Village;
         }
     }

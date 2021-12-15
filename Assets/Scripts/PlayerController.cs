@@ -22,7 +22,7 @@ public class PlayerController : MonoBehaviour {
     public Dictionary<MaterialType, int> TradingNeeds { get; private set; }
     private KeyValuePair<MaterialType, int>? _tmpTradingNeed;
 
-    private bool _uiActive = false;
+    private bool _uiActive;
 
     private Canvas _dicePicker;
     private DiceSubmitButton _dicePickerDiceSubmit;
@@ -66,7 +66,7 @@ public class PlayerController : MonoBehaviour {
     }
 
     private void Update() {
-        if (!_uiActive && this == _gameManager.CurrentPlayer) {
+        if (!_uiActive && this == _gameManager.Player) {
             if (Input.GetKeyDown(KeyCode.I)) {
                 _upgradeManager.Disable();
                 _systemTradeManager.Disable();

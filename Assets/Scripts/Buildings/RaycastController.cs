@@ -27,10 +27,14 @@ namespace Buildings
                     GameManager.Instance.MoveRobber(_hit.collider.gameObject);
                     return;
                 }
-                
-                if (!(FocusedObj is null)) FocusedObj.GetComponent<MeshRenderer>().material = basicMaterial;
+
+                if (!(FocusedObj is null))
+                {
+                    FocusedObj.GetComponent<MeshRenderer>().material = basicMaterial;
+                }
+
                 FocusedObj = _hit.collider.gameObject;
-                FocusedPlaceHolder = _hit.collider.gameObject.GetComponentInParent<PlaceHolder>();
+                FocusedPlaceHolder = FocusedObj.GetComponentInParent<PlaceHolder>();
                 FocusedObj.GetComponent<MeshRenderer>().material = focusMaterial;
             }
         }

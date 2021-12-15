@@ -17,7 +17,7 @@ public class UpgradeManager : MonoBehaviour {
     public int GreenCounter { get; private set; }
     
     void Start(){
-        player = GameManager.Instance.CurrentPlayer;
+        player = GameManager.Instance.Player;
         var tmpUpgrades = ui.GetComponentsInChildren<UpgradeTile>();
         _yellowUpgrades = new UpgradeTile[5];
         _blueUpgrades = new UpgradeTile[5];

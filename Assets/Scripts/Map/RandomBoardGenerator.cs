@@ -211,7 +211,7 @@ namespace Map
             Utilities.ShuffleList(ports);
 
             CreateHexagons(types.ToArray(), numbers.ToArray(), ports.ToArray());
-            GameManager.Instance.CurrentPlayer.BuildingController.LoadPlaceHolders();
+            GameManager.Instance.Player.BuildingController.LoadPlaceHolders();
         }
 
         private GameObject CreateHexagon(Vector3 position, TileType tileType)

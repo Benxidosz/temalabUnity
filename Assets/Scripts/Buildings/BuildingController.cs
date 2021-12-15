@@ -44,7 +44,8 @@ namespace Buildings
 
         public void BuildVillage()
         {
-            if (raycastController.FocusedObj is null||
+            Debug.Log($"{raycastController.FocusedObj} {raycastController.FocusedPlaceHolder.Player}");
+            if (raycastController.FocusedObj is null ||
                 (raycastController.FocusedPlaceHolder.Player != null &&
                  raycastController.FocusedPlaceHolder.Player.Id != myPlayer.Id)) return;
         
