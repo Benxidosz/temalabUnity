@@ -18,17 +18,16 @@ public class GameManager : NetworkBehaviour
 
     [SerializeField] private NamedUI[] namedUis;
 
-    public enum TurnState
-    {
+    public enum TurnState {
         BeforeRoll,
         Rolled
     }
 
-    public enum UIKeys
-    {
+    public enum UIKeys {
         DicePicker,
         MaterialPicker,
-        AlertDialog
+        AlertDialog,
+        RobberMsg
     }
 
     public static GameManager Instance { get; private set; }
@@ -139,28 +138,31 @@ public class GameManager : NetworkBehaviour
         }
     }
 
-    public void Rolled(int sum)
-    {
-        if (IsCurrent)
-        {
-            _robberMovable = sum == 7;
+    public void Rolled(int sum) {
+        if (IsCurrent) {
+            if (sum == 7) {
+                RobberMovable();
+            }
             CurrentTurnState = TurnState.Rolled;
-            foreach (var controller in _tileControllers.Where(oc => oc.MyNumber == sum))
-            {
+            foreach (var controller in _tileControllers.Where(oc => oc.MyNumber == sum)){
                 controller.Harvest();
             }
-        }
-        else
+        } else
         {
             Alert("Not your turn!");
         }
     }
 
+    public void RobberMovable() {
+        _robberMovable = true;
+        UIs[UIKeys.RobberMsg].enabled = true;
+    }
     public void MoveRobber(GameObject tile)
     {
         if (_robberMovable == false) return;
         Robber.ChangeTile(tile);
         _robberMovable = false;
+        UIs[UIKeys.RobberMsg].enabled = false;
     }
 
     [ServerRpc(RequireOwnership = false)]

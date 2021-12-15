@@ -104,5 +104,9 @@ namespace ActionCards {
         public void Medicine(PlayerController player) {
             player.BuildingController.ReducedCity++;
         }
+
+        public void Bishop(PlayerController player) {
+            GameManager.Instance.RobberMovable();
+        }
     }
 }
