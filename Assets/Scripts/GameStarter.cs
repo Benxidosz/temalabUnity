@@ -1,4 +1,5 @@
-﻿using Map;
+﻿using ActionCards;
+using Map;
 using Unity.Netcode;
 using Unity.Netcode.Transports.UNET;
 using UnityEngine;
@@ -6,6 +7,7 @@ using UnityEngine;
 public class GameStarter : MonoBehaviour
 {
     [SerializeField] private RandomBoardGenerator boardGenerator;
+    [SerializeField] private CardDealer cardDealer;
 
     private const int Port = 80085;
     
@@ -18,7 +20,7 @@ public class GameStarter : MonoBehaviour
 
     private string _ip = "127.0.0.1";
     private ClientType _clientType = ClientType.None;
-    private bool _mapGenerated = false;
+    private bool _mapGenerated;
     
 
     private void OnGUI()
@@ -44,11 +46,12 @@ public class GameStarter : MonoBehaviour
                 _clientType = ClientType.Client;
             }
         }
-        else if (_clientType == ClientType.Host)
+        else if (_clientType == ClientType.Host && !_mapGenerated)
         {
-            if (!_mapGenerated && GUI.Button(new Rect(10, 10, 150, 20), "Generate map"))
+            if (GUI.Button(new Rect(10, 10, 150, 20), "Start game"))
             {
                 boardGenerator.CreateRandomBoard();
+                cardDealer.Initialize();
                 _mapGenerated = true;
             }
         }

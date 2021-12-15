@@ -1,7 +1,9 @@
 using System.Collections.Generic;
+using Unity.Mathematics;
 using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.Serialization;
+using Random = Unity.Mathematics.Random;
 
 namespace Buildings
 {
@@ -42,7 +44,7 @@ namespace Buildings
         }
 
         [ServerRpc(RequireOwnership = false)]
-        private void PlaceNewBuildingServerRPC(BuildingsType buildingsType, Vector3 position)
+        private void PlaceNewBuildingServerRPC(BuildingsType buildingsType, Vector3 position, int instanceId)
         {
             if (_buildings.Count > 1)
             {
@@ -67,6 +69,13 @@ namespace Buildings
             tmpNew.transform.rotation = transform.rotation;
             tmpNew.GetComponent<NetworkObject>().Spawn();
             tmpNew.transform.parent = transform;
+            
+            var rand = new Random((uint) instanceId + 1337);
+            var red = rand.NextFloat();
+            var green = rand.NextFloat();
+            var blue = rand.NextFloat();
+            
+            tmpNew.GetComponent<Renderer>().material.color = new Color(red, green, blue);
             if (buildingsType != BuildingsType.Road)
             {
                 tmpNew.transform.Rotate(270f, 0, 0);
@@ -78,7 +87,7 @@ namespace Buildings
         
         public void PlaceNew(Building prefab, PlayerController player)
         {
-            PlaceNewBuildingServerRPC(prefab.MyType, gameObject.transform.position);
+            PlaceNewBuildingServerRPC(prefab.MyType, gameObject.transform.position, (int) NetworkManager.Singleton.LocalClientId);
             
             MainBuilding = prefab;
             Player = player;
