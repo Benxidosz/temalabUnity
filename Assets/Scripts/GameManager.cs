@@ -24,7 +24,8 @@ public class GameManager : MonoBehaviour {
     public enum UIKeys {
         DicePicker,
         MaterialPicker,
-        AlertDialog
+        AlertDialog,
+        RobberMsg
     }
 
     public static GameManager Instance { get; private set; }
@@ -100,17 +101,24 @@ public class GameManager : MonoBehaviour {
     }
 
     public void Rolled(int sum) {
-        _robberMovable = sum == 7;
+        if (sum == 7) {
+            RobberMovable();
+        }
         CurrentTurnState = TurnState.Rolled;
         foreach (var controller in _tileControllers.Where(oc => oc.MyNumber == sum)){
             controller.Harvest();
         }
     }
 
+    public void RobberMovable() {
+        _robberMovable = true;
+        UIs[UIKeys.RobberMsg].enabled = true;
+    }
     public void MoveRobber(GameObject tile){
         if (_robberMovable == false) return;
         Robber.ChangeTile(tile);
         _robberMovable = false;
+        UIs[UIKeys.RobberMsg].enabled = false;
     }
 
     public void EndTurn() {

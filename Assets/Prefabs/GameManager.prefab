@@ -56,6 +56,8 @@ MonoBehaviour:
     ui: {fileID: 5949776622980937156}
   - key: 2
     ui: {fileID: 405692378108653819}
+  - key: 3
+    ui: {fileID: 3237300460857227820}
   players: []
   _tileControllers: []
   barbarianText: {fileID: 8907364223834028825}
@@ -673,6 +675,11 @@ Canvas:
 --- !u!223 &405692378108653819 stripped
 Canvas:
   m_CorrespondingSourceObject: {fileID: 2204104020194040783, guid: ac29e36b72e3e8d428e39b897e4fe5ef, type: 3}
+  m_PrefabInstance: {fileID: 1961251650757913396}
+  m_PrefabAsset: {fileID: 0}
+--- !u!223 &3237300460857227820 stripped
+Canvas:
+  m_CorrespondingSourceObject: {fileID: 4024793521612951832, guid: ac29e36b72e3e8d428e39b897e4fe5ef, type: 3}
   m_PrefabInstance: {fileID: 1961251650757913396}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5740116211994195553
