@@ -46,7 +46,7 @@ public class GameManager : MonoBehaviour {
     public Sprite EmptyCard => emptyCard;
     private int _barbarianTurn = 7;
     public Robber Robber{ private get; set; }
-    private bool _robberMovable = false;
+    private bool _robberMovable;
 
     private void Awake() {
         if (Instance == null) {
@@ -99,11 +99,7 @@ public class GameManager : MonoBehaviour {
     }
 
     public void Rolled(int sum) {
-        print(sum);
-        _robberMovable = false;
-        if (sum == 7){
-            _robberMovable = true;
-        }
+        _robberMovable = sum == 7;
         CurrentTurnState = TurnState.Rolled;
         foreach (var controller in _tileControllers.Where(oc => oc.MyNumber == sum)){
             controller.Harvest();

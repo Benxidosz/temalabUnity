@@ -207,7 +207,6 @@ namespace ActionCards
                     return;
             }
 
-            Debug.Log(color + " " + card);
             GetColorDeck(color).AddToDiscard(card);
         }
         

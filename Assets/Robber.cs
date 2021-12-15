@@ -1,26 +1,31 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
+using System.Linq;
 using Map;
+using Unity.Netcode;
 using UnityEngine;
 
-public class Robber : MonoBehaviour
+public class Robber : NetworkBehaviour
 {
-   public Vector3 position{ get; set; }
-   public TileController tile{ get; set; }
+    
+    private TileController _tile;
 
-   private void Start(){
-      position = transform.position;
-   }
+    [ServerRpc(RequireOwnership = false)]
+    private void MoveRobberServerRPC(Vector3 position)
+    {
+        var tiles = GameObject.FindGameObjectsWithTag("Tile").ToList();
+        var newTile = tiles.Find(go => Vector3.Distance(go.transform.position, position) < 1f);
+        transform.position = newTile.transform.position + new Vector3(0, 0.05f, 0);
+        if (_tile != null)
+        {
+            _tile.GetComponent<TileController>().Block = false;
+        }
 
-   public void ChangeTile(GameObject newTile){
-      transform.position = newTile.transform.position;
-      if (tile != null){
-         tile.GetComponent<TileController>().Block = false;
-      }
-      var ctr =  newTile.GetComponent<TileController>();
-      ctr.Block = true;
-      tile = ctr;
-      position = transform.position;
-   }
+        var ctr = newTile.GetComponent<TileController>();
+        ctr.Block = true;
+        _tile = ctr;
+    }
+    
+    public void ChangeTile(GameObject newTile)
+    {
+        MoveRobberServerRPC(newTile.transform.position);
+    }
 }

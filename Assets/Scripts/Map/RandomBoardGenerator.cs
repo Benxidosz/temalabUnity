@@ -128,6 +128,8 @@ namespace Map
         private readonly List<GameObject> _disksGameObjects = new List<GameObject>();
         private readonly List<GameObject> _portGameObjects = new List<GameObject>();
 
+        public List<GameObject> Tiles => _hexagonGameObjects;
+        
         private readonly Dictionary<Vector3, GameObject>
             _placeHolderGameObjects = new Dictionary<Vector3, GameObject>();
 
@@ -302,6 +304,7 @@ namespace Map
             
             if (tileType == TileType.Desert){
                var tmpRob = Instantiate(robberPrefab, hexagon.transform.position, Quaternion.Euler(-90,0,0));
+               tmpRob.GetComponent<NetworkObject>().Spawn();
                GameManager.Instance.Robber = tmpRob.GetComponent<Robber>();
             }
             
