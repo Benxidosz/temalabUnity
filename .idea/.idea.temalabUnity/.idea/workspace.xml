@@ -4,11 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8129cd36-f6a2-431a-8b67-678a40b6ccb7" name="Changes" comment="after merge fix">
+    <list default="true" id="8129cd36-f6a2-431a-8b67-678a40b6ccb7" name="Changes" comment="Gamemanager saved">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.temalabUnity/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.temalabUnity/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Player.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Player.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/Dice.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/UI/Dice.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/TradingWithSystem.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/TradingWithSystem.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/GameManager.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/GameManager.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/BoardSetup.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/BoardSetup.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ActionCards/Trade + Monopolium/MaterialPickerUIController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ActionCards/Trade + Monopolium/MaterialPickerUIController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/DiceRoller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/DiceRoller.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Map/RandomBoardGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Map/RandomBoardGenerator.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -42,9 +45,11 @@
     <setting file="mock://C:/BME/temalabUnity/UserSettings/EditorUserSettings.asset" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/BME/temalabUnity/UserSettings/EditorUserSettings.asset" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.netcode.gameobjects@1.0.0-pre.3/Runtime/Logging/NetworkLog.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/BME/temalabUnity/Assets/Prefabs/UI/Dice.prefab" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/PlayerController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/GameManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/MaterialController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://C:/BME/temalabUnity/UserSettings/EditorUserSettings.asset" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.textmeshpro@3.0.6/Scripts/Runtime/TMP_Text.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.netcode.gameobjects@1.0.0-pre.3/Runtime/Messaging/MessagingSystem.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/EventSystem/UIBehaviour.cs" root0="SKIP_HIGHLIGHTING" />
@@ -58,6 +63,7 @@
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.netcode.gameobjects@1.0.0-pre.3/Runtime/Transports/UNET/UNetTransport.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/BME/temalabUnity/UserSettings/EditorUserSettings.asset" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.netcode.gameobjects@1.0.0-pre.3/Runtime/Core/NetworkBehaviour.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/BME/temalabUnity/Assets/Prefabs/GameManager.prefab" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.netcode.gameobjects@1.0.0-pre.3/Runtime/Spawning/NetworkSpawnManager.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.netcode.gameobjects@1.0.0-pre.3/Runtime/Messaging/Messages/RpcMessage.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/ScriptableObjects/Buildings/BuildingsRule/BaseRule.cs" root0="FORCE_HIGHLIGHTING" />
@@ -165,6 +171,21 @@
       <workItem from="1639408915675" duration="1547000" />
       <workItem from="1639476023169" duration="3721000" />
     </task>
+    <task id="LOCAL-00001" summary="TradingWithSystem fixed">
+      <created>1639525798658</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1639525798658</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Gamemanager saved">
+      <created>1639525923575</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1639525923575</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -187,6 +208,9 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+    <MESSAGE value="TradingWithSystem fixed" />
+    <MESSAGE value="Gamemanager saved" />
+    <option name="LAST_COMMIT_MESSAGE" value="Gamemanager saved" />
   </component>
   <component name="XDebuggerManager">
     <pin-to-top-manager>

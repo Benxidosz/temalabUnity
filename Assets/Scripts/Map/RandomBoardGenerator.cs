@@ -297,7 +297,7 @@ namespace Map
                     placeHolders[i].AddNeighbour(placeHolders[nei2]);
                 }
             }
-
+            GameManager.Instance.AddTileController(controller);
             return hexagon;
         }
 

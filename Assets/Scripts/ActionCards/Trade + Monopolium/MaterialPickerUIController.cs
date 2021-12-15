@@ -38,7 +38,8 @@ public class MaterialPickerUIController : MonoBehaviour {
     }
 
     public void PickMaterial(MaterialPicker materialPicker) {
-        _lastMaterialPicker.Button.interactable = true;
+        if (_lastMaterialPicker != null)
+            _lastMaterialPicker.Button.interactable = true;
         _lastMaterialPicker = materialPicker;
         _lastMaterialPicker.Button.interactable = false;
     }

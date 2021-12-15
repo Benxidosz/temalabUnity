@@ -37,7 +37,7 @@ public class GameManager : MonoBehaviour {
     public Dictionary<UIKeys, Canvas> UIs;
     public List<PlayerController> Players => players;
     
-    private readonly List<TileController> _tileControllers = new List<TileController>();
+    [SerializeField] private List<TileController> _tileControllers = new List<TileController>();
     private int _currentPlayerIdx = 0;
 
     [SerializeField] private TextMeshProUGUI barbarianText;
@@ -97,6 +97,7 @@ public class GameManager : MonoBehaviour {
     }
 
     public void Rolled(int sum) {
+        print(sum);
         CurrentTurnState = TurnState.Rolled;
         foreach (var controller in _tileControllers.Where(oc => oc.MyNumber == sum)){
             controller.Harvest();

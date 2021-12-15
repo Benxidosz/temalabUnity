@@ -59,7 +59,6 @@ public class DiceRoller : MonoBehaviour {
         if (ActionDice == ActionDice.Black)
             GameManager.Instance.BlackRolled();
         StartCoroutine(Roller());
-        _gameManager.Rolled(Sum);
     }
 
     private IEnumerator Roller(){
@@ -72,6 +71,7 @@ public class DiceRoller : MonoBehaviour {
         whiteDiceImage.sprite = whiteSprites[WhiteDice - 1];
         redDiceImage.sprite = redSprites[RedDice - 1];
         actionDiceImage.sprite = _actionSprite;
+        _gameManager.Rolled(Sum);
     }
     
 }
