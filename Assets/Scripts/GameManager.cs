@@ -107,6 +107,7 @@ public class GameManager : MonoBehaviour {
     public void EndTurn() {
         print(CurrentTurnState);
         if (CurrentTurnState == TurnState.Rolled) {
+            CurrentPlayer.ResetTemporaryNeed();
             _currentPlayerIdx++;
             if (_currentPlayerIdx >= players.Count)
                 _currentPlayerIdx = 0;

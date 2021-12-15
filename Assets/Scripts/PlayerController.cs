@@ -20,6 +20,7 @@ public class PlayerController : MonoBehaviour {
     public MaterialController MaterialController => _materialController;
     public UpgradeManager UpgradeManager => _upgradeManager;
     public Dictionary<MaterialType, int> TradingNeeds { get; private set; }
+    private KeyValuePair<MaterialType, int>? _tmpTradingNeed;
 
     private bool _uiActive = false;
 
@@ -144,5 +145,19 @@ public class PlayerController : MonoBehaviour {
             _materialController.Increase(buy, 1);
         }
         _systemTradeManager.Disable();
+    }
+
+    public void SetTemporaryNeed(MaterialType type, int count) {
+        if (_tmpTradingNeed != null)
+            return;
+        _tmpTradingNeed = new KeyValuePair<MaterialType, int>(type, TradingNeeds[type]);
+        TradingNeeds[type] = count;
+    }
+
+    public void ResetTemporaryNeed() {
+        if (_tmpTradingNeed != null) {
+            TradingNeeds[_tmpTradingNeed.Value.Key] = _tmpTradingNeed.Value.Value;
+            _tmpTradingNeed = null;
+        }
     }
 }

@@ -52,7 +52,10 @@ namespace ActionCards {
         public void TradingFleet(PlayerController player) {
             GameManager.Instance.ShowPickMaterial(
                 () => GameManager.Instance.UIs[GameManager.UIKeys.MaterialPicker]
-                    .GetComponentInChildren<MaterialPickerUIController>().ShowAll(), material => { print(material); });
+                    .GetComponentInChildren<MaterialPickerUIController>().ShowAll(), material => {
+                    if (material != null)
+                        player.SetTemporaryNeed((MaterialType) material, 2);
+                });
         }
 
         public void Mining(PlayerController player) {
