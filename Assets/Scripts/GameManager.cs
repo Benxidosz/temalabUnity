@@ -140,10 +140,10 @@ public class GameManager : MonoBehaviour {
         UIs[UIKeys.MaterialPicker].GetComponentInChildren<MaterialSubmitButton>().OnClick = callBack;
     }
 
-    public IEnumerable<TileController> GetOreTiles() {
+    public IEnumerable<TileController> GetTiles(MaterialType type) {
         List<TileController> res = new List<TileController>();
         _tileControllers.ForEach(tile => {
-            if (tile.MyType == MaterialType.Ore)
+            if (tile.MyType == type)
                 res.Add(tile);
         });
         return res;

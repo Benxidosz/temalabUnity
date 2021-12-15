@@ -6,12 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="6105317f-dd98-46c9-811a-5c73f2f372fe" name="Changes" comment="asd">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.temalabUnity/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.temalabUnity/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Banyasz Ontozes.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Banyasz Ontozes.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ScriptableObjects/CardObjects/GreenCards/Bányászat.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/CardObjects/GreenCards/Bányászat.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/ActionCards/CardManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ActionCards/CardManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Buildings/BuildingController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Buildings/BuildingController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Map/TileController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Map/TileController.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

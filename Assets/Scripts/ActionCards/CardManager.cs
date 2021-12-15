@@ -56,7 +56,7 @@ namespace ActionCards {
         }
 
         public void Mining(PlayerController player) {
-            var tiles = GameManager.Instance.GetOreTiles();
+            var tiles = GameManager.Instance.GetTiles(MaterialType.Ore);
             var placeHolders = player.BuildingController
                 .PlaceHolders.Where(p => p.Type == PlaceHolderType.Node &&
                                          p.MainBuilding != null &&
@@ -71,6 +71,23 @@ namespace ActionCards {
                 }
             }
             player.MaterialController.Increase(MaterialType.Ore, count * 2);
+        }
+        public void Watering(PlayerController player) {
+            var tiles = GameManager.Instance.GetTiles(MaterialType.Wheat);
+            var placeHolders = player.BuildingController
+                .PlaceHolders.Where(p => p.Type == PlaceHolderType.Node &&
+                                         p.MainBuilding != null &&
+                                         p.MainBuilding.MyType != BuildingsType.Road);
+            int count = 0;
+            foreach (var tile in tiles) {
+                foreach (var placeHolder in placeHolders) {
+                    if (tile.PlaceHolders.Contains(placeHolder)) {
+                        ++count;
+                        break;
+                    }
+                }
+            }
+            player.MaterialController.Increase(MaterialType.Wheat, count * 2);
         }
     }
 }
