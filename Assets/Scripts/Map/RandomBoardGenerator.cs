@@ -96,6 +96,9 @@ namespace Map
         [SerializeField] private GameObject portPrefab;
         [SerializeField] private GameObject placeholderPrefab;
         [SerializeField] private GameObject robberPrefab;
+        
+        [SerializeField] private GameObject traderPrefab;
+        [SerializeField] private Vector3 traderOffset;
 
         [SerializeField] private Tile brick;
         [SerializeField] private Tile ore;
