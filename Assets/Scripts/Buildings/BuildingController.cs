@@ -14,6 +14,8 @@ namespace Buildings
         [FormerlySerializedAs("PlaceHolders")] [SerializeField]
         private List<PlaceHolder> placeHolders;
 
+        public IEnumerable<PlaceHolder> PlaceHolders => placeHolders;
+
         [FormerlySerializedAs("FreeVillage")] [SerializeField] private int freeVillage;
 
         [FormerlySerializedAs("Village")] [Header("Buildings")] [SerializeField]

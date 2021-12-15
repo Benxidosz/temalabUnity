@@ -12,6 +12,8 @@ namespace Map
         [Header("Placeholders")] [SerializeField]
         private List<PlaceHolder> placeHolders = new List<PlaceHolder>();
 
+        public IEnumerable<PlaceHolder> PlaceHolders => placeHolders;
+
         public void AddPlaceHolders(List<PlaceHolder> placeHolder){
             placeHolders = placeHolder;
         }

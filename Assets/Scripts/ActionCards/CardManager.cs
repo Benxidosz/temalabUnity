@@ -1,3 +1,5 @@
+using System.Linq;
+using Buildings;
 using ScriptableObjects.CardObjects;
 using UnityEngine;
 
@@ -51,6 +53,24 @@ namespace ActionCards {
             GameManager.Instance.ShowPickMaterial(
                 () => GameManager.Instance.UIs[GameManager.UIKeys.MaterialPicker]
                     .GetComponentInChildren<MaterialPickerUIController>().ShowAll(), material => { print(material); });
+        }
+
+        public void Mining(PlayerController player) {
+            var tiles = GameManager.Instance.GetOreTiles();
+            var placeHolders = player.BuildingController
+                .PlaceHolders.Where(p => p.Type == PlaceHolderType.Node &&
+                                         p.MainBuilding != null &&
+                                         p.MainBuilding.MyType != BuildingsType.Road);
+            int count = 0;
+            foreach (var tile in tiles) {
+                foreach (var placeHolder in placeHolders) {
+                    if (tile.PlaceHolders.Contains(placeHolder)) {
+                        ++count;
+                        break;
+                    }
+                }
+            }
+            player.MaterialController.Increase(MaterialType.Ore, count * 2);
         }
     }
 }
