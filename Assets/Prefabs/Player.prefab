@@ -100,18 +100,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &8877289760053006261
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6962266035262547944}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d29e2e0227b96945ac1dd41b00d1c3f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &7122437350238980960
 GameObject:
   m_ObjectHideFlags: 0
@@ -362,6 +350,7 @@ MonoBehaviour:
   village: {fileID: 11400000, guid: ccce9e0b0d404f949b5a2d4841688212, type: 2}
   city: {fileID: 11400000, guid: d4bebcda802fc5a4da1415b130f66f1b, type: 2}
   road: {fileID: 11400000, guid: cc72318ed30650a41845a1df5829a96b, type: 2}
+  cheapCity: {fileID: 11400000, guid: aec691df1fd3e01478c8f4dc1b14b360, type: 2}
 --- !u!114 &727387354430712638
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -589,7 +578,7 @@ PrefabInstance:
     - target: {fileID: 2099796233, guid: cbcf3c9c7d1b0134686b8f2bd85c14d7, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
-      objectReference: {fileID: 11400000, guid: 67411f9f78eeb9c499b61631197baf0e, type: 2}
+      objectReference: {fileID: 11400000, guid: 8087ed0bf7a14e9448af1c93b5806520, type: 2}
     - target: {fileID: 2099796233, guid: cbcf3c9c7d1b0134686b8f2bd85c14d7, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: ScriptableObjects.CardObjects.CardObject, Assembly-CSharp
@@ -1005,11 +994,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9d5381721ddb2842a5d6cebc71e2ba0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &6962266035262547944 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1629810928, guid: 07f4d84cde50060439f1f7a8e0450a7a, type: 3}
-  m_PrefabInstance: {fileID: 6962266034710746904}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8277174198780178802
 PrefabInstance:
   m_ObjectHideFlags: 0

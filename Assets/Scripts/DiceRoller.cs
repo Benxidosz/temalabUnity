@@ -41,23 +41,28 @@ public class DiceRoller : MonoBehaviour {
     }
 
     public void Roll() {
-        PlayerController current = _gameManager.CurrentPlayer;
-        if (current.DiceSet) {
-            WhiteDice = current.WhiteDice;
-            RedDice = current.RedDice;
-            current.DiceSet = false;
+        if (_gameManager.CurrentTurnState == GameManager.TurnState.BeforeRoll ) {
+            PlayerController current = _gameManager.CurrentPlayer;
+            if (current.DiceSet) {
+                WhiteDice = current.WhiteDice;
+                RedDice = current.RedDice;
+                current.DiceSet = false;
+            } else {
+                WhiteDice = Random.Range(1, 7);
+                RedDice = Random.Range(1, 7);
+            }
+
+            var tmpAction = actionDice[Random.Range(0, 6)];
+            ActionDice = tmpAction.dice;
+            _actionSprite = tmpAction.sprite;
+            
+            _gameManager.DrawActionCard(ActionDice);
+            if (ActionDice == ActionDice.Black)
+                GameManager.Instance.BlackRolled();
+            StartCoroutine(Roller());
         } else {
-            WhiteDice = Random.Range(1, 7);
-            RedDice = Random.Range(1, 7);
+            _gameManager.UIs[GameManager.UIKeys.AlertDialog].GetComponent<AlertDialog>().ShowDialog("You have already rolled!");
         }
-        
-        var tmpAction = actionDice[Random.Range(0, 6)];
-        ActionDice = tmpAction.dice;
-        _actionSprite = tmpAction.sprite;
-        _gameManager.DrawActionCard(ActionDice);
-        if (ActionDice == ActionDice.Black)
-            GameManager.Instance.BlackRolled();
-        StartCoroutine(Roller());
     }
 
     private IEnumerator Roller(){
