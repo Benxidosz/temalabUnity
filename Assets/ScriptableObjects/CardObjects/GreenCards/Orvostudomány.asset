@@ -18,6 +18,18 @@ MonoBehaviour:
   titleSize: 20
   description: "Egy telep\xFCl\xE9s\xE9t 2 \xE9rc\xE9rt \xE9s 1 gabon\xE1\xE9rt v\xE1ross\xE1
     alak\xEDthatja."
-  Action:
+  action:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8027108953159870043, guid: cc650192b3a7aa74db22de4e00496422, type: 3}
+        m_TargetAssemblyTypeName: ActionCards.CardManager, Assembly-CSharp
+        m_MethodName: Medicine
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2

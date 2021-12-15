@@ -100,5 +100,9 @@ namespace ActionCards {
         public void RoadBuilding(PlayerController player) {
             player.BuildingController.FreeRoad += 2;
         }
+
+        public void Medicine(PlayerController player) {
+            player.BuildingController.ReducedCity++;
+        }
     }
 }
