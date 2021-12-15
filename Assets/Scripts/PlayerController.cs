@@ -31,6 +31,8 @@ public class PlayerController : MonoBehaviour {
     public int WhiteDice { get; private set; }
     public int RedDice { get; private set; }
 
+    public event Action<int, PlayerController> PointIncreased;
+
     private int _points = 0;
     public int Points {
         get => _points;
@@ -39,6 +41,7 @@ public class PlayerController : MonoBehaviour {
                 throw new ArgumentException("New Point cannot be lower!");
             _points = value;
             RefreshPoints();
+            PointIncreased?.Invoke(_points, this);
         }
     }
 
