@@ -10,6 +10,7 @@ public class UpgradeManager : MonoBehaviour {
     private UpgradeTile[] _blueUpgrades;
     private UpgradeTile[] _greenUpgrades;
     private PlayerController player;
+    public int CostReduction { get; set; }
 
     public int YellowCounter { get; private set; }
     public int BlueCounter { get; private set; }
@@ -33,25 +34,44 @@ public class UpgradeManager : MonoBehaviour {
         }
 
         ui.enabled = false;
+
+        CostReduction = 0;
     }
 
-    public void UpgradeYellow(){
-        if (player.MaterialController.GetMaterialCount(MaterialType.Canvas) < YellowCounter + 1) return;
+    public void UpgradeYellow() {
         if (YellowCounter >= _yellowUpgrades.Length) return;
+        int cost = YellowCounter + 1;
+        if (CostReduction > 0) {
+            --cost;
+            --CostReduction;
+        }
+        if (player.MaterialController.GetMaterialCount(MaterialType.Canvas) < cost) return;
         _yellowUpgrades[YellowCounter++].Build();
-        player.MaterialController.Decrease(MaterialType.Canvas, YellowCounter);
+        player.MaterialController.Decrease(MaterialType.Canvas, cost);
     }
     public void UpgradeBlue() {
-        if (player.MaterialController.GetMaterialCount(MaterialType.Coin) < BlueCounter + 1) return;
         if (BlueCounter >= _blueUpgrades.Length) return;
+        int cost = BlueCounter + 1;
+        if (CostReduction > 0) {
+            --cost;
+            --CostReduction;
+        }
+        if (player.MaterialController.GetMaterialCount(MaterialType.Coin) < cost) return;
+        
         _blueUpgrades[BlueCounter++].Build();
-        player.MaterialController.Decrease(MaterialType.Coin, BlueCounter);
+        player.MaterialController.Decrease(MaterialType.Coin, cost);
     }
     public void UpgradeGreen() {
-        if (player.MaterialController.GetMaterialCount(MaterialType.Paper) < GreenCounter + 1) return;
         if (GreenCounter >= _greenUpgrades.Length) return;
+        int cost = GreenCounter + 1;
+        if (CostReduction > 0) {
+            --cost;
+            --CostReduction;
+        }
+        if (player.MaterialController.GetMaterialCount(MaterialType.Paper) < cost) return;
+        
         _greenUpgrades[GreenCounter++].Build();
-        player.MaterialController.Decrease(MaterialType.Paper, GreenCounter);
+        player.MaterialController.Decrease(MaterialType.Paper, cost);
     }
     
     private void EmptyUI() {

@@ -23,7 +23,8 @@ public class GameManager : MonoBehaviour {
 
     public enum UIKeys {
         DicePicker,
-        MaterialPicker
+        MaterialPicker,
+        AlertDialog
     }
 
     public static GameManager Instance { get; private set; }
@@ -113,7 +114,9 @@ public class GameManager : MonoBehaviour {
     }
 
     public void EndTurn() {
+        print(CurrentTurnState);
         if (CurrentTurnState == TurnState.Rolled) {
+            CurrentPlayer.ResetTemporaryNeed();
             _currentPlayerIdx++;
             if (_currentPlayerIdx >= players.Count)
                 _currentPlayerIdx = 0;
@@ -121,9 +124,9 @@ public class GameManager : MonoBehaviour {
             CurrentPlayer = players[_currentPlayerIdx];
             CurrentPlayer.PointsSwitchState();
             CurrentTurnState = TurnState.BeforeRoll;
+        } else {
+            UIs[UIKeys.AlertDialog].GetComponent<AlertDialog>().ShowDialog("You have not rolled yet!");
         }
-
-        players.ForEach(player => { print(player.MaterialController.GetMaterialCount(MaterialType.Coin)); });
     }
 
     public void Village() {
@@ -147,23 +150,12 @@ public class GameManager : MonoBehaviour {
         UIs[UIKeys.MaterialPicker].GetComponentInChildren<MaterialSubmitButton>().OnClick = callBack;
     }
 
-    public void AddTestMaterial() {
-        MaterialType[] types = new[] {
-            MaterialType.Brick,
-            MaterialType.Canvas,
-            MaterialType.Coin,
-            MaterialType.Ore,
-            MaterialType.Paper,
-            MaterialType.Wheat,
-            MaterialType.Wood,
-            MaterialType.Wool
-        };
-        foreach (var player in players) {
-            foreach (var type in types) {
-                player.MaterialController.Increase(type, 5);
-            }
-
-            print(player.MaterialController.GetMaterialCount(MaterialType.Brick));
-        }
+    public IEnumerable<TileController> GetTiles(MaterialType type) {
+        List<TileController> res = new List<TileController>();
+        _tileControllers.ForEach(tile => {
+            if (tile.MyType == type)
+                res.Add(tile);
+        });
+        return res;
     }
 }
